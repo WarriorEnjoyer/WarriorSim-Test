@@ -1221,6 +1221,14 @@ var sets = [
       ]
    },
    {
+      id: 100000999,
+      name: 'Battlegear of Unyielding Strength',
+      items: [21394, 21393, 21392],
+      bonus: [
+         { count: 3, stats: { unyieldingstrength: true } }
+      ]
+   },
+   {
       id: 442,
       name: 'Blood Tiger Harness',
       items: [19688,19689],
@@ -1243,8 +1251,9 @@ var sets = [
       name: 'Armor of Wrath',
       items: [47248,47249,47250,47251,47252,47253,47254,47255],
       bonus: [
-		 { count: 5, stats: { skill_0: 5, skill_1: 5, skill_2: 5, skill_3: 5, skill_4: 5, skill_5: 5, skill_6: 5 } }
-		 
+         { count: 3, stats: { wrathoverpower: true } },
+         { count: 5, stats: { skill_0: 5, skill_1: 5, skill_2: 5, skill_3: 5, skill_4: 5, skill_5: 5, skill_6: 5 } },
+         { count: 8, stats: { wrathwhirlwindbonus: 2 } }
       ]
    },
       {
@@ -1252,7 +1261,8 @@ var sets = [
       name: 'Armor of the Dreadnaught',
       items: [47261,47262,47263,47264,47265,47266,47267,47268,47269],
       bonus: [
-        { count: 2, stats: { altdreadnaughttwoset: true } }
+        { count: 2, stats: { altdreadnaughttwoset: true } },
+        { count: 8, stats: { dreadnaughteightset: true } }
       ]
    },
    {

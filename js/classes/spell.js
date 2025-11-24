@@ -172,6 +172,9 @@ class Overpower extends Spell {
         this.timer = this.cooldown * 1000;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         this.player.rage -= this.cost;
+
+        // Armor of Wrath 3-piece bonus
+        if (this.player.auras.wrathoverpower) this.player.auras.wrathoverpower.use();
     }
     canUse() {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.dodgetimer &&
@@ -630,14 +633,20 @@ class Slam extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 15 - player.ragecostbonus;
-        this.casttime = (this.decisive ? 2000 : 1500) - (player.talents.impslam * 100);
+        this.basecasttime = 2500 - (player.talents.impslam || 0);
+        this.basegcd = 1500 - (player.talents.impslam || 0);
         this.cooldown = player.precisetiming ? 6 : 0;
         this.mhthreshold = 0;
+    }
+    getCastTime() {
+        // Cast time affected by haste
+        return Math.round(this.basecasttime / this.player.stats.haste);
     }
     dmg(weapon) {
         if (!weapon) weapon = this.player.mh;
         let dmg, mod = 1;
-        dmg = (this.decisive && this.player.level == 60 ? this.value2 : this.value1) + rng(weapon.mindmg + weapon.bonusdmg, weapon.maxdmg + weapon.bonusdmg);
+        // 100% weapon damage
+        dmg = rng(weapon.mindmg + weapon.bonusdmg, weapon.maxdmg + weapon.bonusdmg);
         dmg += (this.player.stats.ap / 14) * weapon.speed + this.player.stats.moddmgdone;
         if (this.player.heroicbonus) mod = 1.25;
         return dmg * this.player.stats.dmgmod * mod;
@@ -646,10 +655,6 @@ class Slam extends Spell {
         if (this.player.freeslam) this.offhandhit = true;
         if (!this.player.freeslam) this.player.rage -= this.cost;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
-        if (this.casttime && !this.player.freeslam) {
-            this.player.mh.use();
-            if (this.player.oh) this.player.oh.use();
-        }
         this.player.freeslam = false;
         this.timer = this.cooldown * 1000;
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} done casting`); /* end-log */
@@ -1033,6 +1038,29 @@ class TwowEnrageAura extends Aura {
             this.timer = 0;
             this.player.updateDmgMod();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed. dmgmod ${this.player.stats.dmgmod}`); /* end-log */
+        }
+    }
+}
+
+class WrathOverpower extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Wrath of Overpower');
+        this.duration = 5;
+        this.mult_stats = { attackspeed: 15 };
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateAttackSpeed();
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied. attackspeed ${this.player.stats.attackspeed}`); /* end-log */
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.player.updateAttackSpeed();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed. attackspeed ${this.player.stats.attackspeed}`); /* end-log */
         }
     }
 }
@@ -1976,7 +2004,7 @@ class Spider extends Aura {
     constructor(player, id) {
         super(player, id);
         this.duration = 15;
-        this.mult_stats = { haste: 20 };
+        this.mult_stats = { attackspeed: 20 };
         this.name = 'Kiss of the Spider';
         this.cooldown = 120;
     }
@@ -1984,7 +2012,7 @@ class Spider extends Aura {
         this.player.itemtimer = this.duration * 1000 - prepull;
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
-        this.player.updateHaste();
+        this.player.updateAttackSpeed();
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
@@ -1995,7 +2023,7 @@ class Spider extends Aura {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
             this.usestep = this.starttimer + (this.cooldown *1000);
-            this.player.updateHaste();
+            this.player.updateAttackSpeed();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
     }

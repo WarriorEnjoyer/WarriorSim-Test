@@ -184,6 +184,7 @@ class Player {
         }
         if (this.items.includes(55131)) this.auras.shieldrender = new Shieldrender(this);
         if (this.spells.shieldslam) this.auras.defendersresolve = new DefendersResolve(this);
+        if (this.wrathoverpower) this.auras.wrathoverpower = new WrathOverpower(this);
 
         if ((this.basestance == 'def' || this.basestance == 'glad') && this.spells.sunderarmor && this.devastate && this.shield) {
             this.spells.sunderarmor.devastate = true;
@@ -591,6 +592,13 @@ class Player {
                     if (bonus.stats.deathwishcd) this.deathwishcd = bonus.stats.deathwishcd;
                     if (bonus.stats.bleedbonus) this.bleedbonus = bonus.stats.bleedbonus;
                     if (bonus.stats.shockwavecd) this.shockwavecd = bonus.stats.shockwavecd;
+                    if (bonus.stats.wrathoverpower) this.wrathoverpower = true;
+                    if (bonus.stats.wrathwhirlwindbonus) this.wrathwhirlwindbonus = bonus.stats.wrathwhirlwindbonus;
+                    if (bonus.stats.unyieldingstrength) this.unyieldingstrength = true;
+                    if (bonus.stats.dreadnaughteightset) {
+                        this.dreadnaughteightset = true;
+                        this.dreadnaughtbuff = 0;
+                    }
                 }
             }
         }
@@ -951,8 +959,6 @@ class Player {
             this.stats.haste *= (1 + this.auras.tempest.mult_stats.haste / 100);
         if (this.auras.pummeler && this.auras.pummeler.timer)
             this.stats.haste *= (1 + this.auras.pummeler.mult_stats.haste / 100);
-        if (this.auras.spider && this.auras.spider.timer)
-            this.stats.haste *= (1 + this.auras.spider.mult_stats.haste / 100);
         if (this.auras.hategrips && this.auras.hategrips.timer)
             this.stats.haste *= (1 + this.auras.hategrips.mult_stats.haste / 100);
         if (this.auras.voidmadness && this.auras.voidmadness.timer)
@@ -985,13 +991,22 @@ class Player {
             this.stats.haste *= (1 + this.auras.obsidianhaste.mult_stats.haste / 100);
 
     }
+    updateAttackSpeed() {
+        // Attack speed modifier - affects weapon swings but not spell cast times
+        this.stats.attackspeed = 1;
+        if (this.auras.wrathoverpower && this.auras.wrathoverpower.timer)
+            this.stats.attackspeed *= (1 + this.auras.wrathoverpower.mult_stats.attackspeed / 100);
+        if (this.auras.spider && this.auras.spider.timer)
+            this.stats.attackspeed *= (1 + this.auras.spider.mult_stats.attackspeed / 100);
+    }
     updateHasteDamage() {
         // MOD_ATTACKSPEED works differently than regular haste, lowers dmg
+        // Not applicable in Turtle WoW
+        if (this.mode === 'turtle') return;
+
         let mod = 1;
         if (this.auras.spicy && this.auras.spicy.timer)
             mod *= (1 + this.auras.spicy.mult_stats.haste / 100);
-        if (this.auras.jujuflurry && this.auras.jujuflurry.timer && this.mode !=='turtle')
-            mod *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
 
         this.mh.mindmg = this.mh.basemindmg / mod;
         this.mh.maxdmg = this.mh.basemaxdmg / mod;
@@ -1339,6 +1354,7 @@ class Player {
 
         if (this.auras.enrage && this.auras.enrage.timer) this.auras.enrage.step();
         if (this.auras.potentvenoms && this.auras.potentvenoms.timer) this.auras.potentvenoms.step();
+        if (this.auras.wrathoverpower && this.auras.wrathoverpower.timer) this.auras.wrathoverpower.step();
         if (!nobleeds && this.auras.deepwounds && this.auras.deepwounds.timer) this.auras.deepwounds.step();
         if (!nobleeds && this.auras.rend && this.auras.rend.timer) this.auras.rend.step();
         if (this.auras.berserkerrage && this.auras.berserkerrage.timer) this.auras.berserkerrage.step();
@@ -1523,6 +1539,11 @@ class Player {
 
         if (result == RESULT.DODGE) {
             this.dodgetimer = 5000;
+            // Battlegear of Unyielding Strength 3-piece bonus
+            if (this.unyieldingstrength && (spell instanceof HeroicStrike || spell instanceof Slam)) {
+                this.rage = Math.min(this.rage + 5, this.maxrage);
+                /* start-log */ if (this.logging) this.log(`Unyielding Strength: +5 rage on dodge`); /* end-log */
+            }
         }
         if (result == RESULT.GLANCE) {
             dmg *= this.getGlanceReduction(weapon);
@@ -1615,6 +1636,11 @@ class Player {
         else if (result == RESULT.DODGE) {
             spell.failed();
             this.dodgetimer = 5000;
+            // Battlegear of Unyielding Strength 3-piece bonus
+            if (this.unyieldingstrength && (spell instanceof HeroicStrike || spell instanceof Slam)) {
+                this.rage = Math.min(this.rage + 5, this.maxrage);
+                /* start-log */ if (this.logging) this.log(`Unyielding Strength: +5 rage on dodge`); /* end-log */
+            }
         }
         else if (result == RESULT.CRIT) {
             let critmod;
@@ -1687,9 +1713,20 @@ class Player {
         }
         else if (weapon == this.mh){
             if (result != RESULT.MISS && result != RESULT.DODGE) {
+                // Armor of the Dreadnaught 8-piece bonus - consume buff
+                if (this.dreadnaughtbuff > 0 && (spell == null || spell.school == SCHOOL.PHYSICAL)) {
+                    dmg += 30;
+                    this.dreadnaughtbuff = 0;
+                    /* start-log */ if (this.logging) this.log(`Dreadnaught Rallying Cry: +30 damage`); /* end-log */
+                }
                 if(spell == null || spell.school == SCHOOL.PHYSICAL)
                     dmg *= (1 - this.armorReduction);
                 if (!adjacent) this.addRagemh(dmg, result, weapon, spell);
+                // Armor of the Dreadnaught 8-piece bonus - apply buff on crit
+                if (this.dreadnaughteightset && result == RESULT.CRIT) {
+                    this.dreadnaughtbuff = 1;
+                    /* start-log */ if (this.logging) this.log(`Dreadnaught Rallying Cry applied`); /* end-log */
+                }
                 return dmg;
             }
             else {
@@ -1699,9 +1736,20 @@ class Player {
         }
         else {
             if (result != RESULT.MISS && result != RESULT.DODGE) {
+                // Armor of the Dreadnaught 8-piece bonus - consume buff
+                if (this.dreadnaughtbuff > 0 && (spell == null || spell.school == SCHOOL.PHYSICAL)) {
+                    dmg += 30;
+                    this.dreadnaughtbuff = 0;
+                    /* start-log */ if (this.logging) this.log(`Dreadnaught Rallying Cry: +30 damage`); /* end-log */
+                }
                 if(spell == null || spell.school == SCHOOL.PHYSICAL)
                     dmg *= (1 - this.armorReduction);
                 if (!adjacent) this.addRageoh(dmg, result, weapon, spell);
+                // Armor of the Dreadnaught 8-piece bonus - apply buff on crit
+                if (this.dreadnaughteightset && result == RESULT.CRIT) {
+                    this.dreadnaughtbuff = 1;
+                    /* start-log */ if (this.logging) this.log(`Dreadnaught Rallying Cry applied`); /* end-log */
+                }
                 return dmg;
             }
             else {

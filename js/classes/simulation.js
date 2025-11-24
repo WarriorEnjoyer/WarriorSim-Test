@@ -451,9 +451,9 @@ class Simulation {
                     if (delayedspell.canUse()) {
                         // Start casting slam
                         if (delayedspell instanceof Slam) {
-                            slamstep = step + delayedspell.casttime;
+                            slamstep = step + delayedspell.getCastTime();
                             if (player.freeslam) slamstep = step;
-                            player.timer = 1500;
+                            player.timer = delayedspell.basegcd;
                             player.heroicdelay = 0;
                             player.nextswinghs = false;
                             next = 0;
@@ -472,11 +472,16 @@ class Simulation {
                         }
 
                         if (delayedspell instanceof Whirlwind || delayedspell instanceof BlademasterFury || delayedspell instanceof ThunderClap || delayedspell instanceof Shockwave) {
-                            for (let i = 0; i < player.adjacent; i++) {
-                                done = player.cast(delayedspell, delayedheroic, player.adjacent, done);
+                            let additionalTargets = player.adjacent;
+                            // Armor of Wrath 8-piece bonus
+                            if (delayedspell instanceof Whirlwind && player.wrathwhirlwindbonus) {
+                                additionalTargets += player.wrathwhirlwindbonus;
+                            }
+                            for (let i = 0; i < additionalTargets; i++) {
+                                done = player.cast(delayedspell, delayedheroic, additionalTargets, done);
                                 this.idmg += done;
                                 if (delayedspell.offhandhit && player.oh) {
-                                    done = player.castoh(delayedspell, player.adjacent, done);
+                                    done = player.castoh(delayedspell, additionalTargets, done);
                                     this.idmg += done;
                                 }
                             }

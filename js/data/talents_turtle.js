@@ -322,23 +322,17 @@ var talents = [
             m: 2,
             s: [
                12862,
-               12330,
-               20497,
-               20498,
-               20499
+               12330
             ],
             d: [
-               'Decreases the casting time of your Slam ability by 0.1 sec.',
-               'Decreases the casting time of your Slam ability by 0.2 sec.',
-               'Decreases the casting time of your Slam ability by 0.3 sec.',
-               'Decreases the casting time of your Slam ability by 0.4 sec.',
-               'Decreases the casting time of your Slam ability by 0.5 sec.'
+               'Decreases the casting time and global cooldown of your Slam ability by 0.3 sec.',
+               'Decreases the casting time and global cooldown of your Slam ability by 0.5 sec.'
             ],
             x: 0,
             y: 5,
             c: 0,
             iconname: 'Ability_Warrior_DecisiveStrike',
-            aura: function (count) { return { impslam: count * 2.5 } }, // cc2 talent is 2.5x better than 1.12 version
+            aura: function (count) { return { impslam: count == 1 ? 300 : 500 } },
          },
          {
             i: 129,
