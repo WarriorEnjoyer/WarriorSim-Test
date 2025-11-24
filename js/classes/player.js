@@ -943,8 +943,6 @@ class Player {
     }
     updateHaste() {
         this.stats.haste = this.base.haste;
-        if (this.auras.flurry && this.auras.flurry.timer)
-            this.stats.haste *= (1 + this.auras.flurry.mult_stats.haste / 100);
         if (this.auras.quicknesspotion && this.auras.quicknesspotion.timer)
             this.stats.haste *= (1 + this.auras.quicknesspotion.mult_stats.haste / 100);
         if (this.auras.bloodlust && this.auras.bloodlust.timer)
@@ -981,6 +979,8 @@ class Player {
             this.stats.haste *= (1 + this.auras.singleminded.mult_stats.haste / 100);
         if (this.auras.magmadarsreturn && this.auras.magmadarsreturn.timer)
             this.stats.haste *= (1 + this.auras.magmadarsreturn.mult_stats.haste / 100);
+        if (this.auras.jujuflurry && this.auras.jujuflurry.timer)
+            this.stats.haste *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
         if (this.auras.chastise && this.auras.chastise.timer)
             this.stats.haste *= (1 + this.auras.chastise.mult_stats.haste / 100);
         if (this.auras.crusaderzeal && this.auras.crusaderzeal.timer)
@@ -993,12 +993,12 @@ class Player {
         // Attack speed modifier - affects weapon swings but not spell cast times
         // Stored as multiplier for timer (e.g., 0.85 = 15% faster)
         this.stats.attackspeed = 1;
+        if (this.auras.flurry && this.auras.flurry.timer)
+            this.stats.attackspeed *= (1 - this.auras.flurry.mult_stats.haste / 100);
         if (this.auras.wrathoverpower && this.auras.wrathoverpower.timer)
             this.stats.attackspeed *= (1 - this.auras.wrathoverpower.mult_stats.attackspeed / 100);
         if (this.auras.spider && this.auras.spider.timer)
             this.stats.attackspeed *= (1 - this.auras.spider.mult_stats.attackspeed / 100);
-        if (this.auras.jujuflurry && this.auras.jujuflurry.timer)
-            this.stats.attackspeed *= (1 - this.auras.jujuflurry.mult_stats.haste / 100);
     }
     updateHasteDamage() {
         // MOD_ATTACKSPEED works differently than regular haste, lowers dmg

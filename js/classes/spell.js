@@ -1107,7 +1107,7 @@ class Flurry extends Aura {
         if (!this.stacks) {
             this.uptime += step - this.starttimer;
             this.timer = 0;
-            this.player.updateHaste();
+            this.player.updateAttackSpeed();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
     }
@@ -1115,7 +1115,7 @@ class Flurry extends Aura {
         this.timer = 1;
         if (!this.stacks) {
             this.starttimer = step;
-            this.player.updateHaste();
+            this.player.updateAttackSpeed();
         }
         this.stacks = 3;
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
@@ -3279,7 +3279,7 @@ class JujuFlurry extends Aura {
         if (this.timer) this.uptime += (step - this.starttimer);
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
-        this.player.updateAttackSpeed();
+        this.player.updateHaste();
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
@@ -3291,7 +3291,7 @@ class JujuFlurry extends Aura {
             this.timer = 0;
             this.firstuse = false;
             this.usestep = this.starttimer + (this.cooldown * 1000);
-            this.player.updateAttackSpeed();
+            this.player.updateHaste();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
     }
@@ -3299,7 +3299,7 @@ class JujuFlurry extends Aura {
         this.uptime += (step - this.starttimer);
         this.timer = 0;
         this.stacks = 0;
-        this.player.updateAttackSpeed();
+        this.player.updateHaste();
     }
 }
 
