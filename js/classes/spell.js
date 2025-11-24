@@ -1107,7 +1107,7 @@ class Flurry extends Aura {
         if (!this.stacks) {
             this.uptime += step - this.starttimer;
             this.timer = 0;
-            this.player.updateAttackSpeed();
+            this.player.updateHaste();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
     }
@@ -1115,7 +1115,7 @@ class Flurry extends Aura {
         this.timer = 1;
         if (!this.stacks) {
             this.starttimer = step;
-            this.player.updateAttackSpeed();
+            this.player.updateHaste();
         }
         this.stacks = 3;
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
