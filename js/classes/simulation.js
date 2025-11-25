@@ -535,6 +535,7 @@ class Simulation {
 
             // Extra attacks
             if (player.extraattacks > 0) {
+                player.nextswinghs = false;
                 player.mh.timer = 0;
                 player.extraattacks--;
             }
