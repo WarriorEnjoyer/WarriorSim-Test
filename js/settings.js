@@ -366,11 +366,28 @@ SIM.SETTINGS = {
                         }
                 }
                 if (active && spell.name == "Cleave") {
-                    for (let s of spells) 
+                    for (let s of spells)
                         if (s.name == "Heroic Strike" && s.active) {
                             s.active = false;
                             view.rotation.find(`.spell[data-id="${s.id}"]`).removeClass('active');
                         }
+                }
+                if (active && spell.name == "Sunder Armor") {
+                    // Deactivate all Expose Armor ranks
+                    let exposeArmorIds = [8647, 8649, 8650, 11197, 11198];
+                    for (let buff of buffs) {
+                        if (exposeArmorIds.includes(buff.id) && buff.active) {
+                            buff.active = false;
+                            view.buffs.find(`[data-id="${buff.id}"]`).removeClass('active');
+                        }
+                    }
+                    // Deactivate Improved Expose Armor
+                    for (let buff of buffs) {
+                        if (buff.id == 14169 && buff.active) {
+                            buff.active = false;
+                            view.buffs.find('[data-id="14169"]').removeClass('active');
+                        }
+                    }
                 }
             }
 

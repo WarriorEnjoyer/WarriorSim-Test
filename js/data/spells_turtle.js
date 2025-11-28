@@ -1280,6 +1280,8 @@ var spells = [
     wwcd: 2,
     wwcdactive: false,
     flurry: false,
+    swingreset: true,
+    afterswing: true,
     bloodsurge: false,
     execute: false,
     active: false,
