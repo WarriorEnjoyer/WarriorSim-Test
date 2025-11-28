@@ -49,6 +49,28 @@ SIM.SETTINGS = {
                 }
                 if (obj.data('disable-spell'))
                     $('.rotation [data-id="' + obj.data('disable-spell') + '"]').removeClass('active');
+
+                // If Improved Expose Armor is clicked, also activate Expose Armor
+                if (obj.data('id') == 14169) {
+                    let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
+                    let level = parseInt(storage.level);
+                    // Find the appropriate Expose Armor rank for current level
+                    let exposeArmorIds = [8647, 8649, 8650, 11197, 11198];
+                    for (let buff of buffs) {
+                        if (exposeArmorIds.includes(buff.id)) {
+                            let min = parseInt(buff.minlevel || 0);
+                            let max = parseInt(buff.maxlevel || 60);
+                            if (level >= min && level <= max) {
+                                let exposeElement = view.buffs.find('[data-id="' + buff.id + '"]');
+                                // Only activate if not already active (to avoid double-toggling)
+                                if (!exposeElement.hasClass('active')) {
+                                    exposeElement.click();
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             for (let buff of buffs) {
                 buff.active = view.buffs.find('[data-id="' + buff.id + '"]').hasClass('active');
@@ -565,16 +587,20 @@ SIM.SETTINGS = {
 
         if (typeof spell.timetoend === 'undefined' && !spell.noactiveoption)
             ul.append(`<li data-id="active" class="${spell.active ? 'active' : ''}">Enabled ${note ? ` - ${note}` : ''}</li>`);
-        if (typeof spell.afterswing !== 'undefined') 
-            ul.append(`<li data-id="afterswing" class="${spell.afterswing ? 'active' : ''}">Use only after a swing reset</li>`);
+        if (typeof spell.afterswing !== 'undefined')
+            ul.append(`<li data-id="afterswing" class="${spell.afterswing ? 'active' : ''}">Only use if casting won't clip your autoattack</li>`);
+        if (typeof spell.flurry !== 'undefined')
+            ul.append(`<li data-id="flurry" class="${spell.flurry ? 'active' : ''}">Only cast if Flurry buff is active</li>`);
         if (typeof spell.minrage !== 'undefined' && spell.id != 11597) 
             ul.append(`<li data-id="minrageactive" class="${spell.minrageactive ? 'active' : ''}">${spell.name == "Heroic Strike" ? 'Queue' : 'Use'} when above <input type="text" name="minrage" value="${spell.minrage}" data-numberonly="true" /> rage</li>`);
         if (typeof spell.minrage !== 'undefined' && spell.id == 11597) 
             ul.append(`<li data-id="minrageactive" class="${spell.minrageactive ? 'active' : ''}" data-group="usage">Only use when above <input type="text" name="minrage" value="${spell.minrage}" data-numberonly="true" /> rage</li>`);
         if (typeof spell.maxrage !== 'undefined') 
             ul.append(`<li data-id="maxrageactive" class="${spell.maxrageactive ? 'active' : ''}">Don't switch stance when above <input type="text" name="maxrage" value="${spell.maxrage}" data-numberonly="true" /> rage</li>`);
-        if (typeof spell.maincd !== 'undefined') 
+        if (typeof spell.maincd !== 'undefined')
             ul.append(`<li data-id="maincdactive" class="${spell.maincdactive ? 'active' : ''}">Don't ${spell.name == "Heroic Strike" ? 'queue' : 'use'} if BT / MS cooldown shorter than <input type="text" name="maincd" value="${spell.maincd}" data-numberonly="true" /> seconds</li>`);
+        if (typeof spell.wwcd !== 'undefined')
+            ul.append(`<li data-id="wwcdactive" class="${spell.wwcdactive ? 'active' : ''}">Don't use if Whirlwind cooldown shorter than <input type="text" name="wwcd" value="${spell.wwcd}" data-numberonly="true" /> seconds</li>`);
         if (typeof spell.duration !== 'undefined') 
             ul.append(`<li data-id="durationactive" class="${spell.durationactive ? 'active' : ''}" data-group="usage">Only use every <input type="text" name="duration" value="${spell.duration}" data-numberonly="true" /> seconds</li>`);
         if (typeof spell.unqueue !== 'undefined') 
@@ -605,6 +631,8 @@ SIM.SETTINGS = {
             ul.append(`<li data-id="alwaystails" data-group="coinflip" class="${spell.alwaystails ? 'active' : ''}">Always tails</li>`);
         if (spell.zerkerpriority !== undefined)
             ul.append(`<li data-id="zerkerpriority" class="${spell.zerkerpriority ? 'active' : ''}">Prioritize over Bloodrage</li>`);
+        if (typeof spell.firstpotion !== 'undefined')
+            ul.append(`<li data-id="firstpotion" data-group="firstpotion" class="${spell.firstpotion ? 'active' : ''}">Use this potion first (2 min cooldown between potions)</li>`);
         if (typeof spell.resolve !== 'undefined') 
             ul.append(`<li data-id="resolve" class="${spell.resolve ? 'active' : ''}">Only use if Defender's Resolve is not up</li>`);
         if (typeof spell.swordboard !== 'undefined') 

@@ -35,6 +35,7 @@ class Spell {
         if (spell.decisive) this.decisive = spell.decisive;
         if (spell.bloodsurge) this.bloodsurge = spell.bloodsurge;
         if (spell.afterswing) this.afterswing = spell.afterswing;
+        if (spell.flurry) this.flurry = spell.flurry;
         if (spell.swingreset) this.swingreset = spell.swingreset;
         if (spell.timetoendactive) this.timetoend = parseInt(spell.timetoend) * 1000;
         if (spell.timetostartactive) this.timetostart = parseInt(spell.timetostart) * 1000;
@@ -639,7 +640,9 @@ class Slam extends Spell {
         this.mhthreshold = 0;
     }
     getCastTime() {
-        // Cast time affected by haste
+        // Cast time = (base - talent reduction) / total haste
+        // Note: Improved Slam talent and Flurry talent are mutually exclusive (different trees)
+        // but cast time is always affected by all haste sources (gear, buffs, etc.)
         return Math.round(this.basecasttime / this.player.stats.haste);
     }
     dmg(weapon) {
@@ -665,7 +668,8 @@ class Slam extends Spell {
             (!this.minrage || this.player.rage >= this.minrage) &&
             (!this.maincd ||
                 (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
-                (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+                (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
+            (!this.flurry || (this.player.auras.flurry && this.player.auras.flurry.timer));
     }
 }
 

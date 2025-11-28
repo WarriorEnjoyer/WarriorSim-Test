@@ -135,7 +135,10 @@ class Weapon {
     }
     use() {
         this.timer = Math.round(this.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1));
-        if (!this.offhand && this.player.spells.slam && this.player.spells.slam.afterswing) this.player.spells.slam.mhthreshold = this.timer - 1000;
+        if (!this.offhand && this.player.spells.slam && this.player.spells.slam.afterswing) {
+            // Set threshold to actual cast time to prevent autoattack clipping
+            this.player.spells.slam.mhthreshold = this.player.spells.slam.getCastTime();
+        }
     }
     step(next) {
         this.timer -= next;
