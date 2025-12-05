@@ -1503,7 +1503,10 @@ class BloodFury extends Aura {
     constructor(player, id) {
         super(player, id, 'Blood Fury');
         this.duration = 15;
-        this.mult_stats = { ap: this.player.level * 2 };
+        if (this.player.mode == "turtle")
+            this.stats = { ap: 120 };
+        else
+            this.mult_stats = { ap: this.player.level * 2 };
         this.cooldown = 120;
     }
     use(a, prepull = 0) {
