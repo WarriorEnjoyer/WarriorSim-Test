@@ -1314,6 +1314,7 @@ class Player {
         if (this.auras.flask && this.auras.flask.firstuse && this.auras.flask.timer) this.auras.flask.step();
         if (this.auras.bloodfury && this.auras.bloodfury.firstuse && this.auras.bloodfury.timer) this.auras.bloodfury.step();
         if (this.auras.berserking && this.auras.berserking.firstuse && this.auras.berserking.timer) this.auras.berserking.step();
+        if (this.auras.perception && this.auras.perception.firstuse && this.auras.perception.timer) this.auras.perception.step();
         if (this.auras.slayer && this.auras.slayer.firstuse && this.auras.slayer.timer) this.auras.slayer.step();
         if (this.auras.spider && this.auras.spider.firstuse && this.auras.spider.timer) this.auras.spider.step();
         if (this.auras.hategrips && this.auras.hategrips.firstuse && this.auras.hategrips.timer) this.auras.hategrips.step();

@@ -1533,11 +1533,14 @@ class Berserking extends Aura {
     constructor(player, id) {
         super(player, id);
         this.duration = 10;
+        this.cooldown = 180;
+        this.mult_stats = { haste: 10 };
     }
     use(a, prepull = 0) {
         if (this.timer) this.uptime += (step - this.starttimer);
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
+        this.player.timer = 1500;
         this.player.rage -= 5;
         this.player.updateHaste();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
@@ -1548,26 +1551,29 @@ class Berserking extends Aura {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
             this.firstuse = false;
+            this.usestep = this.starttimer + (this.cooldown * 1000);
             this.player.updateHaste();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
     }
     canUse() {
-        return this.firstuse && !this.timer && this.player.rage >= 5 && step >= this.usestep;
+        return this.firstuse && !this.timer && !this.player.timer && this.player.rage >= 5 && step >= this.usestep;
     }
 }
 class Perception extends Aura {
     constructor(player, id) {
         super(player, id);
         this.duration = 20;
+        this.cooldown = 180;
         if (this.player.mode == "turtle")
             this.stats = { crit: 2, spellcrit: 2 }
     }
     use() {
         if (this.timer) this.uptime += (step - this.starttimer);
-        this.timer = step + this.duration * 1000 - prepull;
-        this.starttimer = step - prepull;
-        this.player.update();
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.timer = 1500;
+        this.player.updateAuras();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
@@ -1576,12 +1582,13 @@ class Perception extends Aura {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
             this.firstuse = false;
-            this.player.update();
+            this.usestep = this.starttimer + (this.cooldown * 1000);
+            this.player.updateAuras();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
     }
     canUse() {
-        return this.firstuse && !this.timer && this.player.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && !this.player.timer && step >= this.usestep;
     }
 }
 class Empyrean extends Aura {
