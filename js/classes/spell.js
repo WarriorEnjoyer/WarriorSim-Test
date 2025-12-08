@@ -1508,6 +1508,7 @@ class BloodFury extends Aura {
         else
             this.mult_stats = { ap: this.player.level * 2 };
         this.cooldown = 120;
+        this.usestep = 0;
     }
     use(a, prepull = 0) {
         if (this.timer) this.uptime += (step - this.starttimer);
