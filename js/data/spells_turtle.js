@@ -1176,7 +1176,7 @@ var spells = [
     classname: 'BloodFury',
     iconname: 'racial_orc_berserkerstrength',
     timetoend: 15,
-    timetoendactive: false,
+    timetoendactive: true,
     timetostart: 0,
     timetostartactive: false,
     aura: true,

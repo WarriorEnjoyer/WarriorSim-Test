@@ -1508,9 +1508,9 @@ class BloodFury extends Aura {
         else
             this.mult_stats = { ap: this.player.level * 2 };
         this.cooldown = 120;
-        this.usestep = 0;
     }
     use(a, prepull = 0) {
+        console.log(`Blood Fury used at step ${step}, usestep was ${this.usestep}`);
         if (this.timer) this.uptime += (step - this.starttimer);
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
@@ -2024,6 +2024,7 @@ class Spider extends Aura {
         this.cooldown = 120;
     }
     use(a, prepull = 0) {
+        console.log(`Spider used at step ${step}, usestep was ${this.usestep}`);
         this.player.itemtimer = this.duration * 1000 - prepull;
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
