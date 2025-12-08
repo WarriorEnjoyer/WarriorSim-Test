@@ -51,29 +51,33 @@ SIM.PROFILES = {
         view.presets.on('click','.import-th', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            let index = view.container.find('.profile').last().data('index') + 1;
-            view.importProfile(preset_th, index);
+            let lastProfile = view.container.find('.profile').last();
+            let index = lastProfile.length ? lastProfile.data('index') + 1 : 0;
+            view.importProfile(preset_th, index, true);
         });
 
         view.presets.on('click','.import-dw', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            let index = view.container.find('.profile').last().data('index') + 1;
-            view.importProfile(preset_dw, index);
+            let lastProfile = view.container.find('.profile').last();
+            let index = lastProfile.length ? lastProfile.data('index') + 1 : 0;
+            view.importProfile(preset_dw, index, true);
         });
 
         view.presets.on('click','.import-thmc', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            let index = view.container.find('.profile').last().data('index') + 1;
-            view.importProfile(preset_thmc, index);
+            let lastProfile = view.container.find('.profile').last();
+            let index = lastProfile.length ? lastProfile.data('index') + 1 : 0;
+            view.importProfile(preset_thmc, index, true);
         });
 
         view.presets.on('click','.import-dwmc', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            let index = view.container.find('.profile').last().data('index') + 1;
-            view.importProfile(preset_dwmc, index);
+            let lastProfile = view.container.find('.profile').last();
+            let index = lastProfile.length ? lastProfile.data('index') + 1 : 0;
+            view.importProfile(preset_dwmc, index, true);
         });
 
         // view.presets.on('click','.import-fr', function (e) {
@@ -388,7 +392,7 @@ SIM.PROFILES = {
         SIM.UI.addAlert('Profile copied to clipboard');
     },
 
-    importProfile(str, index) {
+    importProfile(str, index, autoLoad) {
         const view = this;
         try {
             let minified = str[0] == '{' ? JSON.parse(str.trim()) : JSON.parse(atob(str.trim()));
@@ -484,6 +488,13 @@ SIM.PROFILES = {
             localStorage[modei] = JSON.stringify(storage);
             view.buildProfiles();
             SIM.UI.addAlert(storage.profilename + ' imported');
+
+            if (autoLoad) {
+                let profile = view.container.find('.profile[data-index="' + (index || 0) + '"]');
+                if (profile.length) {
+                    view.loadProfile(profile);
+                }
+            }
 
         } catch (e) {
             SIM.UI.addAlert('Invalid profile');
