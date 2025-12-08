@@ -858,7 +858,7 @@ class Player {
                 for (let prop in this.auras[name].stats)
                     this.stats[prop] += this.auras[name].stats[prop];
                 for (let prop in this.auras[name].mult_stats)
-                    this.stats[prop] *= (1 + this.auras[name].mult_stats[prop] / 100);
+                    if (prop !== 'attackspeed') this.stats[prop] *= (1 + this.auras[name].mult_stats[prop] / 100);
             }
         }
         this.stats.str = ~~(this.stats.str * this.stats.strmod);
