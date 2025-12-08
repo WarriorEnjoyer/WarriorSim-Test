@@ -1528,7 +1528,7 @@ class BloodFury extends Aura {
         }
     }
     canUse() {
-        return this.firstuse && !this.timer && step >= this.usestep;
+        return !this.timer && step >= this.usestep;
     }
 }
 
