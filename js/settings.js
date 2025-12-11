@@ -606,6 +606,8 @@ SIM.SETTINGS = {
             ul.append(`<li data-id="active" class="${spell.active ? 'active' : ''}">Enabled ${note ? ` - ${note}` : ''}</li>`);
         if (typeof spell.afterswing !== 'undefined')
             ul.append(`<li data-id="afterswing" class="${spell.afterswing ? 'active' : ''}">Only use if casting won't clip your autoattack</li>`);
+        if (typeof spell.slamclip !== 'undefined')
+            ul.append(`<li data-id="slamclip" class="${spell.slamclip ? 'active' : ''}">Only use if the next Slam won't clip your autoattack</li>`);
         if (typeof spell.flurry !== 'undefined')
             ul.append(`<li data-id="flurry" class="${spell.flurry ? 'active' : ''}">Only cast if Flurry buff is active</li>`);
         if (typeof spell.minrage !== 'undefined' && spell.id != 11597) 

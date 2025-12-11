@@ -35,6 +35,7 @@ class Spell {
         if (spell.decisive) this.decisive = spell.decisive;
         if (spell.bloodsurge) this.bloodsurge = spell.bloodsurge;
         if (spell.afterswing) this.afterswing = spell.afterswing;
+        if (spell.slamclip) this.slamclip = spell.slamclip;
         if (spell.flurry) this.flurry = spell.flurry;
         if (spell.swingreset) this.swingreset = spell.swingreset;
         if (spell.timetoendactive) this.timetoend = parseInt(spell.timetoend) * 1000;
@@ -102,7 +103,8 @@ class Bloodthirst extends Spell {
         return dmg * this.player.stats.dmgmod * this.player.mainspelldmg;
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.rage >= this.minrage;
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.rage >= this.minrage &&
+            (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
     }
 }
 
@@ -142,7 +144,8 @@ class Whirlwind extends Spell {
         (!this.minrage || this.player.rage >= this.minrage) &&
         (!this.maincd ||
             (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
-            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
+        (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
     }
 }
 
@@ -418,7 +421,8 @@ class Hamstring extends Spell {
         (!this.minrage || this.player.rage >= this.minrage) &&
         (!this.maincd ||
             (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
-            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
+        (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
     }
 }
 
@@ -452,7 +456,8 @@ class Pummel extends Spell {
         (!this.minrage || this.player.rage >= this.minrage) &&
         (!this.maincd ||
             (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
-            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
+        (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
     }
 }
 
@@ -552,7 +557,8 @@ class MasterStrike extends Spell {
             (!this.minrage || this.player.rage >= this.minrage) &&
             (!this.maincd ||
                 (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
-                (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+                (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
+            (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
     }
 }
 
