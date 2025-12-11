@@ -350,10 +350,12 @@ SIM.UI = {
         dps.text('');
         error.text('');
         time.text('');
+        const enableLog = $('select[name="enablelog"]').val() == "Yes";
         const params = {
             player: [undefined, undefined, undefined, Player.getConfig()],
             sim: Simulation.getConfig(),
             fullReport: true,
+            enableLog: enableLog,
         };
         if (rows) {
             let type = rows.parents('table').data('type');
@@ -386,6 +388,14 @@ SIM.UI = {
                 else view.endLoading();
 
                 SIM.STATS.initCharts(report);
+
+                // Display combat log if enabled
+                if (enableLog && report.player && report.player.logs && report.player.logs.length > 0) {
+                    view.displayCombatLog(report.player.logs);
+                } else {
+                    $('#combat-log-container').hide();
+                }
+
                 sim = null;
                 player = null;
 
@@ -1594,8 +1604,40 @@ SIM.UI = {
         $('.modal .btn-close').click(function() {
             $('.modal').hide();
         });
-        
+    },
 
+    displayCombatLog: function (logs) {
+        let container = $('#combat-log-container');
+        if (container.length === 0) {
+            // Create the log container if it doesn't exist
+            container = $(`
+                <div id="combat-log-container" class="combat-log-container">
+                    <div class="combat-log-header">
+                        <span>Combat Log (Last Simulation)</span>
+                        <button class="combat-log-close">&times;</button>
+                    </div>
+                    <div class="combat-log-content"></div>
+                </div>
+            `);
+            $('section.main').append(container);
+            container.find('.combat-log-close').click(function() {
+                container.hide();
+            });
+        }
+
+        const content = container.find('.combat-log-content');
+        content.empty();
+
+        // Build log HTML
+        let html = '<table class="combat-log-table"><thead><tr><th>Time</th><th>Rage</th><th>Event</th></tr></thead><tbody>';
+        for (const entry of logs) {
+            const timeStr = (entry.time / 1000).toFixed(3);
+            const rageStr = entry.rage.toFixed(1);
+            html += `<tr style="color: ${entry.color}"><td>${timeStr}</td><td>${rageStr}</td><td>${entry.msg}</td></tr>`;
+        }
+        html += '</tbody></table>';
+        content.html(html);
+        container.show();
     },
 
 };

@@ -757,6 +757,7 @@ class Player {
     reset(rage) {
         this.rage = rage;
         this.timer = 0;
+        if (this.logging) this.logs = [];
         this.itemtimer = 0;
         this.stancetimer = 0;
         this.ragetimer = 0;
@@ -2009,6 +2010,7 @@ class Player {
             spells: this.spells,
             mh: this.mh,
             oh: this.oh,
+            logs: this.logs || [],
         };
     }
     log(msg) {
@@ -2018,6 +2020,14 @@ class Player {
         else if (msg.indexOf(' for ') > -1) color = 'DarkOrchid';
         else if (msg.indexOf('applied') > 1 || msg.indexOf('removed') > -1) color = '#17A8B6';
         console.log(`%c ${(step / 1000).toFixed(3).padStart(6,' ')} | ${this.rage.toFixed(2).padStart(6,' ')} | ${msg}`, `color: ${color}`);
+        if (this.logs) {
+            this.logs.push({
+                time: step,
+                rage: this.rage,
+                msg: msg,
+                color: color,
+            });
+        }
     }
     switch(stance) {
         let prev = this.stance;

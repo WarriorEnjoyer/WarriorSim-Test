@@ -162,7 +162,7 @@ var session = {
        },
        {
            "id": 54023,
-           "name": "Rune of Fury",
+           "name": "Master Strike",
            "minrage": 30,
            "minrageactive": false,
            "maincd": "1.5",

@@ -173,7 +173,7 @@ class SimulationWorkerParallel {
         this.workers.forEach((worker, i) => {
             const current = Math.round(remain / (this.workers.length - i));
             remain -= current;
-            params.player[3].logging = i == 0 && params.fullReport;
+            params.player[3].logging = i == 0 && params.fullReport && params.enableLog;
             worker.start({...params, sim: {...params.sim, iterations: current}});
         });
     }
