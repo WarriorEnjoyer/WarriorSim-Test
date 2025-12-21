@@ -1809,7 +1809,7 @@ class Player {
             }
             if (weapon.proc1 && !weapon.proc1.extra && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
                 if (weapon.proc1.spell) weapon.proc1.spell.use();
-                if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1);
+                if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1, !spell);
                 if (weapon.proc1.physdmg) {
                     let dmg = this.physproc(weapon.proc1.physdmg);
                     if (dmg > 0 && weapon.proc1.phantom && this.mode !='turtle') dmg += this.phantomproc(weapon)
@@ -1826,11 +1826,11 @@ class Player {
             }
             if (weapon.proc2 && rng10k() < weapon.proc2.chance) {
                 if (weapon.proc2.spell) weapon.proc2.spell.use();
-                if (weapon.proc2.magicdmg) procdmg += this.magicproc(weapon.proc2);
+                if (weapon.proc2.magicdmg) procdmg += this.magicproc(weapon.proc2, !spell);
                 /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             if (this.trinketproc1 && !this.trinketproc1.extra && rng10k() < this.trinketproc1.chance) {
-                if (this.trinketproc1.magicdmg) procdmg += this.magicproc(this.trinketproc1);
+                if (this.trinketproc1.magicdmg) procdmg += this.magicproc(this.trinketproc1, !spell);
                 if (this.trinketproc1.spell) this.trinketproc1.spell.use();
                 /* start-log */ if (this.logging) this.log(`Trinket 1 proc`); /* end-log */
             }
@@ -1843,7 +1843,7 @@ class Player {
                 }
             }
             if (this.trinketproc2 && !this.trinketproc2.extra  && rng10k() < this.trinketproc2.chance) {
-                if (this.trinketproc2.magicdmg) procdmg += this.magicproc(this.trinketproc2);
+                if (this.trinketproc2.magicdmg) procdmg += this.magicproc(this.trinketproc2, !spell);
                 if (this.trinketproc2.spell) this.trinketproc2.spell.use();
                 /* start-log */ if (this.logging) this.log(`Trinket 2 proc`); /* end-log */
             }
@@ -1857,14 +1857,14 @@ class Player {
             }
             if (this.attackproc1 && rng10k() < this.attackproc1.chance) {
                 if (this.attackproc1.magicdmg) {
-                    procdmg += this.attackproc1.chance == 10000 ? this.attackproc1.magicdmg : this.magicproc(this.attackproc1);
+                    procdmg += this.attackproc1.chance == 10000 ? this.attackproc1.magicdmg : this.magicproc(this.attackproc1, !spell);
                     /* start-log */ if (this.logging) this.log(`Attack proc for ${procdmg}`); /* end-log */
                 }
                 if (this.attackproc1.spell) this.attackproc1.spell.use();
             }
             if (this.attackproc2 && rng10k() < this.attackproc2.chance) {
                 if (this.attackproc2.magicdmg) {
-                    procdmg += this.attackproc2.chance == 10000 ? this.attackproc2.magicdmg : this.magicproc(this.attackproc2);
+                    procdmg += this.attackproc2.chance == 10000 ? this.attackproc2.magicdmg : this.magicproc(this.attackproc2, !spell);
                     /* start-log */ if (this.logging) this.log(`Attack proc for ${procdmg}`); /* end-log */
                 }
                 if (this.attackproc2.spell) this.attackproc2.spell.use();
@@ -1981,7 +1981,7 @@ class Player {
         }
         return dmg;
     }
-    magicproc(proc) {
+    magicproc(proc, isAuto) {
         let mod = 1;
         let miss = this.target.misschance;
         let dmg = proc.magicdmg;
@@ -1991,7 +1991,7 @@ class Player {
         if (rng10k() < (this.stats.spellcrit * 100)) mod *= 1 + 0.5 * (1 + this.critdmgbonus * 3);
         if (proc.coeff) dmg += this.spelldamage * proc.coeff;
         let finaldmg = dmg * mod * this.stats.spelldmgmod;
-        if (proc.ragegen && finaldmg > 0) {
+        if (proc.ragegen && finaldmg > 0 && isAuto) {
             this.rage += (finaldmg / this.rageconversion) * 7.5 * this.ragemod;
             if (this.rage > this.ragecap) this.rage = this.ragecap;
         }
