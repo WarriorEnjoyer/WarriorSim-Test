@@ -13150,7 +13150,6 @@ var gear = {
       "agi": 25,
       "str": 45,
       "arp": 75,
-      "haste": 2,
       "mindmg": 307,
       "maxdmg": 453,
       "speed": 3.8,

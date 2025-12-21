@@ -530,6 +530,7 @@ class Simulation {
                     done = player.castoh(delayedspell);
                     this.idmg += done;
                 }
+                player.spelldelay = 0;
                 spellcheck = true;
                 slamstep = 0;
             }

@@ -36,6 +36,7 @@ class Player {
         this.itemtimer = 0;
         this.stancetimer = 0;
         this.ragetimer = 0;
+        this.potioncooldown = 0;
         this.dodgetimer = 0;
         this.crittimer = 0;
         this.critdmgbonus = 0;

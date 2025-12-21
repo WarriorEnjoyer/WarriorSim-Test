@@ -625,6 +625,7 @@ class RagePotion extends Spell {
     }
     use() {
         this.timer = this.cooldown * 1000;
+        this.player.potioncooldown = step + this.cooldown * 1000;
         let oldRage = this.player.rage;
         this.player.rage = Math.min(this.player.rage + ~~rng(this.value1, this.value2), 100);
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
@@ -632,7 +633,7 @@ class RagePotion extends Spell {
             this.player.auras.consumedrage.use();
     }
     canUse() {
-        return this.timer == 0 && this.player.rage < this.minrage && step >= this.usestep;
+        return this.timer == 0 && step >= this.player.potioncooldown && this.player.rage < this.minrage && step >= this.usestep;
     }
 }
 
@@ -1412,6 +1413,7 @@ class MightyRagePotion extends Aura {
         this.player.rage = Math.min(this.player.rage + ~~rng(this.value1, this.value2), 100);
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
+        this.player.potioncooldown = step + this.cooldown * 1000 - prepull;
         this.player.updateStrength();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         if (this.player.auras.consumedrage && oldRage < 60 && this.player.rage >= 60)
@@ -1419,7 +1421,7 @@ class MightyRagePotion extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return this.firstuse && !this.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep && step >= this.player.potioncooldown;
     }
     step() {
         if (step >= this.timer) {
@@ -1443,11 +1445,12 @@ class QuicknessPotion extends Aura {
     use() {
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
+        this.player.potioncooldown = step + this.cooldown * 1000;
         this.player.updateHaste();
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return this.firstuse && !this.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep && step >= this.player.potioncooldown;
     }
     step() {
         if (step >= this.timer) {
