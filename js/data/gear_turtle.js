@@ -11068,7 +11068,8 @@ var gear = {
         "ppm": 7.2,
         "magic": true,
         "dmg": 300,
-        "binaryspell": true
+        "binaryspell": true,
+        "ragegen": true
       }
     },
     {
@@ -12921,7 +12922,7 @@ var gear = {
       }
     },
     {
-      "name": "Thunderfury, Blessed Blade of the Windseeker *Classic PPM",
+      "name": "Thunderfury, Blessed Blade of the Windseeker",
       "sta": 8,
       "agi": 5,
       "mindmg": 60,
@@ -12934,10 +12935,11 @@ var gear = {
       "i": 80,
       "id": 19019,
       "proc": {
-        "ppm": 6,
+        "ppm": 7.2,
         "magic": true,
         "dmg": 300,
-        "binaryspell": true
+        "binaryspell": true,
+        "ragegen": true
       }
     },
     {

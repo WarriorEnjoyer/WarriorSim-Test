@@ -1990,7 +1990,12 @@ class Player {
         if (rng10k() < miss) return 0;
         if (rng10k() < (this.stats.spellcrit * 100)) mod *= 1 + 0.5 * (1 + this.critdmgbonus * 3);
         if (proc.coeff) dmg += this.spelldamage * proc.coeff;
-        return (dmg * mod * this.stats.spelldmgmod);
+        let finaldmg = dmg * mod * this.stats.spelldmgmod;
+        if (proc.ragegen && finaldmg > 0) {
+            this.rage += (finaldmg / this.rageconversion) * 7.5 * this.ragemod;
+            if (this.rage > this.ragecap) this.rage = this.ragecap;
+        }
+        return finaldmg;
     }
     physproc(dmg) {
         let tmp = 0;

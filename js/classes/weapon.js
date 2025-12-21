@@ -53,6 +53,7 @@ class Weapon {
             if (item.proc.dmg && !item.proc.magic) this.proc1.physdmg = item.proc.dmg;
             if (item.proc.dmg && item.proc.magic) this.proc1.magicdmg = item.proc.dmg;
             if (item.proc.binaryspell) this.proc1.binaryspell = true;
+            if (item.proc.ragegen) this.proc1.ragegen = true;
             if (item.proc.coeff) this.proc1.coeff = parseInt(item.proc.coeff);
             if (item.proc.procgcd) this.proc1.gcd = item.proc.procgcd;
             if (item.proc.extra) this.proc1.extra = item.proc.extra;
