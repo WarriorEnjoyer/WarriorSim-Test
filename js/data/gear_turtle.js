@@ -11068,8 +11068,7 @@ var gear = {
         "ppm": 7.2,
         "magic": true,
         "dmg": 300,
-        "binaryspell": true,
-        "ragegen": true
+        "binaryspell": true
       }
     },
     {
@@ -12938,8 +12937,7 @@ var gear = {
         "ppm": 7.2,
         "magic": true,
         "dmg": 300,
-        "binaryspell": true,
-        "ragegen": true
+        "binaryspell": true
       }
     },
     {
