@@ -104,7 +104,13 @@ class Bloodthirst extends Spell {
     }
     canUse() {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.rage >= this.minrage &&
-            (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
+            (!this.slamclip || !this.player.spells.slam ||
+                (this.player.spells.slam.afterswing ?
+                    // With afterswing: instant can extend past auto, just ensure next slam fits
+                    this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
+                        Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                    // Without afterswing: need room for instant + slam before next auto
+                    this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
 }
 
@@ -145,7 +151,13 @@ class Whirlwind extends Spell {
         (!this.maincd ||
             (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
-        (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
+        (!this.slamclip || !this.player.spells.slam ||
+            (this.player.spells.slam.afterswing ?
+                // With afterswing: instant can extend past auto, just ensure next slam fits
+                this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
+                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                // Without afterswing: need room for instant + slam before next auto
+                this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
 }
 
@@ -422,7 +434,11 @@ class Hamstring extends Spell {
         (!this.maincd ||
             (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
-        (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
+        (!this.slamclip || !this.player.spells.slam ||
+            (this.player.spells.slam.afterswing ?
+                this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
+                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
 }
 
@@ -457,7 +473,11 @@ class Pummel extends Spell {
         (!this.maincd ||
             (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
-        (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
+        (!this.slamclip || !this.player.spells.slam ||
+            (this.player.spells.slam.afterswing ?
+                this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
+                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
 }
 
@@ -558,7 +578,11 @@ class MasterStrike extends Spell {
             (!this.maincd ||
                 (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
                 (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
-            (!this.slamclip || !this.player.spells.slam || this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime());
+            (!this.slamclip || !this.player.spells.slam ||
+                (this.player.spells.slam.afterswing ?
+                    this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
+                        Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                    this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
 }
 
@@ -667,6 +691,8 @@ class Slam extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         this.player.freeslam = false;
         this.timer = this.cooldown * 1000;
+        // Reset mhthreshold so Slam can only be cast again after the next auto attack
+        if (this.afterswing) this.mhthreshold = 999999;
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} done casting`); /* end-log */
     }
     canUse() {
