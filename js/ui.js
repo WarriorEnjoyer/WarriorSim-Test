@@ -82,6 +82,13 @@ SIM.UI = {
             view.simulateDPS("stats");
         });
 
+        view.sidebar.find('.js-hsthreshold').click(function (e) {
+            e.preventDefault();
+            view.disableEditMode();
+            view.startLoading();
+            view.simulateHSThreshold();
+        });
+
         view.sidebar.find('.js-stats').click(function (e) {
             e.preventDefault();
             $(this).toggleClass('active');
@@ -480,6 +487,119 @@ SIM.UI = {
                 },
                 (iteration, report) => {
                     if (updateFn) updateFn(iteration / report.iterations, report.totaldmg / report.totalduration);
+                },
+                (error) => reject(error),
+            );
+            sim.start(params);
+        });
+    },
+
+    simulateHSThreshold: function() {
+        const view = this;
+        const btn = view.sidebar.find('.js-hsthreshold');
+        const thresholdDiv = view.sidebar.find('#hsthreshold-div');
+        const resultsDiv = view.sidebar.find('#hsthreshold-results');
+
+        // Find Heroic Strike in spells
+        const hsSpell = spells.find(s => s.name === 'Heroic Strike');
+        if (!hsSpell) {
+            alert('Heroic Strike not found in rotation. Add it to your rotation first.');
+            view.endLoading();
+            return;
+        }
+
+        // Store original minrage setting
+        const originalMinrage = hsSpell.minrage;
+        const originalMinrageActive = hsSpell.minrageactive;
+
+        // Show the results div
+        thresholdDiv.css('display', 'block');
+        resultsDiv.html('<div class="hs-progress">Testing thresholds 30-99...</div>');
+
+        const thresholds = [];
+        for (let i = 30; i <= 99; i++) {
+            thresholds.push(i);
+        }
+
+        const results = [];
+        let completed = 0;
+
+        const runNextThreshold = async () => {
+            if (completed >= thresholds.length) {
+                // All done - restore original and display results
+                hsSpell.minrage = originalMinrage;
+                hsSpell.minrageactive = originalMinrageActive;
+
+                // Sort by DPS descending
+                results.sort((a, b) => b.dps - a.dps);
+
+                // Display top 10 results
+                resultsDiv.html('');
+                const top10 = results.slice(0, 10);
+                top10.forEach((result, index) => {
+                    const div = $('<div class="hs-result"></div>');
+                    if (index === 0) div.addClass('best');
+                    div.html(`<span class="stat-name">${result.threshold} rage:</span><span class="stat-dps">${result.dps.toFixed(2)}</span>`);
+                    resultsDiv.append(div);
+                });
+
+                btn.css('background', '');
+                view.endLoading();
+                return;
+            }
+
+            const threshold = thresholds[completed];
+            hsSpell.minrage = threshold;
+            hsSpell.minrageactive = true;
+
+            try {
+                const result = await view.simulateHSThresholdValue(threshold, (progress) => {
+                    const totalProgress = (completed + progress) / thresholds.length;
+                    btn.css('background', 'linear-gradient(to right, transparent ' + (totalProgress * 100) + '%, #444 ' + (totalProgress * 100) + '%)');
+                });
+                results.push({ threshold, dps: result.mean });
+                completed++;
+
+                // Update progress display
+                resultsDiv.html(`<div class="hs-progress">Testing ${completed}/${thresholds.length} (${threshold} rage: ${result.mean.toFixed(2)} DPS)</div>`);
+
+                // Continue to next threshold
+                runNextThreshold();
+            } catch (error) {
+                console.error('Error testing threshold ' + threshold, error);
+                hsSpell.minrage = originalMinrage;
+                hsSpell.minrageactive = originalMinrageActive;
+                btn.css('background', '');
+                view.endLoading();
+            }
+        };
+
+        runNextThreshold();
+    },
+
+    simulateHSThresholdValue: function(threshold, updateFn) {
+        return new Promise((resolve, reject) => {
+            const params = {
+                player: [null, null, 0, Player.getConfig()],
+                sim: Simulation.getConfig(),
+                globals: getGlobalsDelta(),
+            };
+
+            // Modify the HS minrage in the globals before sending to worker
+            const hsRotation = params.globals.rotation.find(s => s.name === 'Heroic Strike');
+            if (hsRotation) {
+                hsRotation.minrage = threshold;
+                hsRotation.minrageactive = true;
+            }
+
+            var sim = new SimulationWorkerParallel(
+                MAX_WORKERS,
+                (report) => {
+                    const mean = report.totaldmg / report.totalduration;
+                    resolve({ mean });
+                },
+                (iteration, report) => {
+                    if (updateFn) updateFn(iteration / report.iterations);
                 },
                 (error) => reject(error),
             );
