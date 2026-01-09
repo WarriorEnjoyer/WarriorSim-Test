@@ -141,11 +141,12 @@ var session = {
        },
        {
            "id": 61181,
-           "name": "Juju Flurry",
+           "name": "Potion of Quickness",
            "timetoend": 31,
            "timetoendactive": true,
            "timetostart": 0,
            "timetostartactive": false,
+           "aura": true,
            "active": true,
            "buff": true
        },
@@ -173,11 +174,12 @@ var session = {
        },
        {
            "id": 16322,
-           "name": "Juju Might",
+           "name": "Juju Flurry",
            "timetoend": 20,
            "timetoendactive": true,
            "timetostart": 0,
            "timetostartactive": false,
+           "aura": true,
            "active": true,
            "buff": true
        }

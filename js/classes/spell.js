@@ -976,6 +976,7 @@ class Aura {
         this.duration = 0;
         this.stacks = 0;
         this.uptime = 0;
+        this.usestep = 0;
         this.name = name || this.constructor.name;
         this.maxdelay = this.player.reactionmin;
         this.useonly = true;
