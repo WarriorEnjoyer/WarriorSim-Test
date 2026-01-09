@@ -1433,11 +1433,13 @@ class MightyRagePotion extends Aura {
         this.stats = { str: 60 };
         this.duration = 20;
         this.cooldown = 120;
+        this.ragemin = this.value1 || 45;
+        this.ragemax = this.value2 || 75;
     }
     use(a, prepull = 0) {
         if (this.timer) this.uptime += (step - this.starttimer);
         let oldRage = this.player.rage;
-        this.player.rage = Math.min(this.player.rage + ~~rng(this.value1, this.value2), 100);
+        this.player.rage = Math.min(this.player.rage + ~~rng(this.ragemin, this.ragemax), 100);
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
         this.player.potioncooldown = step + this.cooldown * 1000 - prepull;
@@ -1465,7 +1467,7 @@ class MightyRagePotion extends Aura {
 class QuicknessPotion extends Aura {
     constructor(player, id) {
         super(player, id, 'Potion of Quickness');
-        this.mult_stats = { haste: this.value1 };
+        this.mult_stats = { haste: this.value1 || 5 };
         this.duration = 30;
         this.cooldown = 120;
     }
