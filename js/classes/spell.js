@@ -1443,11 +1443,13 @@ class MightyRagePotion extends Aura {
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
         this.player.potioncooldown = step + this.cooldown * 1000 - prepull;
+        let oldStr = this.player.stats.str;
+        let oldAP = this.player.stats.ap;
         this.player.updateStrength();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         if (this.player.auras.consumedrage && oldRage < 60 && this.player.rage >= 60)
             this.player.auras.consumedrage.use();
-        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied. STR ${oldStr} -> ${this.player.stats.str}, AP ${oldAP} -> ${this.player.stats.ap}`); /* end-log */
     }
     canUse() {
         return this.firstuse && !this.timer && step >= this.usestep && step >= this.player.potioncooldown;
@@ -1475,8 +1477,9 @@ class QuicknessPotion extends Aura {
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
         this.player.potioncooldown = step + this.cooldown * 1000;
+        let oldHaste = this.player.stats.haste;
         this.player.updateHaste();
-        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied. Haste ${oldHaste} -> ${this.player.stats.haste} (+${this.mult_stats.haste}%)`); /* end-log */
     }
     canUse() {
         return this.firstuse && !this.timer && step >= this.usestep && step >= this.player.potioncooldown;
