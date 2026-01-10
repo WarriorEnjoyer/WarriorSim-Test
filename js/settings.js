@@ -610,10 +610,10 @@ SIM.SETTINGS = {
             ul.append(`<li data-id="slamclip" class="${spell.slamclip ? 'active' : ''}">Only use if the next Slam won't clip your autoattack</li>`);
         if (typeof spell.flurry !== 'undefined')
             ul.append(`<li data-id="flurry" class="${spell.flurry ? 'active' : ''}">Only cast if Flurry buff is active</li>`);
-        if (typeof spell.minrage !== 'undefined' && spell.id != 11597) 
-            ul.append(`<li data-id="minrageactive" class="${spell.minrageactive ? 'active' : ''}">${spell.name == "Heroic Strike" ? 'Queue' : 'Use'} when above <input type="text" name="minrage" value="${spell.minrage}" data-numberonly="true" /> rage</li>`);
-        if (typeof spell.minrage !== 'undefined' && spell.id == 11597) 
-            ul.append(`<li data-id="minrageactive" class="${spell.minrageactive ? 'active' : ''}" data-group="usage">Only use when above <input type="text" name="minrage" value="${spell.minrage}" data-numberonly="true" /> rage</li>`);
+        if (typeof spell.minrage !== 'undefined' && spell.id != 11597)
+            ul.append(`<li data-id="minrageactive" class="${spell.minrageactive ? 'active' : ''}">${spell.name == "Heroic Strike" ? 'Queue' : 'Use'} at <input type="text" name="minrage" value="${spell.minrage}" data-numberonly="true" />+ rage</li>`);
+        if (typeof spell.minrage !== 'undefined' && spell.id == 11597)
+            ul.append(`<li data-id="minrageactive" class="${spell.minrageactive ? 'active' : ''}" data-group="usage">Only use at <input type="text" name="minrage" value="${spell.minrage}" data-numberonly="true" />+ rage</li>`);
         if (typeof spell.maxrage !== 'undefined') 
             ul.append(`<li data-id="maxrageactive" class="${spell.maxrageactive ? 'active' : ''}">Don't switch stance when above <input type="text" name="maxrage" value="${spell.maxrage}" data-numberonly="true" /> rage</li>`);
         if (typeof spell.maincd !== 'undefined')
