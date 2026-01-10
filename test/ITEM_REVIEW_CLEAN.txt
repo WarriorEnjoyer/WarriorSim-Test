@@ -1,0 +1,191 @@
+================================================================================
+           WARRIOR SIM - ITEMS WITH DIFFERENCES (NO SET BONUS STATS)
+                   Sim Values vs database.turtlecraft.gg
+================================================================================
+
+Total items with differences: 31
+
+=== HEAD (2 items) ===
+
+Dreadslayer Horns (vs non-Demon) (ID: 55114)
+  STR: sim=33 db=- | AGI: sim=28 db=- | STA: sim=20 db=-
+  AC: sim=834 db=- | AP: sim=- db=- | HIT: sim=1 db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=15
+
+Blindfold of the Scarlet Marksman (ID: 84005)
+  STR: sim=- db=- | AGI: sim=30 db=30 | STA: sim=16 db=16
+  AC: sim=425 db=425 | AP: sim=40 db=40 | HIT: sim=3 db=3
+  CRIT: sim=- db=1 | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== SHOULDER (1 items) ===
+
+Abyssal Plate Epaulets (ID: 20683)
+  STR: sim=13 db=- | AGI: sim=13 db=- | STA: sim=13 db=-
+  AC: sim=530 db=530 | AP: sim=- db=- | HIT: sim=1 db=1
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== WRIST (2 items) ===
+
+Emberplate Armguards of the Tiger (ID: 11767)
+  STR: sim=10 db=- | AGI: sim=10 db=- | STA: sim=- db=-
+  AC: sim=261 db=261 | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+Abyssal Plate Vambraces (ID: 20687)
+  STR: sim=11 db=- | AGI: sim=11 db=- | STA: sim=12 db=-
+  AC: sim=309 db=309 | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== HANDS (2 items) ===
+
+Hateforge Grips (ID: 60577)
+  STR: sim=13 db=13 | AGI: sim=- db=- | STA: sim=7 db=7
+  AC: sim=173 db=173 | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=1 db=1 | ARP: sim=- db=- | HASTE: sim=- db=5
+
+Gloves of Holy Might (vs Undead) (ID: 867)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=86 db=86 | AP: sim=50 db=20 | HIT: sim=- db=-
+  CRIT: sim=1 db=1 | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== WAIST (1 items) ===
+
+Sash of the Grand Betrayal (ID: 55357)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=16 db=16
+  AC: sim=152 db=152 | AP: sim=52 db=52 | HIT: sim=- db=-
+  CRIT: sim=2 db=1 | ARP: sim=- db=- | HASTE: sim=2 db=2
+
+=== LEGS (2 items) ===
+
+Abyssal Plate Legplates (ID: 20671)
+  STR: sim=15 db=- | AGI: sim=15 db=- | STA: sim=15 db=-
+  AC: sim=566 db=566 | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=1 db=1 | ARP: sim=- db=- | HASTE: sim=- db=-
+
+Cloudkeeper Legplates (Not used) (ID: 145541)
+  STR: sim=20 db=- | AGI: sim=20 db=- | STA: sim=20 db=-
+  AC: sim=617 db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== FEET (1 items) ===
+
+Dark Iron Boots of the Tiger (ID: 20039)
+  STR: sim=11 db=- | AGI: sim=11 db=- | STA: sim=- db=-
+  AC: sim=664 db=664 | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== FINGER1 (1 items) ===
+
+Tarnished Lancelot Ring (ID: 60739)
+  STR: sim=- db=- | AGI: sim=2 db=2 | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=10 db=- | HIT: sim=- db=-
+  CRIT: sim=1 db=1 | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== FINGER2 (1 items) ===
+
+Tarnished Lancelot Ring (ID: 60739)
+  STR: sim=- db=- | AGI: sim=2 db=2 | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=10 db=- | HIT: sim=- db=-
+  CRIT: sim=1 db=1 | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== TRINKET1 (1 items) ===
+
+Kiss of the Spider (Used last 15 secs) (ID: 22954)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=1 db=1
+  CRIT: sim=1 db=1 | ARP: sim=- db=- | HASTE: sim=- db=20
+
+=== TRINKET2 (1 items) ===
+
+Kiss of the Spider (Used last 15 secs) (ID: 22954)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=1 db=1
+  CRIT: sim=1 db=1 | ARP: sim=- db=- | HASTE: sim=- db=20
+
+=== RANGED (1 items) ===
+
+Ghoulslayer Shotgun (vs Undead) (ID: 51780)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=39 db=24 | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+=== MAINHAND (8 items) ===
+
+Tempest's Rage (ID: 83564)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=15
+
+Zulian Hacker of Strength (ID: 19921)
+  STR: sim=12 db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+Zulian Hacker of the Tiger (ID: 199211)
+  STR: sim=8 db=- | AGI: sim=8 db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+Finkle's Skinner (ID: 12709)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=45 | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+Eskhandar's Right Claw (ID: 18203)
+  STR: sim=- db=- | AGI: sim=4 db=4 | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=30
+
+Empyrean Demolisher (ID: 17112)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=20
+
+Thunderfury, Blessed Blade of the Windseeker (ID: 19019)
+  STR: sim=- db=- | AGI: sim=5 db=5 | STA: sim=8 db=8
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=20
+
+Thunderfall, Stormhammer of the Chief Thane (ID: 55347)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=-8 db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=2 db=2 | ARP: sim=35 db=35 | HASTE: sim=- db=-
+
+=== OFFHAND (5 items) ===
+
+Thunderfall, Stormhammer of the Chief Thane (ID: 55347)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=-8 db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=2 db=2 | ARP: sim=35 db=35 | HASTE: sim=- db=-
+
+Tempest's Rage (ID: 83564)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=15
+
+Zulian Hacker of Strength (ID: 19921)
+  STR: sim=12 db=- | AGI: sim=- db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+Zulian Hacker of the Tiger (ID: 199211)
+  STR: sim=8 db=- | AGI: sim=8 db=- | STA: sim=- db=-
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+Thunderfury, Blessed Blade of the Windseeker (ID: 19019)
+  STR: sim=- db=- | AGI: sim=5 db=5 | STA: sim=8 db=8
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=20
+
+=== TWOHAND (2 items) ===
+
+Tigule's Harpoon (ID: 19946)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=20 db=20
+  AC: sim=- db=- | AP: sim=- db=60 | HIT: sim=2 db=2
+  CRIT: sim=- db=- | ARP: sim=- db=- | HASTE: sim=- db=-
+
+Bonereaver's Edge (ID: 17076)
+  STR: sim=- db=- | AGI: sim=- db=- | STA: sim=16 db=16
+  AC: sim=- db=- | AP: sim=- db=- | HIT: sim=- db=-
+  CRIT: sim=1 db=1 | ARP: sim=- db=700 | HASTE: sim=- db=-

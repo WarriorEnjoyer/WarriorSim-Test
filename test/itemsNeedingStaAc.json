@@ -1,0 +1,255 @@
+[
+  {
+    "name": "Dreadnaught Crown",
+    "id": 47261,
+    "slot": "head",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 22
+      }
+    ]
+  },
+  {
+    "name": "Flamescorched Hood",
+    "id": 61260,
+    "slot": "head",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 20
+      }
+    ]
+  },
+  {
+    "name": "Blademaster's Blindfold",
+    "id": 60414,
+    "slot": "head",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 147
+      }
+    ]
+  },
+  {
+    "name": "Demon Hunter's Blindfold",
+    "id": 83265,
+    "slot": "head",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 62
+      }
+    ]
+  },
+  {
+    "name": "Crown of Sacrifice (vs Undead)",
+    "id": 70057,
+    "slot": "head",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 16
+      }
+    ]
+  },
+  {
+    "name": "Eye of Rend",
+    "id": 12587,
+    "slot": "head",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 143
+      }
+    ]
+  },
+  {
+    "name": "Shard of Eternity",
+    "id": 61012,
+    "slot": "neck",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 30
+      }
+    ]
+  },
+  {
+    "name": "Dreadnaught Spaulders",
+    "id": 47262,
+    "slot": "shoulder",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 10
+      }
+    ]
+  },
+  {
+    "name": "Shroud of Domination",
+    "id": 22337,
+    "slot": "back",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 45
+      }
+    ]
+  },
+  {
+    "name": "Dreadnaught Gloves",
+    "id": 47265,
+    "slot": "hands",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 11
+      }
+    ]
+  },
+  {
+    "name": "Stormshroud Gloves",
+    "id": 21278,
+    "slot": "hands",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 12
+      }
+    ]
+  },
+  {
+    "name": "Edgemaster's Handguards",
+    "id": 14551,
+    "slot": "hands",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 201
+      }
+    ]
+  },
+  {
+    "name": "Moontouched Girdle",
+    "id": 81376,
+    "slot": "waist",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 368
+      }
+    ]
+  },
+  {
+    "name": "Ancient Jade Leggings",
+    "id": 61239,
+    "slot": "legs",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 21
+      }
+    ]
+  },
+  {
+    "name": "Battlechaser's Greaves",
+    "id": 12555,
+    "slot": "feet",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 397
+      }
+    ]
+  },
+  {
+    "name": "Loop of Hardened Slate",
+    "id": 55123,
+    "slot": "finger1",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 200
+      }
+    ]
+  },
+  {
+    "name": "Loop of Hardened Slate",
+    "id": 55123,
+    "slot": "finger2",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 200
+      }
+    ]
+  },
+  {
+    "name": "Lavashard Axe",
+    "id": 81260,
+    "slot": "mainhand",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 50
+      }
+    ]
+  },
+  {
+    "name": "Forgotten Raven's Mallet",
+    "id": 55276,
+    "slot": "mainhand",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 130
+      }
+    ]
+  },
+  {
+    "name": "Forgotten Raven's Mallet",
+    "id": 55276,
+    "slot": "offhand",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 130
+      }
+    ]
+  },
+  {
+    "name": "Lavashard Axe",
+    "id": 81260,
+    "slot": "offhand",
+    "updates": [
+      {
+        "stat": "ac",
+        "dbValue": 50
+      }
+    ]
+  },
+  {
+    "name": "Iblis, Blade of the Fallen Seraph",
+    "id": 23014,
+    "slot": "offhand",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 7
+      }
+    ]
+  },
+  {
+    "name": "Bone Fracture",
+    "id": 60808,
+    "slot": "twohand",
+    "updates": [
+      {
+        "stat": "sta",
+        "dbValue": 12
+      }
+    ]
+  }
+]

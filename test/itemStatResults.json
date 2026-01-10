@@ -1,0 +1,4865 @@
+{
+  "discrepancies": [
+    {
+      "name": "Crown of Might",
+      "id": 47240,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Crown of Wrath",
+      "id": 47248,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Dreadnaught Crown",
+      "id": 47261,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 22
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 10
+        },
+        {
+          "stat": "arp",
+          "sim": 40,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dreadslayer Horns (vs non-Demon)",
+      "id": 55114,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 33,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 28,
+          "db": 0
+        },
+        {
+          "stat": "sta",
+          "sim": 20,
+          "db": 0
+        },
+        {
+          "stat": "ac",
+          "sim": 834,
+          "db": 0
+        },
+        {
+          "stat": "hit",
+          "sim": 1,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Flamescorched Hood",
+      "id": 61260,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 20
+        }
+      ]
+    },
+    {
+      "name": "Hateforge Helmet",
+      "id": 60573,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 20
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Towerforge Crown",
+      "id": 60007,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Darkflame Helm",
+      "id": 61291,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Blindfold of the Scarlet Marksman",
+      "id": 84005,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Depthstalker Helm",
+      "id": 65026,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 24
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Headband",
+      "id": 83436,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Crown of Corruption",
+      "id": 60258,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 10,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Blademaster's Blindfold",
+      "id": 60414,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 147
+        }
+      ]
+    },
+    {
+      "name": "Demon Hunter's Blindfold",
+      "id": 83265,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 62
+        }
+      ]
+    },
+    {
+      "name": "Crown of the Dark Reaver",
+      "id": 51769,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 561,
+          "db": 608
+        }
+      ]
+    },
+    {
+      "name": "Timeskipper's Helm of Alacrity",
+      "id": 61003,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 0,
+          "db": 12
+        },
+        {
+          "stat": "sta",
+          "sim": 20,
+          "db": 22
+        }
+      ]
+    },
+    {
+      "name": "Crown of Sacrifice (vs Undead)",
+      "id": 70057,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 16
+        },
+        {
+          "stat": "ac",
+          "sim": 754,
+          "db": 660
+        },
+        {
+          "stat": "ap",
+          "sim": 45,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Eye of Rend",
+      "id": 12587,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 143
+        }
+      ]
+    },
+    {
+      "name": "Circlet of Restless Dreams",
+      "id": 20623,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 175,
+          "db": 183
+        }
+      ]
+    },
+    {
+      "name": "Dreadnaught Helmet",
+      "id": 22418,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 5
+        }
+      ]
+    },
+    {
+      "name": "Helm of Domination",
+      "id": 21460,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 21,
+          "db": 22
+        },
+        {
+          "stat": "agi",
+          "sim": 11,
+          "db": 14
+        }
+      ]
+    },
+    {
+      "name": "Helm of Heroism",
+      "id": 21999,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Helm of Valor",
+      "id": 16731,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Mask of the Unforgiven",
+      "id": 13404,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 123,
+          "db": 132
+        }
+      ]
+    },
+    {
+      "name": "R10 Plate Helm",
+      "id": 23314,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R13 Plate Helm",
+      "id": 16478,
+      "slot": "head",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Choker of the Brotherhood",
+      "id": 47275,
+      "slot": "neck",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Bixxle's Necklace of Mastery",
+      "id": 60997,
+      "slot": "neck",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Medallion of the Dawn",
+      "id": 22659,
+      "slot": "neck",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 24,
+          "db": 30
+        }
+      ]
+    },
+    {
+      "name": "Desert Wind Talisman",
+      "id": 83484,
+      "slot": "neck",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 15,
+          "db": 10
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Shard of Eternity",
+      "id": 61012,
+      "slot": "neck",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 30
+        }
+      ]
+    },
+    {
+      "name": "Blazefury Medallion",
+      "id": 17111,
+      "slot": "neck",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 14,
+          "db": 13
+        },
+        {
+          "stat": "sta",
+          "sim": 13,
+          "db": 14
+        }
+      ]
+    },
+    {
+      "name": "Choker of Terminal Arcanum",
+      "id": 55507,
+      "slot": "neck",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Pauldrons of Wrath",
+      "id": 47249,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Dreadnaught Spaulders",
+      "id": 47262,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 10
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Pauldrons of the Timbermaw",
+      "id": 61649,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dreamsteel Mantle",
+      "id": 61364,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 18
+        }
+      ]
+    },
+    {
+      "name": "Towerforge Pauldrons",
+      "id": 60009,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Fireguard Shoulders",
+      "id": 19139,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 22,
+          "db": 28
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Shoulders",
+      "id": 83435,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Spaulders",
+      "id": 60364,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Blackhammer Pauldrons",
+      "id": 60567,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 20,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Abyssal Plate Epaulets",
+      "id": 20683,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 13,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 13,
+          "db": 0
+        },
+        {
+          "stat": "sta",
+          "sim": 13,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Arathi Plate Spaulders",
+      "id": 20212,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 18,
+          "db": 22
+        },
+        {
+          "stat": "agi",
+          "sim": 17,
+          "db": 18
+        },
+        {
+          "stat": "ac",
+          "sim": 553,
+          "db": 602
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Black Dragonscale Shoulders",
+      "id": 15051,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        },
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "R10 Plate Shoulders",
+      "id": 23315,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R13 Plate Shoulders",
+      "id": 16480,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Spaulders of Heroism",
+      "id": 22001,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 507,
+          "db": 513
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Spaulders of Valor",
+      "id": 16733,
+      "slot": "shoulder",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Drape of the Herd",
+      "id": 60488,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 10,
+          "db": 0
+        },
+        {
+          "stat": "ac",
+          "sim": 47,
+          "db": 0
+        },
+        {
+          "stat": "ap",
+          "sim": 10,
+          "db": 0
+        },
+        {
+          "stat": "crit",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Shroud of Haunted Torment",
+      "id": 83465,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Kirin Tor Shawl of Oppression",
+      "id": 60649,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Sandstalker's Shroud",
+      "id": 83486,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Wing of the Time-Lord",
+      "id": 61010,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Shawl of Haunted Memories",
+      "id": 51734,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 10,
+          "db": 12
+        },
+        {
+          "stat": "arp",
+          "sim": 20,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Cloak of the Honor Guard",
+      "id": 20073,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 50,
+          "db": 55
+        }
+      ]
+    },
+    {
+      "name": "Cloak of the Shrouded Mists",
+      "id": 17102,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 22,
+          "db": 26
+        },
+        {
+          "stat": "ac",
+          "sim": 57,
+          "db": 58
+        }
+      ]
+    },
+    {
+      "name": "Windshear Cape",
+      "id": 20691,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 50,
+          "db": 53
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Shroud of Domination",
+      "id": 22337,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 45
+        }
+      ]
+    },
+    {
+      "name": "Cloak of the Bloody Ravager",
+      "id": 55095,
+      "slot": "back",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Chestplate of Might",
+      "id": 47242,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Chestplate of Wrath",
+      "id": 47250,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Tunic of Demonic Deception",
+      "id": 55513,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 75,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Ravenkeeper’s Frenzied Embrace",
+      "id": 55079,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Centaur Battle Harness",
+      "id": 60910,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Rune-Etched Breastplate",
+      "id": 60290,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 3,
+          "db": 5
+        }
+      ]
+    },
+    {
+      "name": "Hateforge Cuirass",
+      "id": 60574,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 20
+        },
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Towerforge Breastplate",
+      "id": 60008,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Breastplate of Earthen Might",
+      "id": 61275,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Earthguard Tunic",
+      "id": 65024,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 24
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Tunic",
+      "id": 83434,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Cadaverlink Vest",
+      "id": 83462,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Gigno's Overalls",
+      "id": 60153,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 8,
+          "db": 17
+        },
+        {
+          "stat": "agi",
+          "sim": 8,
+          "db": 17
+        }
+      ]
+    },
+    {
+      "name": "Black Dragonscale Breastplate",
+      "id": 15050,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        },
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Breastplate of Bloodthirst",
+      "id": 12757,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Breastplate of Heroism",
+      "id": 21997,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Breastplate of Valor",
+      "id": 16730,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Cadaverous Armor",
+      "id": 14637,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Malfurion's Blessed Bulwark",
+      "id": 19405,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 814,
+          "db": 392
+        }
+      ]
+    },
+    {
+      "name": "Obsidian Mail Tunic",
+      "id": 22191,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 311,
+          "db": 458
+        }
+      ]
+    },
+    {
+      "name": "R13 Plate Armor",
+      "id": 16477,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R8 Plate Armor",
+      "id": 23300,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Savage Gladiator Chain",
+      "id": 11726,
+      "slot": "chest",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 30
+        }
+      ]
+    },
+    {
+      "name": "Bracers of Might",
+      "id": 47243,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Bindings of Wrath",
+      "id": 47251,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Dreadnaught Bindings",
+      "id": 47264,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 10
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dreamthread Bracers",
+      "id": 61362,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Granitized Bracers",
+      "id": 61280,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 15,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Barnacle Vambraces",
+      "id": 55500,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dreamsteel Bracers",
+      "id": 61366,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 18
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dark Iron Bracer",
+      "id": 17014,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 7,
+          "db": 12
+        },
+        {
+          "stat": "ac",
+          "sim": 394,
+          "db": 343
+        }
+      ]
+    },
+    {
+      "name": "Emberplate Armguards of the Tiger",
+      "id": 11767,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 10,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 10,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Sandstalker Bracer",
+      "id": 20476,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 18,
+          "db": 16
+        }
+      ]
+    },
+    {
+      "name": "Sanctum Bark Wraps",
+      "id": 61212,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 88,
+          "db": 96
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Bands",
+      "id": 83433,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 112,
+          "db": 122
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Bracers",
+      "id": 60362,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Abyssal Plate Vambraces",
+      "id": 20687,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 11,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 11,
+          "db": 0
+        },
+        {
+          "stat": "sta",
+          "sim": 12,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Berserker Bracers",
+      "id": 19578,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 323,
+          "db": 351
+        }
+      ]
+    },
+    {
+      "name": "Bracers of Heroism",
+      "id": 21996,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 296,
+          "db": 299
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Bracers of Valor",
+      "id": 16735,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Bands of the Surgebreaker",
+      "id": 55089,
+      "slot": "wrist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Gloves of Might",
+      "id": 47244,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Gloves of Wrath",
+      "id": 47252,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Dreadnaught Gloves",
+      "id": 47265,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 29,
+          "db": 28
+        },
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 11
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Handwraps of Dead Winds",
+      "id": 55125,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 0,
+          "db": 20
+        },
+        {
+          "stat": "agi",
+          "sim": 18,
+          "db": 28
+        },
+        {
+          "stat": "sta",
+          "sim": 14,
+          "db": 17
+        },
+        {
+          "stat": "ap",
+          "sim": 72,
+          "db": 0
+        },
+        {
+          "stat": "crit",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dragonclaw Gauntlets",
+      "id": 55088,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Pulverizer Gauntlets",
+      "id": 61274,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 129,
+          "db": 249
+        },
+        {
+          "stat": "arp",
+          "sim": 20,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Talonwind Gauntlets",
+      "id": 61213,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 301,
+          "db": 309
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Stormshroud Gloves",
+      "id": 21278,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 12
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 20
+        },
+        {
+          "stat": "crit",
+          "sim": 1,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Skullcrushing Gauntlets",
+      "id": 60791,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Hateforge Grips",
+      "id": 60577,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 20
+        },
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 5
+        }
+      ]
+    },
+    {
+      "name": "Skulker's Gloves",
+      "id": 60729,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Gloves",
+      "id": 83430,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 0,
+          "db": 10
+        },
+        {
+          "stat": "ap",
+          "sim": 10,
+          "db": 40
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Gauntlets of Temporal Guidance",
+      "id": 61013,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 11,
+          "db": 12
+        },
+        {
+          "stat": "ac",
+          "sim": 238,
+          "db": 249
+        }
+      ]
+    },
+    {
+      "name": "Devilsaur Gauntlets",
+      "id": 15063,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Edgemaster's Handguards",
+      "id": 14551,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 201
+        }
+      ]
+    },
+    {
+      "name": "Gauntlets of Heroism",
+      "id": 21998,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 393,
+          "db": 427
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Gauntlets of Valor",
+      "id": 16737,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R12 Plate Gauntlets",
+      "id": 16484,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R7 Gauntlets",
+      "id": 23286,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Stronghold Gauntlets",
+      "id": 12639,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 12,
+          "db": 14
+        }
+      ]
+    },
+    {
+      "name": "Gloves of Holy Might (vs Undead)",
+      "id": 867,
+      "slot": "hands",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 50,
+          "db": 20
+        }
+      ]
+    },
+    {
+      "name": "Girdle of Might",
+      "id": 47245,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Girdle of Wrath",
+      "id": 47253,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Dreadnaught Girdle",
+      "id": 47266,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Worldbreaker Girdle",
+      "id": 55506,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Sash of the Grand Betrayal",
+      "id": 55357,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 46,
+          "db": 52
+        },
+        {
+          "stat": "crit",
+          "sim": 2,
+          "db": 1
+        },
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Greatfather Winter's Belt",
+      "id": 61088,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Cloverlink Belt",
+      "id": 61758,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Fury of the Timbermaw",
+      "id": 61648,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Hateforge Belt",
+      "id": 60576,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 15,
+          "db": 10
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 20
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Earthbreaker Belt",
+      "id": 61273,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dreamhide Belt",
+      "id": 61359,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 56
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Shadowruned Girdle",
+      "id": 60550,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Girdle",
+      "id": 60358,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Belt",
+      "id": 83429,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Primalist's Linked Waistguard",
+      "id": 19393,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Girdle of the Fallen Crusader",
+      "id": 19392,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Clutch of Hivaxxis",
+      "id": 83447,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Moontouched Girdle",
+      "id": 81376,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 368
+        }
+      ]
+    },
+    {
+      "name": "Arathi Plate Girdle",
+      "id": 20204,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 10,
+          "db": 12
+        },
+        {
+          "stat": "ac",
+          "sim": 369,
+          "db": 414
+        }
+      ]
+    },
+    {
+      "name": "Belt of Heroism",
+      "id": 21994,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 380,
+          "db": 385
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Belt of Might",
+      "id": 16864,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 412,
+          "db": 421
+        }
+      ]
+    },
+    {
+      "name": "Belt of Valor",
+      "id": 16736,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Therazane's Link",
+      "id": 19380,
+      "slot": "waist",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 22,
+          "db": 24
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Leggings of Wrath",
+      "id": 47254,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Slateplate Leggings",
+      "id": 61279,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Hateforge Leggings",
+      "id": 60575,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 20
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dreamhide Leggings",
+      "id": 61358,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 56
+        },
+        {
+          "stat": "haste",
+          "sim": 3,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dreamsteel Leggings",
+      "id": 61365,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 18
+        },
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dark Iron Leggings",
+      "id": 17013,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 14,
+          "db": 21
+        },
+        {
+          "stat": "ac",
+          "sim": 778,
+          "db": 842
+        }
+      ]
+    },
+    {
+      "name": "Kargron's Leggings",
+      "id": 81365,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 169,
+          "db": 146
+        }
+      ]
+    },
+    {
+      "name": "Leggings of the Inferno",
+      "id": 61265,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 169,
+          "db": 174
+        }
+      ]
+    },
+    {
+      "name": "Ancient Jade Leggings",
+      "id": 61239,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 21
+        },
+        {
+          "stat": "ac",
+          "sim": 408,
+          "db": 432
+        }
+      ]
+    },
+    {
+      "name": "Flamewrath Leggings",
+      "id": 65025,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 25,
+          "db": 18
+        },
+        {
+          "stat": "agi",
+          "sim": 18,
+          "db": 25
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 24
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Legguards",
+      "id": 60360,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 24,
+          "db": 0
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 24
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Pants",
+      "id": 83431,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Abyssal Plate Legplates",
+      "id": 20671,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 15,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 15,
+          "db": 0
+        },
+        {
+          "stat": "sta",
+          "sim": 15,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Black Dragonscale Leggings",
+      "id": 15052,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        },
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Cadaverous Leggings",
+      "id": 14638,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Cloudkeeper Legplates (Not used)",
+      "id": 145541,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 20,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 20,
+          "db": 0
+        },
+        {
+          "stat": "sta",
+          "sim": 20,
+          "db": 0
+        },
+        {
+          "stat": "ac",
+          "sim": 617,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dark Heart Pants",
+      "id": 20627,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 52,
+          "db": 48
+        }
+      ]
+    },
+    {
+      "name": "Devilsaur Leggings",
+      "id": 15062,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Legplates of Heroism",
+      "id": 22000,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 16,
+          "db": 11
+        },
+        {
+          "stat": "ac",
+          "sim": 601,
+          "db": 598
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Legplates of Might",
+      "id": 16867,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 23,
+          "db": 24
+        }
+      ]
+    },
+    {
+      "name": "Legplates of Valor",
+      "id": 16732,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R12 Plate Legguards",
+      "id": 16479,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R8 Plate Leggings",
+      "id": 23301,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Sentinel's Plate Legguards",
+      "id": 22672,
+      "slot": "legs",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 656,
+          "db": 703
+        }
+      ]
+    },
+    {
+      "name": "Sabatons of Might",
+      "id": 47247,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Sabatons of Wrath",
+      "id": 47255,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Dreadnaught Boots",
+      "id": 47268,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 10
+        },
+        {
+          "stat": "arp",
+          "sim": 40,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Pawn's Advance",
+      "id": 55104,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Boots of Blazing Steps",
+      "id": 61271,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Deepstone Boots",
+      "id": 61272,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Hateforge Boots",
+      "id": 60578,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 20
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Dreamsteel Boots",
+      "id": 61367,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 108,
+          "db": 502
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 18
+        },
+        {
+          "stat": "arp",
+          "sim": 10,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Corehound Boots",
+      "id": 16982,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 13,
+          "db": 14
+        },
+        {
+          "stat": "sta",
+          "sim": 10,
+          "db": 13
+        },
+        {
+          "stat": "ac",
+          "sim": 126,
+          "db": 131
+        }
+      ]
+    },
+    {
+      "name": "Dark Iron Boots of the Tiger",
+      "id": 20039,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 11,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 11,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Boots of Displacement",
+      "id": 23073,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Sabatons of the Endless March",
+      "id": 61246,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Windwalker Boots",
+      "id": 65027,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 20,
+          "db": 22
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 24
+        },
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 1
+        },
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Greaves",
+      "id": 60361,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Bloody Gladiator's Boots",
+      "id": 83432,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Miasma Walkers",
+      "id": 83442,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 8,
+          "db": 9
+        },
+        {
+          "stat": "sta",
+          "sim": 8,
+          "db": 9
+        }
+      ]
+    },
+    {
+      "name": "Arathi Plate Greaves",
+      "id": 20208,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 12,
+          "db": 14
+        },
+        {
+          "stat": "sta",
+          "sim": 12,
+          "db": 15
+        },
+        {
+          "stat": "ac",
+          "sim": 452,
+          "db": 511
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Battlechaser's Greaves",
+      "id": 12555,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 397
+        }
+      ]
+    },
+    {
+      "name": "Black Dragonscale Boots",
+      "id": 16984,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 10,
+          "db": 12
+        },
+        {
+          "stat": "ac",
+          "sim": 270,
+          "db": 290
+        },
+        {
+          "stat": "ap",
+          "sim": 28,
+          "db": 34
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        },
+        {
+          "stat": "hit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Bloodmail Boots",
+      "id": 14616,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Boots of Heroism",
+      "id": 21995,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Boots of Valor",
+      "id": 16734,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R12 Plate Boots",
+      "id": 16483,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "R7 Plate Boots",
+      "id": 23287,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 40
+        }
+      ]
+    },
+    {
+      "name": "Savage Gladiator Greaves",
+      "id": 11731,
+      "slot": "feet",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 30
+        },
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 2
+        }
+      ]
+    },
+    {
+      "name": "Mephistroth's Cunning",
+      "id": 55353,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Brand of Karazhan",
+      "id": 55508,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Loop of Hardened Slate",
+      "id": 55123,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 200
+        }
+      ]
+    },
+    {
+      "name": "Peering Eyeball",
+      "id": 41062,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 35,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Mark of the Worgen",
+      "id": 61406,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 40,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Band of Calamity",
+      "id": 60547,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Ring of Demonic Fury",
+      "id": 83217,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 10,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Band of Ancient Lethality",
+      "id": 83237,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Band of Jin",
+      "id": 19925,
+      "slot": "finger1",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 30
+        }
+      ]
+    },
+    {
+      "name": "Mephistroth's Cunning",
+      "id": 55353,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Brand of Karazhan",
+      "id": 55508,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Loop of Hardened Slate",
+      "id": 55123,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 200
+        }
+      ]
+    },
+    {
+      "name": "Peering Eyeball",
+      "id": 41062,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 35,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Mark of the Worgen",
+      "id": 61406,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 40,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Band of Calamity",
+      "id": 60547,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Ring of Demonic Fury",
+      "id": 83217,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 10,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Band of Ancient Lethality",
+      "id": 83237,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Band of Jin",
+      "id": 19925,
+      "slot": "finger2",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 30
+        }
+      ]
+    },
+    {
+      "name": "Blood-etched Fetish",
+      "id": 58175,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 0,
+          "db": 8
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Chimaera's Eye",
+      "id": 61517,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "The Heart of Dreams",
+      "id": 61194,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Taskmaster Whip",
+      "id": 60715,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Banner of the Scarlet Crusade",
+      "id": 84006,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 4,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Corrosive Core",
+      "id": 80674,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 40,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Hatereaver Cog",
+      "id": 60559,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Whip of Encouragement",
+      "id": 60501,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 3,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Boon of Niremius",
+      "id": 61095,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Badge of the Swarmguard (Used last 30 secs / 50% proc chance)",
+      "id": 21670,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 0,
+          "db": 30
+        }
+      ]
+    },
+    {
+      "name": "Counterattack Lodestone",
+      "id": 18537,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 22,
+          "db": 34
+        }
+      ]
+    },
+    {
+      "name": "Kiss of the Spider (Used last 15 secs)",
+      "id": 22954,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 20
+        }
+      ]
+    },
+    {
+      "name": "Tooth of the Packlord",
+      "id": 61263,
+      "slot": "trinket1",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Blood-etched Fetish",
+      "id": 58175,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 0,
+          "db": 8
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Chimaera's Eye",
+      "id": 61517,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "The Heart of Dreams",
+      "id": 61194,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Taskmaster Whip",
+      "id": 60715,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Banner of the Scarlet Crusade",
+      "id": 84006,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 4,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Corrosive Core",
+      "id": 80674,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 40,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Hatereaver Cog",
+      "id": 60559,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Whip of Encouragement",
+      "id": 60501,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 3,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Boon of Niremius",
+      "id": 61095,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Badge of the Swarmguard (Used last 30 secs / 50% proc chance)",
+      "id": 21670,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 0,
+          "db": 30
+        }
+      ]
+    },
+    {
+      "name": "Counterattack Lodestone",
+      "id": 18537,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 22,
+          "db": 34
+        }
+      ]
+    },
+    {
+      "name": "Kiss of the Spider (Used last 15 secs)",
+      "id": 22954,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 20
+        }
+      ]
+    },
+    {
+      "name": "Tooth of the Packlord",
+      "id": 61263,
+      "slot": "trinket2",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Time Frozen Bow",
+      "id": 61569,
+      "slot": "ranged",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Nature's Call",
+      "id": 61525,
+      "slot": "ranged",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Polished Ironwood Crossbow",
+      "id": 20599,
+      "slot": "ranged",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 5,
+          "db": 6
+        },
+        {
+          "stat": "ap",
+          "sim": 24,
+          "db": 26
+        }
+      ]
+    },
+    {
+      "name": "Shieldbreaker Arbalest",
+      "id": 60782,
+      "slot": "ranged",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 35,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Ghoulslayer Shotgun (vs Undead)",
+      "id": 51780,
+      "slot": "ranged",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 39,
+          "db": 24
+        }
+      ]
+    },
+    {
+      "name": "Overheated Skyrazors",
+      "id": 58239,
+      "slot": "ranged",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Groveslicer Glaive",
+      "id": 61717,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "The Abyssal Pincer *Unknown PPM",
+      "id": 55494,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Skycleaver",
+      "id": 61452,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Coldheart Icicle",
+      "id": 60806,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Gauntlet of a Thousand Cuts",
+      "id": 84030,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 0,
+          "db": 1
+        }
+      ]
+    },
+    {
+      "name": "Tempest's Rage",
+      "id": 83564,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Willbreaker",
+      "id": 60410,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 20
+        }
+      ]
+    },
+    {
+      "name": "Claw of the Infinite",
+      "id": 61001,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 11,
+          "db": 12
+        },
+        {
+          "stat": "sta",
+          "sim": 5,
+          "db": 7
+        }
+      ]
+    },
+    {
+      "name": "Lavashard Axe",
+      "id": 81260,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 50
+        }
+      ]
+    },
+    {
+      "name": "Dark Iron Destroyer",
+      "id": 17016,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Zulian Hacker of Strength",
+      "id": 19921,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 12,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Zulian Hacker of the Tiger",
+      "id": 199211,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 8,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 8,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Emerald Dragonfang *Classic PPM",
+      "id": 20578,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 12,
+          "db": 13
+        }
+      ]
+    },
+    {
+      "name": "Finkle's Skinner",
+      "id": 12709,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 45
+        }
+      ]
+    },
+    {
+      "name": "Scout's Blade",
+      "id": 19542,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 13,
+          "db": 14
+        },
+        {
+          "stat": "sta",
+          "sim": 5,
+          "db": 7
+        }
+      ]
+    },
+    {
+      "name": "Eskhandar's Right Claw",
+      "id": 18203,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 30
+        }
+      ]
+    },
+    {
+      "name": "Blessed Qiraji War Hammer",
+      "id": 21268,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 280
+        }
+      ]
+    },
+    {
+      "name": "Empyrean Demolisher",
+      "id": 17112,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 20
+        }
+      ]
+    },
+    {
+      "name": "Ironfoe",
+      "id": 11684,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Hammer of Bestial Fury",
+      "id": 20580,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 12,
+          "db": 13
+        },
+        {
+          "stat": "ac",
+          "sim": 90,
+          "db": 100
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 210
+        }
+      ]
+    },
+    {
+      "name": "Dal'Rend's Sacred Charge",
+      "id": 12940,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 50
+        }
+      ]
+    },
+    {
+      "name": "Dark Iron Reaver",
+      "id": 17015,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "R14 Swift Blade",
+      "id": 23456,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Thunderfury, Blessed Blade of the Windseeker",
+      "id": 19019,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 20
+        }
+      ]
+    },
+    {
+      "name": "Thunderfall, Stormhammer of the Chief Thane",
+      "id": 55347,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 35,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Forgotten Raven's Mallet",
+      "id": 55276,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 130
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 392
+        }
+      ]
+    },
+    {
+      "name": "Modrag'zan, Heart of the Mountain",
+      "id": 58214,
+      "slot": "mainhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Thunderfall, Stormhammer of the Chief Thane",
+      "id": 55347,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 35,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Forgotten Raven's Mallet",
+      "id": 55276,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 130
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 392
+        }
+      ]
+    },
+    {
+      "name": "Skycleaver",
+      "id": 61452,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Stagwood Grasp",
+      "id": 61755,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 0,
+          "db": 10
+        },
+        {
+          "stat": "agi",
+          "sim": 0,
+          "db": 9
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Coldheart Icicle",
+      "id": 60806,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Tempest's Rage",
+      "id": 83564,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 15
+        }
+      ]
+    },
+    {
+      "name": "Claw of the Infinite",
+      "id": 61001,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 11,
+          "db": 12
+        },
+        {
+          "stat": "sta",
+          "sim": 5,
+          "db": 7
+        }
+      ]
+    },
+    {
+      "name": "Lavashard Axe",
+      "id": 81260,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 50
+        }
+      ]
+    },
+    {
+      "name": "Sandswept Obsidian Dagger",
+      "id": 13246,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 24,
+          "db": 0
+        },
+        {
+          "stat": "hit",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Zulian Hacker of Strength",
+      "id": 19921,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 12,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Zulian Hacker of the Tiger",
+      "id": 199211,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 8,
+          "db": 0
+        },
+        {
+          "stat": "agi",
+          "sim": 8,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Core Hound Tooth",
+      "id": 18805,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 20,
+          "db": 22
+        }
+      ]
+    },
+    {
+      "name": "Scout's Blade",
+      "id": 19542,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 13,
+          "db": 14
+        },
+        {
+          "stat": "sta",
+          "sim": 5,
+          "db": 7
+        }
+      ]
+    },
+    {
+      "name": "Blessed Qiraji War Hammer",
+      "id": 21268,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 280
+        }
+      ]
+    },
+    {
+      "name": "Dal'Rend's Tribal Guardian",
+      "id": 12939,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 50
+        }
+      ]
+    },
+    {
+      "name": "Iblis, Blade of the Fallen Seraph",
+      "id": 23014,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 7
+        }
+      ]
+    },
+    {
+      "name": "Nightmare Blade",
+      "id": 20577,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 9,
+          "db": 10
+        },
+        {
+          "stat": "ac",
+          "sim": 70,
+          "db": 75
+        },
+        {
+          "stat": "ap",
+          "sim": 32,
+          "db": 34
+        }
+      ]
+    },
+    {
+      "name": "R14 Swift Blade",
+      "id": 23456,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Thunderfury, Blessed Blade of the Windseeker",
+      "id": 19019,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 20
+        }
+      ]
+    },
+    {
+      "name": "Modrag'zan, Heart of the Mountain",
+      "id": 58214,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Ironfoe",
+      "id": 11684,
+      "slot": "offhand",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 0,
+          "db": 10
+        }
+      ]
+    },
+    {
+      "name": "Checkmate",
+      "id": 55100,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 40,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Shar'tateth, the Shattered Edge",
+      "id": 55127,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 75,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Raka'shishi, Spear of the Adrift Hunt",
+      "id": 55116,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 448
+        }
+      ]
+    },
+    {
+      "name": "Winter Veil Branch",
+      "id": 61087,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 25,
+          "db": 0
+        },
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Tempered Runeblade",
+      "id": 81060,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 20,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Blade of the Blademaster",
+      "id": 81369,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 12,
+          "db": 17
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 56
+        }
+      ]
+    },
+    {
+      "name": "Bone Fracture",
+      "id": 60808,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 13,
+          "db": 0
+        },
+        {
+          "stat": "sta",
+          "sim": 0,
+          "db": 12
+        },
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "Halberd of the Bronze Defender",
+      "id": 60498,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 70
+        }
+      ]
+    },
+    {
+      "name": "Cryptkeeper's Pike",
+      "id": 83461,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 70
+        }
+      ]
+    },
+    {
+      "name": "Boneshatter Maul",
+      "id": 83440,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 70
+        }
+      ]
+    },
+    {
+      "name": "Gavel of Aqir Superiority",
+      "id": 61044,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 84
+        }
+      ]
+    },
+    {
+      "name": "Draconic Avenger",
+      "id": 19354,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 21,
+          "db": 22
+        },
+        {
+          "stat": "sta",
+          "sim": 18,
+          "db": 25
+        }
+      ]
+    },
+    {
+      "name": "Dreadforge Retaliator",
+      "id": 11931,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 30,
+          "db": 36
+        }
+      ]
+    },
+    {
+      "name": "Bonecrusher",
+      "id": 18420,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 42
+        }
+      ]
+    },
+    {
+      "name": "Crystal Spiked Maul",
+      "id": 20696,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 42
+        }
+      ]
+    },
+    {
+      "name": "Doomulus Prime",
+      "id": 22348,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 70
+        }
+      ]
+    },
+    {
+      "name": "Draconic Maul",
+      "id": 19358,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 140
+        }
+      ]
+    },
+    {
+      "name": "Might of Menethil",
+      "id": 22798,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 406
+        }
+      ]
+    },
+    {
+      "name": "Barb of the Sand Reaver",
+      "id": 21635,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 238
+        }
+      ]
+    },
+    {
+      "name": "Blackfury",
+      "id": 19167,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 84
+        }
+      ]
+    },
+    {
+      "name": "Huntsman's Harpoon",
+      "id": 22314,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 14
+        }
+      ]
+    },
+    {
+      "name": "R14 Polearm",
+      "id": 18871,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 322
+        }
+      ]
+    },
+    {
+      "name": "Ice Barbed Spear",
+      "id": 19106,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 42
+        }
+      ]
+    },
+    {
+      "name": "Monstrous Glaive",
+      "id": 18502,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "sta",
+          "sim": 23,
+          "db": 24
+        }
+      ]
+    },
+    {
+      "name": "The Eye of Nerub",
+      "id": 23039,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 322
+        }
+      ]
+    },
+    {
+      "name": "Tigule's Harpoon",
+      "id": 19946,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 60
+        }
+      ]
+    },
+    {
+      "name": "Relentless Scythe",
+      "id": 13163,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 20,
+          "db": 14
+        },
+        {
+          "stat": "agi",
+          "sim": 8,
+          "db": 12
+        }
+      ]
+    },
+    {
+      "name": "Typhoon",
+      "id": 18542,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 14,
+          "db": 16
+        },
+        {
+          "stat": "sta",
+          "sim": 10,
+          "db": 18
+        }
+      ]
+    },
+    {
+      "name": "Herald of Woe",
+      "id": 19357,
+      "slot": "twohand",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 0,
+          "db": 17
+        },
+        {
+          "stat": "ap",
+          "sim": 0,
+          "db": 210
+        }
+      ]
+    },
+    {
+      "name": "+ 10 Attack Power",
+      "id": 1,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 10,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 20 Attack Power",
+      "id": 2,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 20,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 50 Attack Power",
+      "id": 3,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "ap",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 1% Hit",
+      "id": 4,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "hit",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 2% Hit",
+      "id": 5,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "hit",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 3% Hit",
+      "id": 6,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "hit",
+          "sim": 3,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 1% Crit",
+      "id": 7,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 2% Crit",
+      "id": 8,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "ac",
+          "sim": 0,
+          "db": 38
+        },
+        {
+          "stat": "crit",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 3% Crit",
+      "id": 9,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "crit",
+          "sim": 3,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 1% Haste",
+      "id": 20,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 1,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 2% Haste",
+      "id": 21,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 2,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 3% Haste",
+      "id": 22,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 3,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 5% Haste",
+      "id": 225,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "haste",
+          "sim": 5,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 50 ArP",
+      "id": 23,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 50,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 100 ArP",
+      "id": 24,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 0,
+          "db": 5
+        },
+        {
+          "stat": "arp",
+          "sim": 100,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 200 ArP",
+      "id": 25,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 200,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 400 ArP",
+      "id": 26,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 400,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 800 ArP",
+      "id": 27,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 800,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 1600 ArP",
+      "id": 28,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "arp",
+          "sim": 1600,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 5 Strength",
+      "id": 10,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 5,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 10 Strength",
+      "id": 11,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 10,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 20 Strength",
+      "id": 12,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "str",
+          "sim": 20,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 5 Agility",
+      "id": 13,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 5,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 10 Agility",
+      "id": 14,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 10,
+          "db": 0
+        }
+      ]
+    },
+    {
+      "name": "+ 20 Agility",
+      "id": 15,
+      "slot": "custom",
+      "differences": [
+        {
+          "stat": "agi",
+          "sim": 20,
+          "db": 0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "checked": 1132,
+  "total": 1132,
+  "successfulParses": 981
+}
