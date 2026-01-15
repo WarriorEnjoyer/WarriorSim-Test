@@ -1952,7 +1952,7 @@ class Player {
             if (this.auras.relentlessstrength && this.auras.relentlessstrength.timer) {
                 this.auras.relentlessstrength.proc();
             }
-            if (!spell && this.auras.shieldrender && rng10k() < this.auras.shieldrender.chance) {
+            if ((!spell || spell instanceof Cleave) && this.auras.shieldrender && rng10k() < this.auras.shieldrender.chance) {
                 this.auras.shieldrender.use();
             }
             if (this.dragonbreath && rng10k() < 500) {
