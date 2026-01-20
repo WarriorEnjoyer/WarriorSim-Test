@@ -72,7 +72,7 @@ function updateGlobals(params) {
         for (let j of spells)
             if (i.id == j.id)
                 for (let prop in i)
-                    if (prop != 'minlevel' && prop != 'maxlevel' && prop != 'iconname')
+                    if (prop != 'minlevel' && prop != 'maxlevel' && prop != 'iconname' && i[prop] !== undefined)
                         j[prop] = i[prop];
 
     for (let type in gear)
