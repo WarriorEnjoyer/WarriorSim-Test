@@ -85,6 +85,7 @@ class Player {
             skill_21: 0,
             skill_23: 0,
             haste: 1,
+            castspeed: 1, // castspeed is only used for slam
             expertise: 0,
             strmod: 1,
             agimod: 1,
@@ -130,6 +131,7 @@ class Player {
             }
             else if (testType == 5) {
                 this.base.haste *= testItem;
+                this.base.castspeed *= testItem;
             }
             else if (testType == 6) {
                 this.base.arp += testItem;
@@ -248,8 +250,10 @@ class Player {
                 this.base.skill_3 += raceid == "2" ? rp : 0;
 
                 if (this.mode == "turtle") {
-                    if (this.race == "Night Elf")
+                    if (this.race == "Night Elf") {
                         this.base.haste *= 1.01;
+                        this.base.castspeed *= 1.01;
+                    }
                     if (this.race == "High Elf")
                         this.base.agimod = 1.02;
                 }
@@ -274,6 +278,7 @@ class Player {
                     for (let prop in this.base) {
                         if (prop == 'haste') {
                             this.base.haste *= (1 + item.haste / 100) || 1;
+                            this.base.castspeed *= (1 + item.haste / 100) || 1; // all haste gear items give castspeed
                         } else {
                             if (typeof item[prop] === 'object') {
                                 for (let subprop in item[prop]) {
@@ -405,6 +410,7 @@ class Player {
                     for (let prop in this.base) {
                         if (prop == 'haste') {
                             this.base.haste *= (1 + item.haste / 100) || 1;
+                            this.base.castspeed *= (1 + item.haste / 100) || 1; // all haste enchants give castspeed
                         } else {
                             if (typeof item[prop] === 'object') {
                                 for (let subprop in item[prop]) {
@@ -432,6 +438,7 @@ class Player {
                     for (let prop in this.base) {
                         if (prop == 'haste') {
                             this.base.haste *= (1 + item.haste / 100) || 1;
+                            // temp enchants (e.g. counterweight) do NOT give castspeed
                         } else {
                             if (typeof item[prop] === 'object') {
                                 for (let subprop in item[prop]) {
@@ -670,6 +677,10 @@ class Player {
                 this.base.dmgmod *= (1 + buff.dmgmod / 100) || 1;
                 this.base.spelldmgmod *= (1 + buff.spelldmgmod / 100) || 1;
                 this.base.haste *= (1 + buff.haste / 100) || 1;
+                // Battle Chicken (23060) and WCB (warchief group) don't give castspeed
+                if (buff.haste && buff.group !== "warchief" && buff.id !== 23060) {
+                    this.base.castspeed *= (1 + buff.haste / 100) || 1;
+                }
                 this.base.moddmgdone += buff.moddmgdone || 0;
                 this.base.moddmgtaken += buff.moddmgtaken || 0;
                 this.base.defense += buff.defense || 0;
@@ -947,14 +958,23 @@ class Player {
     }
     updateHaste() {
         this.stats.haste = this.base.haste;
-        if (this.auras.flurry && this.auras.flurry.timer)
+        this.stats.castspeed = this.base.castspeed;
+        if (this.auras.flurry && this.auras.flurry.timer) {
             this.stats.haste *= (1 + this.auras.flurry.mult_stats.haste / 100);
-        if (this.auras.quicknesspotion && this.auras.quicknesspotion.timer)
+            this.stats.castspeed /= (1 - this.auras.flurry.mult_stats.haste / 100); // 1.18 flurry bug for slam
+        }
+        if (this.auras.quicknesspotion && this.auras.quicknesspotion.timer) {
             this.stats.haste *= (1 + this.auras.quicknesspotion.mult_stats.haste / 100);
-        if (this.auras.bloodlust && this.auras.bloodlust.timer)
+            this.stats.castspeed *= (1 + this.auras.quicknesspotion.mult_stats.haste / 100);
+        }
+        if (this.auras.bloodlust && this.auras.bloodlust.timer) {
             this.stats.haste *= (1 + this.auras.bloodlust.mult_stats.haste / 100);
-        if (this.auras.berserking && this.auras.berserking.timer)
+            this.stats.castspeed *= (1 + this.auras.bloodlust.mult_stats.haste / 100);
+        }
+        if (this.auras.berserking && this.auras.berserking.timer) {
             this.stats.haste *= (1 + this.auras.berserking.mult_stats.haste / 100);
+            this.stats.castspeed *= (1 + this.auras.berserking.mult_stats.haste / 100);
+        }
         if (this.auras.empyrean && this.auras.empyrean.timer)
             this.stats.haste *= (1 + this.auras.empyrean.mult_stats.haste / 100);
         if (this.auras.eskhandar && this.auras.eskhandar.timer)
@@ -963,6 +983,8 @@ class Player {
             this.stats.haste *= (1 + this.auras.tempest.mult_stats.haste / 100);
         if (this.auras.pummeler && this.auras.pummeler.timer)
             this.stats.haste *= (1 + this.auras.pummeler.mult_stats.haste / 100);
+        if (this.auras.spider && this.auras.spider.timer)
+            this.stats.haste *= (1 + this.auras.spider.mult_stats.haste / 100);
         if (this.auras.hategrips && this.auras.hategrips.timer)
             this.stats.haste *= (1 + this.auras.hategrips.mult_stats.haste / 100);
         if (this.auras.voidmadness && this.auras.voidmadness.timer)
@@ -985,10 +1007,14 @@ class Player {
             this.stats.haste *= (1 + this.auras.singleminded.mult_stats.haste / 100);
         if (this.auras.magmadarsreturn && this.auras.magmadarsreturn.timer)
             this.stats.haste *= (1 + this.auras.magmadarsreturn.mult_stats.haste / 100);
-        if (this.auras.jujuflurry && this.auras.jujuflurry.timer)
+        if (this.auras.jujuflurry && this.auras.jujuflurry.timer) {
             this.stats.haste *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
-        if (this.auras.chastise && this.auras.chastise.timer)
+            this.stats.castspeed *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
+        }
+        if (this.auras.chastise && this.auras.chastise.timer) {
             this.stats.haste *= (1 + this.auras.chastise.mult_stats.haste / 100);
+            this.stats.castspeed *= (1 + this.auras.chastise.mult_stats.haste / 100);
+        }
         if (this.auras.crusaderzeal && this.auras.crusaderzeal.timer)
             this.stats.haste *= (1 + this.auras.crusaderzeal.mult_stats.haste / 100);
         if (this.auras.obsidianhaste && this.auras.obsidianhaste.timer)
@@ -1009,12 +1035,12 @@ class Player {
     }
     updateHasteDamage() {
         // MOD_ATTACKSPEED works differently than regular haste, lowers dmg
-        // Not applicable in Turtle WoW
-        if (this.mode === 'turtle') return;
-
         let mod = 1;
         if (this.auras.spicy && this.auras.spicy.timer)
             mod *= (1 + this.auras.spicy.mult_stats.haste / 100);
+        // Juju Flurry damage modifier only applies in non-turtle mode
+        if (this.auras.jujuflurry && this.auras.jujuflurry.timer && this.mode !== 'turtle')
+            mod *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
 
         this.mh.mindmg = this.mh.basemindmg / mod;
         this.mh.maxdmg = this.mh.basemaxdmg / mod;

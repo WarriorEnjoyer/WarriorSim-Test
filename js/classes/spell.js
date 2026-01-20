@@ -665,22 +665,23 @@ class Slam extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 15 - player.ragecostbonus;
-        this.basecasttime = 2500 - (player.talents.impslam || 0);
-        this.basegcd = 1500 - (player.talents.impslam || 0);
+        // Improved Slam reduces cast time by 100ms per talent point
+        this.basecasttime = 2500 - ((player.talents.impslam || 0) * 100);
+        this.basegcd = 1500 - ((player.talents.impslam || 0) * 100);
         this.cooldown = player.precisetiming ? 6 : 0;
         this.mhthreshold = 0;
     }
     getCastTime() {
-        // Cast time = (base - talent reduction) / total haste
-        // Note: Improved Slam talent and Flurry talent are mutually exclusive (different trees)
-        // but cast time is always affected by all haste sources (gear, buffs, etc.)
-        return Math.round(this.basecasttime / this.player.stats.haste);
+        // Cast time uses castspeed (separate from haste for attack speed)
+        // This models the 1.18 flurry bug where flurry affects slam cast time differently
+        return Math.round(this.basecasttime / this.player.stats.castspeed);
     }
     dmg(weapon) {
         if (!weapon) weapon = this.player.mh;
         let dmg, mod = 1;
-        // 100% weapon damage
-        dmg = rng(weapon.mindmg + weapon.bonusdmg, weapon.maxdmg + weapon.bonusdmg);
+        // In turtle mode: 100% weapon damage only
+        // In other modes: value1 (base spell damage) + weapon damage
+        dmg = (this.player.mode == 'turtle' ? 0 : this.value1) + rng(weapon.mindmg + weapon.bonusdmg, weapon.maxdmg + weapon.bonusdmg);
         dmg += (this.player.stats.ap / 14) * weapon.speed + this.player.stats.moddmgdone;
         if (this.player.heroicbonus) mod = 1.25;
         return dmg * this.player.stats.dmgmod * mod;
@@ -689,6 +690,12 @@ class Slam extends Spell {
         if (this.player.freeslam) this.offhandhit = true;
         if (!this.player.freeslam) this.player.rage -= this.cost;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
+        // Reset swing timers when casting slam (thrunksim behavior)
+        // In turtle mode, slam does NOT reset swing timer
+        if (this.getCastTime() && !this.player.freeslam && this.player.mode !== 'turtle') {
+            this.player.mh.use();
+            if (this.player.oh) this.player.oh.use();
+        }
         this.player.freeslam = false;
         this.timer = this.cooldown * 1000;
         // Reset mhthreshold so Slam can only be cast again after the next auto attack
