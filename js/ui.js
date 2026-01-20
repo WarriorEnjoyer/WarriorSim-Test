@@ -500,8 +500,8 @@ SIM.UI = {
         const thresholdDiv = view.sidebar.find('#hsthreshold-div');
         const resultsDiv = view.sidebar.find('#hsthreshold-results');
 
-        // Find Heroic Strike in spells
-        const hsSpell = spells.find(s => s.name === 'Heroic Strike');
+        // Find the active Heroic Strike in spells
+        const hsSpell = spells.find(s => s.name === 'Heroic Strike' && s.active);
         if (!hsSpell) {
             alert('Heroic Strike not found in rotation. Add it to your rotation first.');
             view.endLoading();
@@ -585,8 +585,8 @@ SIM.UI = {
                 globals: getGlobalsDelta(),
             };
 
-            // Modify the HS minrage in the globals before sending to worker
-            const hsRotation = params.globals.rotation.find(s => s.name === 'Heroic Strike');
+            // Modify the active HS minrage in the globals before sending to worker
+            const hsRotation = params.globals.rotation.find(s => s.name === 'Heroic Strike' && s.active);
             if (hsRotation) {
                 hsRotation.minrage = threshold;
                 hsRotation.minrageactive = true;
