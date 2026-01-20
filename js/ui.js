@@ -514,10 +514,17 @@ SIM.UI = {
 
         // Show the results div
         thresholdDiv.css('display', 'block');
-        resultsDiv.html('<div class="hs-progress">Testing thresholds 30-99...</div>');
+
+        // Calculate minimum threshold based on Improved Heroic Strike talent
+        // Base HS cost is 15 rage, reduced by 1 per talent point (max 3)
+        const impHSTalent = talents[0].t.find(t => t.i === 124); // Improved Heroic Strike
+        const impHSPoints = impHSTalent ? impHSTalent.c : 0;
+        const minThreshold = 15 - impHSPoints;
+
+        resultsDiv.html('<div class="hs-progress">Testing thresholds ' + minThreshold + '-99...</div>');
 
         const thresholds = [];
-        for (let i = 30; i <= 99; i++) {
+        for (let i = minThreshold; i <= 99; i++) {
             thresholds.push(i);
         }
 
