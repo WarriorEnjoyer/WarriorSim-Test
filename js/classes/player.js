@@ -984,7 +984,7 @@ class Player {
         if (this.auras.pummeler && this.auras.pummeler.timer)
             this.stats.haste *= (1 + this.auras.pummeler.mult_stats.haste / 100);
         if (this.auras.spider && this.auras.spider.timer)
-            this.stats.haste *= (1 + this.auras.spider.mult_stats.haste / 100);
+            this.stats.haste *= (1 + this.auras.spider.mult_stats.attackspeed / 100);
         if (this.auras.hategrips && this.auras.hategrips.timer)
             this.stats.haste *= (1 + this.auras.hategrips.mult_stats.haste / 100);
         if (this.auras.voidmadness && this.auras.voidmadness.timer)
