@@ -135,10 +135,9 @@ class Weapon {
         return dmg * (1 - this.player.armorReduction);
     }
     use() {
-        this.timer = Math.round(this.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1));
-        if (!this.offhand && this.player.spells.slam && this.player.spells.slam.afterswing) {
-            // Set threshold to actual cast time to prevent autoattack clipping
-            this.player.spells.slam.mhthreshold = this.player.spells.slam.getCastTime();
+        this.timer = Math.round(this.speed * 1000 / this.player.stats.haste);
+        if (!this.offhand && this.player.spells.slam && this.player.spells.slam.swingpercent) {
+            this.player.spells.slam.mhthreshold = this.timer * (this.player.spells.slam.swingpercent / 100);
         }
     }
     step(next) {

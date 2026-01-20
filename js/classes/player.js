@@ -202,7 +202,7 @@ class Player {
 
         this.update();
         if (this.oh)
-            this.oh.timer = Math.round(this.oh.speed * 1000 / this.stats.haste * (this.stats.attackspeed || 1) / 2);
+            this.oh.timer = Math.round(this.oh.speed * 1000 / this.stats.haste / 2);
     }
     initStances() {
         this.stance = this.basestance;
@@ -677,10 +677,7 @@ class Player {
                 this.base.dmgmod *= (1 + buff.dmgmod / 100) || 1;
                 this.base.spelldmgmod *= (1 + buff.spelldmgmod / 100) || 1;
                 this.base.haste *= (1 + buff.haste / 100) || 1;
-                // Battle Chicken (23060) and WCB (warchief group) don't give castspeed
-                if (buff.haste && buff.group !== "warchief" && buff.id !== 23060) {
-                    this.base.castspeed *= (1 + buff.haste / 100) || 1;
-                }
+                this.base.castspeed *= (1 + buff.castspeed / 100) || 1;
                 this.base.moddmgdone += buff.moddmgdone || 0;
                 this.base.moddmgtaken += buff.moddmgtaken || 0;
                 this.base.defense += buff.defense || 0;
@@ -782,7 +779,7 @@ class Player {
         this.heroicdelay = 0;
         this.mh.timer = 0;
         if (this.oh)
-            this.oh.timer = Math.round(this.oh.speed * 1000 / this.stats.haste * (this.stats.attackspeed || 1) / 2);
+            this.oh.timer = Math.round(this.oh.speed * 1000 / this.stats.haste / 2);
         this.extraattacks = 0;
         this.batchedextras = 0;
         this.nextswinghs = false;
@@ -872,7 +869,7 @@ class Player {
                 for (let prop in this.auras[name].stats)
                     this.stats[prop] += this.auras[name].stats[prop];
                 for (let prop in this.auras[name].mult_stats)
-                    if (prop !== 'attackspeed') this.stats[prop] *= (1 + this.auras[name].mult_stats[prop] / 100);
+                    this.stats[prop] *= (1 + this.auras[name].mult_stats[prop] / 100);
             }
         }
         this.stats.str = ~~(this.stats.str * this.stats.strmod);
@@ -983,8 +980,11 @@ class Player {
             this.stats.haste *= (1 + this.auras.tempest.mult_stats.haste / 100);
         if (this.auras.pummeler && this.auras.pummeler.timer)
             this.stats.haste *= (1 + this.auras.pummeler.mult_stats.haste / 100);
+        // Spider and WrathOverpower affect swing speed but NOT slam cast time
         if (this.auras.spider && this.auras.spider.timer)
-            this.stats.haste *= (1 + this.auras.spider.mult_stats.attackspeed / 100);
+            this.stats.haste *= (1 + this.auras.spider.mult_stats.haste / 100);
+        if (this.auras.wrathoverpower && this.auras.wrathoverpower.timer)
+            this.stats.haste *= (1 + this.auras.wrathoverpower.mult_stats.haste / 100);
         if (this.auras.hategrips && this.auras.hategrips.timer)
             this.stats.haste *= (1 + this.auras.hategrips.mult_stats.haste / 100);
         if (this.auras.voidmadness && this.auras.voidmadness.timer)
@@ -1021,17 +1021,6 @@ class Player {
             this.stats.haste *= (1 + this.auras.obsidianhaste.mult_stats.haste / 100);
         if (this.auras.unrelentingstrikes && this.auras.unrelentingstrikes.timer)
             this.stats.haste *= (1 + this.auras.unrelentingstrikes.mult_stats.haste / 100);
-
-
-    }
-    updateAttackSpeed() {
-        // Attack speed modifier - affects weapon swings but not spell cast times
-        // Stored as multiplier for timer (e.g., 0.85 = 15% faster)
-        this.stats.attackspeed = 1;
-        if (this.auras.wrathoverpower && this.auras.wrathoverpower.timer)
-            this.stats.attackspeed *= (1 - this.auras.wrathoverpower.mult_stats.attackspeed / 100);
-        if (this.auras.spider && this.auras.spider.timer)
-            this.stats.attackspeed *= (1 - this.auras.spider.mult_stats.attackspeed / 100);
     }
     updateHasteDamage() {
         // MOD_ATTACKSPEED works differently than regular haste, lowers dmg
@@ -1837,7 +1826,7 @@ class Player {
             }
             if (weapon.proc1 && !weapon.proc1.extra && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
                 if (weapon.proc1.spell) weapon.proc1.spell.use();
-                if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1, !spell);
+                if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1);
                 if (weapon.proc1.physdmg) {
                     let dmg = this.physproc(weapon.proc1.physdmg);
                     if (dmg > 0 && weapon.proc1.phantom && this.mode !='turtle') dmg += this.phantomproc(weapon)
@@ -1854,11 +1843,11 @@ class Player {
             }
             if (weapon.proc2 && rng10k() < weapon.proc2.chance) {
                 if (weapon.proc2.spell) weapon.proc2.spell.use();
-                if (weapon.proc2.magicdmg) procdmg += this.magicproc(weapon.proc2, !spell);
+                if (weapon.proc2.magicdmg) procdmg += this.magicproc(weapon.proc2);
                 /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             if (this.trinketproc1 && !this.trinketproc1.extra && rng10k() < this.trinketproc1.chance) {
-                if (this.trinketproc1.magicdmg) procdmg += this.magicproc(this.trinketproc1, !spell);
+                if (this.trinketproc1.magicdmg) procdmg += this.magicproc(this.trinketproc1);
                 if (this.trinketproc1.spell) this.trinketproc1.spell.use();
                 /* start-log */ if (this.logging) this.log(`Trinket 1 proc`); /* end-log */
             }
@@ -1871,7 +1860,7 @@ class Player {
                 }
             }
             if (this.trinketproc2 && !this.trinketproc2.extra  && rng10k() < this.trinketproc2.chance) {
-                if (this.trinketproc2.magicdmg) procdmg += this.magicproc(this.trinketproc2, !spell);
+                if (this.trinketproc2.magicdmg) procdmg += this.magicproc(this.trinketproc2);
                 if (this.trinketproc2.spell) this.trinketproc2.spell.use();
                 /* start-log */ if (this.logging) this.log(`Trinket 2 proc`); /* end-log */
             }
@@ -1885,14 +1874,14 @@ class Player {
             }
             if (this.attackproc1 && rng10k() < this.attackproc1.chance) {
                 if (this.attackproc1.magicdmg) {
-                    procdmg += this.attackproc1.chance == 10000 ? this.attackproc1.magicdmg : this.magicproc(this.attackproc1, !spell);
+                    procdmg += this.attackproc1.chance == 10000 ? this.attackproc1.magicdmg : this.magicproc(this.attackproc1);
                     /* start-log */ if (this.logging) this.log(`Attack proc for ${procdmg}`); /* end-log */
                 }
                 if (this.attackproc1.spell) this.attackproc1.spell.use();
             }
             if (this.attackproc2 && rng10k() < this.attackproc2.chance) {
                 if (this.attackproc2.magicdmg) {
-                    procdmg += this.attackproc2.chance == 10000 ? this.attackproc2.magicdmg : this.magicproc(this.attackproc2, !spell);
+                    procdmg += this.attackproc2.chance == 10000 ? this.attackproc2.magicdmg : this.magicproc(this.attackproc2);
                     /* start-log */ if (this.logging) this.log(`Attack proc for ${procdmg}`); /* end-log */
                 }
                 if (this.attackproc2.spell) this.attackproc2.spell.use();
@@ -2009,7 +1998,7 @@ class Player {
         }
         return dmg;
     }
-    magicproc(proc, isAuto) {
+    magicproc(proc) {
         let mod = 1;
         let miss = this.target.misschance;
         let dmg = proc.magicdmg;
@@ -2018,12 +2007,7 @@ class Player {
         if (rng10k() < miss) return 0;
         if (rng10k() < (this.stats.spellcrit * 100)) mod *= 1 + 0.5 * (1 + this.critdmgbonus * 3);
         if (proc.coeff) dmg += this.spelldamage * proc.coeff;
-        let finaldmg = dmg * mod * this.stats.spelldmgmod;
-        if (proc.ragegen && finaldmg > 0 && isAuto) {
-            this.rage += (finaldmg / this.rageconversion) * 7.5 * this.ragemod;
-            if (this.rage > this.ragecap) this.rage = this.ragecap;
-        }
-        return finaldmg;
+        return (dmg * mod * this.stats.spelldmgmod);
     }
     physproc(dmg) {
         let tmp = 0;

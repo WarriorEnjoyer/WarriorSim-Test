@@ -452,11 +452,14 @@ class Simulation {
                     if (delayedspell.canUse()) {
                         // Start casting slam
                         if (delayedspell instanceof Slam) {
-                            slamstep = step + delayedspell.getCastTime();
+                            // Calculate cast time dynamically based on current castspeed
+                            player.spells.slam.casttime = (2500 - (player.talents.impslam || 0)) / player.stats.castspeed;
+                            slamstep = step + delayedspell.casttime;
                             if (player.freeslam) slamstep = step;
-                            player.timer = delayedspell.basegcd;
+                            player.timer = 1500 - (player.talents.impslam || 0);
                             player.heroicdelay = 0;
-                            player.nextswinghs = false;
+                            // Don't cancel HS on turtle if already queued
+                            // player.nextswinghs = false;
                             next = 0;
                             /* start-log */ if (player.logging) this.player.log(`Casting Slam`); /* end-log */
                             continue;

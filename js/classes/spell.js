@@ -17,6 +17,7 @@ class Spell {
         this.school = SCHOOL.PHYSICAL;
         this.minrage = 0;
         this.offensive = true;
+        this.casttime = 0;
 
         let spell = spells.filter(s => s.id == this.id)[0];
         if (!spell) return;
@@ -38,6 +39,9 @@ class Spell {
         if (spell.slamclip) this.slamclip = spell.slamclip;
         if (spell.flurry) this.flurry = spell.flurry;
         if (spell.swingreset) this.swingreset = spell.swingreset;
+        if (spell.swingpercentactive) this.swingpercent = parseInt(spell.swingpercent);
+        if (spell.swingtimerlessactive) this.swingtimerless = parseFloat(spell.swingtimerless) * 1000;
+        if (spell.wwcdactive) this.wwcd = parseInt(spell.wwcd) * 1000;
         if (spell.timetoendactive) this.timetoend = parseInt(spell.timetoend) * 1000;
         if (spell.timetostartactive) this.timetostart = parseInt(spell.timetostart) * 1000;
         if (spell.zerkerpriority) this.zerkerpriority = spell.zerkerpriority;
@@ -108,7 +112,7 @@ class Bloodthirst extends Spell {
                 (this.player.spells.slam.afterswing ?
                     // With afterswing: instant can extend past auto, just ensure next slam fits
                     this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
-                        Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                        Math.round(this.player.mh.speed * 1000 / this.player.stats.haste)) :
                     // Without afterswing: need room for instant + slam before next auto
                     this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
@@ -155,7 +159,7 @@ class Whirlwind extends Spell {
             (this.player.spells.slam.afterswing ?
                 // With afterswing: instant can extend past auto, just ensure next slam fits
                 this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
-                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste)) :
                 // Without afterswing: need room for instant + slam before next auto
                 this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
@@ -437,7 +441,7 @@ class Hamstring extends Spell {
         (!this.slamclip || !this.player.spells.slam ||
             (this.player.spells.slam.afterswing ?
                 this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
-                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste)) :
                 this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
 }
@@ -476,7 +480,7 @@ class Pummel extends Spell {
         (!this.slamclip || !this.player.spells.slam ||
             (this.player.spells.slam.afterswing ?
                 this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
-                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                    Math.round(this.player.mh.speed * 1000 / this.player.stats.haste)) :
                 this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
 }
@@ -581,7 +585,7 @@ class MasterStrike extends Spell {
             (!this.slamclip || !this.player.spells.slam ||
                 (this.player.spells.slam.afterswing ?
                     this.player.mh.timer >= Math.max(0, this.player.spells.slam.getCastTime() + 1500 -
-                        Math.round(this.player.mh.speed * 1000 / this.player.stats.haste * (this.player.stats.attackspeed || 1))) :
+                        Math.round(this.player.mh.speed * 1000 / this.player.stats.haste)) :
                     this.player.mh.timer - 1500 >= this.player.spells.slam.getCastTime()));
     }
 }
@@ -665,22 +669,19 @@ class Slam extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 15 - player.ragecostbonus;
-        // Improved Slam reduces cast time by 100ms per talent point
-        this.basecasttime = 2500 - ((player.talents.impslam || 0) * 100);
-        this.basegcd = 1500 - ((player.talents.impslam || 0) * 100);
+        // casttime is calculated dynamically in simulation.js based on castspeed
+        this.casttime = 2500 - (player.talents.impslam || 0);
         this.cooldown = player.precisetiming ? 6 : 0;
         this.mhthreshold = 0;
     }
     getCastTime() {
-        // Cast time uses castspeed (separate from haste for attack speed)
-        // This models the 1.18 flurry bug where flurry affects slam cast time differently
-        return Math.round(this.basecasttime / this.player.stats.castspeed);
+        // Returns current cast time based on castspeed (used by slamclip checks)
+        return (2500 - (this.player.talents.impslam || 0)) / this.player.stats.castspeed;
     }
     dmg(weapon) {
         if (!weapon) weapon = this.player.mh;
         let dmg, mod = 1;
         // In turtle mode: 100% weapon damage only
-        // In other modes: value1 (base spell damage) + weapon damage
         dmg = (this.player.mode == 'turtle' ? 0 : this.value1) + rng(weapon.mindmg + weapon.bonusdmg, weapon.maxdmg + weapon.bonusdmg);
         dmg += (this.player.stats.ap / 14) * weapon.speed + this.player.stats.moddmgdone;
         if (this.player.heroicbonus) mod = 1.25;
@@ -690,25 +691,24 @@ class Slam extends Spell {
         if (this.player.freeslam) this.offhandhit = true;
         if (!this.player.freeslam) this.player.rage -= this.cost;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
-        // Reset swing timers when casting slam (thrunksim behavior)
         // In turtle mode, slam does NOT reset swing timer
-        if (this.getCastTime() && !this.player.freeslam && this.player.mode !== 'turtle') {
+        if (this.casttime && !this.player.freeslam && this.player.mode !== 'turtle') {
             this.player.mh.use();
             if (this.player.oh) this.player.oh.use();
         }
         this.player.freeslam = false;
         this.timer = this.cooldown * 1000;
-        // Reset mhthreshold so Slam can only be cast again after the next auto attack
-        if (this.afterswing) this.mhthreshold = 999999;
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} done casting`); /* end-log */
     }
     canUse() {
         return !this.timer && !this.player.timer && this.player.mh.timer >= this.mhthreshold && (this.player.freeslam || this.cost <= this.player.rage) &&
-            (!this.player.bloodsurge || this.player.freeslam) &&
+            (!this.player.bloodsurge || this.player.freeslam) && (!this.swingtimerless || this.player.mh.timer >= this.swingtimerless) &&
             (!this.minrage || this.player.rage >= this.minrage) &&
             (!this.maincd ||
                 (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
                 (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd)) &&
+            (!this.wwcd ||
+                (this.player.spells.whirlwind && this.player.spells.whirlwind.timer >= this.wwcd)) &&
             (!this.flurry || (this.player.auras.flurry && this.player.auras.flurry.timer));
     }
 }
@@ -1091,21 +1091,21 @@ class WrathOverpower extends Aura {
     constructor(player, id) {
         super(player, id, 'Wrath of Overpower');
         this.duration = 5;
-        this.mult_stats = { attackspeed: 15 };
+        this.mult_stats = { haste: 15 };
     }
     use() {
         if (this.timer) this.uptime += (step - this.starttimer);
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
-        this.player.updateAttackSpeed();
-        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied. attackspeed ${this.player.stats.attackspeed}`); /* end-log */
+        this.player.updateHaste();
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied. haste ${this.player.stats.haste}`); /* end-log */
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
-            this.player.updateAttackSpeed();
-            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed. attackspeed ${this.player.stats.attackspeed}`); /* end-log */
+            this.player.updateHaste();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed. haste ${this.player.stats.haste}`); /* end-log */
         }
     }
 }
@@ -2066,7 +2066,7 @@ class Spider extends Aura {
     constructor(player, id) {
         super(player, id);
         this.duration = 15;
-        this.mult_stats = { attackspeed: 20 };
+        this.mult_stats = { haste: 20 };
         this.name = 'Kiss of the Spider';
         this.cooldown = 120;
     }
@@ -2074,7 +2074,7 @@ class Spider extends Aura {
         this.player.itemtimer = this.duration * 1000 - prepull;
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
-        this.player.updateAttackSpeed();
+        this.player.updateHaste();
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
@@ -2084,8 +2084,8 @@ class Spider extends Aura {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
-            this.usestep = this.starttimer + (this.cooldown *1000);
-            this.player.updateAttackSpeed();
+            this.usestep = this.starttimer + (this.cooldown * 1000);
+            this.player.updateHaste();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
     }
