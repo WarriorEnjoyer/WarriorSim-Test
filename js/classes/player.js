@@ -589,6 +589,8 @@ class Player {
                     }
                     if (bonus.stats.armsofthaurissan) this.auras.unrelentingstrikes = new UnrelentingStrikes(this);
                     if (bonus.stats.altmightthreeset) this.altmightthreeset = true;
+                    // 1.18.1: T1 3-set "10% chance to gain 15 rage on ability hit"
+                    if (bonus.stats.altmightthreeset181) this.altmightthreeset181 = true;
                     if (bonus.stats.altmightfiveset) this.altmightfiveset = true;
                     if (bonus.stats.altdreadnaughttwoset) this.altdreadnaughttwoset = true;
                     if (bonus.stats.brotherhoodthreeset) this.brotherhoodthreeset = true;
@@ -958,7 +960,12 @@ class Player {
         this.stats.castspeed = this.base.castspeed;
         if (this.auras.flurry && this.auras.flurry.timer) {
             this.stats.haste *= (1 + this.auras.flurry.mult_stats.haste / 100);
-            this.stats.castspeed /= (1 - this.auras.flurry.mult_stats.haste / 100); // 1.18 flurry bug for slam
+            // 1.18.1: Flurry Slam cast time fix (5 points = 1.92s instead of 1.75s)
+            if (this.mode == "turtle181") {
+                this.stats.castspeed *= (1 + this.auras.flurry.mult_stats.haste / 100);
+            } else {
+                this.stats.castspeed /= (1 - this.auras.flurry.mult_stats.haste / 100); // 1.18 flurry bug for slam
+            }
         }
         if (this.auras.quicknesspotion && this.auras.quicknesspotion.timer) {
             this.stats.haste *= (1 + this.auras.quicknesspotion.mult_stats.haste / 100);
@@ -1187,6 +1194,11 @@ class Player {
             if (result == RESULT.MISS && this.altmightthreeset) {
                 this.rage += 15;
             }
+            // 1.18.1: T1 3-set "10% chance to gain 15 rage when you hit with an ability"
+            if (this.altmightthreeset181 && result != RESULT.MISS && result != RESULT.DODGE && rng10k() < 1000) {
+                this.rage += 15;
+                /* start-log */ if (this.logging) this.log(`Armor of Might 3-set proc: +15 rage`); /* end-log */
+            }
         }
         else {
             if (result == RESULT.DODGE) {
@@ -1223,6 +1235,11 @@ class Player {
             }
             if (result == RESULT.MISS && this.altmightthreeset) {
                 this.rage += 15;
+            }
+            // 1.18.1: T1 3-set "10% chance to gain 15 rage when you hit with an ability"
+            if (this.altmightthreeset181 && result != RESULT.MISS && result != RESULT.DODGE && rng10k() < 1000) {
+                this.rage += 15;
+                /* start-log */ if (this.logging) this.log(`Armor of Might 3-set proc: +15 rage`); /* end-log */
             }
         }
         else {
@@ -1576,7 +1593,8 @@ class Player {
         }
         if (result == RESULT.CRIT) {
             // 100% + baseCritDamage * (1 + CritStrikeDamageBonus) * (1 + IncreasedCritDamage * (1 + 100%/baseCritDamage))
-            let critmod = 1 + 1 * (1 + (spell ? this.talents.abilitiescrit : 0)) * (1 + this.critdmgbonus * 2)
+            let abilitycritbonus = (spell ? (this.talents.abilitiescrit || 0) + (this.base.abilitiescrit || 0) : 0);
+            let critmod = 1 + 1 * (1 + abilitycritbonus) * (1 + this.critdmgbonus * 2)
             dmg *= critmod;
             this.proccrit(false, adjacent);
         }
@@ -1669,11 +1687,12 @@ class Player {
             }
         }
         else if (result == RESULT.CRIT) {
+            let abilitycritbonus = (this.talents.abilitiescrit || 0) + (this.base.abilitiescrit || 0);
             let critmod;
             if (spell.defenseType == DEFENSETYPE.MAGIC)
-                critmod = 1 + 0.5 * (1 + this.talents.abilitiescrit) * (1 + this.critdmgbonus * 3);
+                critmod = 1 + 0.5 * (1 + abilitycritbonus) * (1 + this.critdmgbonus * 3);
             else
-                critmod = 1 + 1 * (1 + this.talents.abilitiescrit) * (1 + this.critdmgbonus * 2);
+                critmod = 1 + 1 * (1 + abilitycritbonus) * (1 + this.critdmgbonus * 2);
 
             dmg *= critmod;
             this.proccrit(false, adjacent, spell);
@@ -1700,7 +1719,8 @@ class Player {
             this.dodgetimer = 5000;
         }
         else if (result == RESULT.CRIT) {
-            let critmod = 1 + 1 * (1 + this.talents.abilitiescrit) * (1 + this.critdmgbonus * 2);
+            let abilitycritbonus = (this.talents.abilitiescrit || 0) + (this.base.abilitiescrit || 0);
+            let critmod = 1 + 1 * (1 + abilitycritbonus) * (1 + this.critdmgbonus * 2);
             dmg *= critmod;
             this.proccrit(false, adjacent, spell);
         }

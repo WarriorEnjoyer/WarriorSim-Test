@@ -211,7 +211,9 @@ class Execute extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 15 - player.talents.executecost - player.ragecostbonus;
+        // 1.18 preccut affects base damage, 1.18.1 preccut181 affects extra rage damage
         this.dumpmod = player.talents.preccut ? 1 + (player.talents.preccut / 100) : 1;
+        this.dumpmod181 = player.talents.preccut181 ? 1 + (player.talents.preccut181 / 100) : 1;
         this.usedrage = 0;
         this.totalusedrage = 0;
         this.refund = false;
@@ -219,7 +221,12 @@ class Execute extends Spell {
     }
     dmg() {
         let dmg;
-        dmg = (this.value1 * this.dumpmod) + (this.value2 * this.usedrage);
+        if (this.player.mode == "turtle181") {
+            // 1.18.1: Precision Cut increases damage per extra rage point spent
+            dmg = this.value1 + (this.value2 * this.usedrage * this.dumpmod181);
+        } else {
+            dmg = (this.value1 * this.dumpmod) + (this.value2 * this.usedrage);
+        }
         return dmg * this.player.stats.dmgmod;
     }
     use(delayedheroic) {
@@ -317,6 +324,8 @@ class Cleave extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 20 - player.ragecostbonus;
+        // 1.18.1: Ravager talent reduces Cleave rage cost
+        if (player.mode == "turtle181") this.cost -= (player.talents.cleavecost || 0);
         this.bonus = this.value1 * (1 + (this.player.talents.cleavebonus || 0) / 100);
         this.useonly = true;
         this.unqueuetimer = 300 + rng(this.player.reactionmin, this.player.reactionmax);
@@ -404,6 +413,9 @@ class Hamstring extends Spell {
         this.cost = 10 - player.ragecostbonus;
         if (this.player.mode == "turtle")
             this.cooldown = 6;
+        // 1.18.1: Removed cooldown from Hamstring
+        if (this.player.mode == "turtle181")
+            this.cooldown = 0;
         if (player.items.includes(19577))
             this.cost -= 2;
         if (player.items.includes(16548) ||
@@ -802,7 +814,9 @@ class ShieldSlam extends Spell {
         let dmg;
         // SS benefits from the buff it triggers, add it manually if its not up
         let ap = this.player.stats.ap + (this.player.auras.defendersresolve && !this.player.auras.defendersresolve.timer ? 4 * this.player.stats.defense : 0);
-        dmg = rng(this.value1, this.value2) + (this.player.stats.block * 2) + ~~(ap * 0.15);
+        // 1.18.1: Shield Slam AP scaling increased from 15% to 20%
+        let apScale = this.player.mode == "turtle181" ? 0.20 : 0.15;
+        dmg = rng(this.value1, this.value2) + (this.player.stats.block * 2) + ~~(ap * apScale);
         return dmg * this.player.stats.dmgmod * this.player.mainspelldmg;
     }
     use() {
