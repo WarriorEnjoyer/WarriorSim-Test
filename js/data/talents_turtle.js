@@ -590,6 +590,7 @@ var talents = [
             y: 3,
             c: 0,
             iconname: 'inv_gauntlets_04',
+            aura: function (count) { return { } },
          },
          {
             i: 168,
