@@ -77,6 +77,7 @@ class Player {
             hit: 0,
             crit: 0,
             spellcrit: 0,
+            abilitiescrit: 0,
             skill_0: this.level * 5,
             skill_1: this.level * 5,
             skill_2: this.level * 5,
