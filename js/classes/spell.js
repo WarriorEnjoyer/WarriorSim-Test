@@ -99,7 +99,7 @@ class Bloodthirst extends Spell {
     }
     dmg() {
         let dmg;
-        if (this.player.mode == "turtle")
+        if (this.player.isTurtleMode())
             dmg = 200 + this.player.stats.ap * 0.35;  // TODO lower levels
         else
             dmg = this.player.stats.ap * 0.45;
@@ -282,7 +282,7 @@ class Bloodrage extends Spell {
         this.player.rage = Math.min(this.player.rage + this.rage, 100);
         this.player.auras.bloodrage.use();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
-        if (this.player.mode == "turtle" && this.player.talents.enrage)
+        if (this.player.isTurtleMode() && this.player.talents.enrage)
             this.player.auras.enrage.use();
         if (this.player.auras.consumedrage && oldRage < 60 && this.player.rage >= 60)
             this.player.auras.consumedrage.use();
@@ -377,7 +377,7 @@ class SunderArmor extends Spell {
     constructor(player, id) {
         super(player, id, 'Sunder Armor');
         this.cost = 15 - player.talents.impsunderarmor - player.ragecostbonus;
-        if (this.player.mode == "turtle")
+        if (this.player.isTurtleMode())
             this.cost = 10 - (player.brotherhoodthreeset ? 5 : 0);
         this.stacks = 0;
         this.nocrit = true;
@@ -462,7 +462,7 @@ class Pummel extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 10 - player.ragecostbonus;
-        if (this.player.mode == "turtle")
+        if (this.player.isTurtleMode())
             this.cooldown = 10;
     }
     dmg() {
@@ -694,7 +694,7 @@ class Slam extends Spell {
         if (!weapon) weapon = this.player.mh;
         let dmg, mod = 1;
         // In turtle mode: 100% weapon damage only
-        dmg = (this.player.mode == 'turtle' ? 0 : this.value1) + rng(weapon.mindmg + weapon.bonusdmg, weapon.maxdmg + weapon.bonusdmg);
+        dmg = (this.player.isTurtleMode() ? 0 : this.value1) + rng(weapon.mindmg + weapon.bonusdmg, weapon.maxdmg + weapon.bonusdmg);
         dmg += (this.player.stats.ap / 14) * weapon.speed + this.player.stats.moddmgdone;
         if (this.player.heroicbonus) mod = 1.25;
         return dmg * this.player.stats.dmgmod * mod;
@@ -704,7 +704,7 @@ class Slam extends Spell {
         if (!this.player.freeslam) this.player.rage -= this.cost;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         // In turtle mode, slam does NOT reset swing timer
-        if (this.casttime && !this.player.freeslam && this.player.mode !== 'turtle') {
+        if (this.casttime && !this.player.freeslam && !this.player.isTurtleMode()) {
             this.player.mh.use();
             if (this.player.oh) this.player.oh.use();
         }
@@ -1565,7 +1565,7 @@ class BloodFury extends Aura {
     constructor(player, id) {
         super(player, id, 'Blood Fury');
         this.duration = 15;
-        if (this.player.mode == "turtle")
+        if (this.player.isTurtleMode())
             this.stats.ap = 120;
         else
             this.mult_stats = { ap: this.player.level * 2 };
@@ -1630,7 +1630,7 @@ class Perception extends Aura {
         super(player, id);
         this.duration = 20;
         this.cooldown = 180;
-        if (this.player.mode == "turtle")
+        if (this.player.isTurtleMode())
             this.stats = { crit: 2, spellcrit: 2 }
     }
     use() {
@@ -2446,7 +2446,7 @@ class Rend extends Aura {
         let basedmg = this.value1;
         if (this.player.bloodfrenzy)
             basedmg += this.value1 + ~~(this.player.stats.ap * 0.03 * this.value2);
-        else if (this.player.mode == "turtle")
+        else if (this.player.isTurtleMode())
             basedmg += ~~(this.player.stats.ap * 0.05 * this.value2);
         let dmg = basedmg * this.player.stats.dmgmod * this.dmgmod * this.player.bleedmod;
         this.tickdmg = dmg / this.value2;

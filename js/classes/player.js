@@ -1,4 +1,11 @@
 class Player {
+    // Helper to check if running any Turtle WoW mode (1.18 or 1.18.1)
+    static isTurtleMode(mode) {
+        return mode === 'turtle' || mode === 'turtle181';
+    }
+    isTurtleMode() {
+        return Player.isTurtleMode(this.mode);
+    }
     static getConfig(base) {
         return {
             level: $('input[name="level"]').val(),
@@ -167,7 +174,7 @@ class Player {
         this.sortSpells();
         this.addRunes();
         this.setSkills();
-        if (this.mode == 'turtle' && this.talents.enrage) this.auras.enrage = new TwowEnrageAura(this);
+        if (this.isTurtleMode() && this.talents.enrage) this.auras.enrage = new TwowEnrageAura(this);
         if (this.talents.flurry) this.auras.flurry = new Flurry(this);
         if (this.talents.deepwounds && this.mode !== 'classic') this.auras.deepwounds = this.mode == "sod" ? new DeepWounds(this) : new OldDeepWounds(this);
         if (this.adjacent && this.talents.deepwounds && this.mode !== 'classic') {
@@ -243,13 +250,13 @@ class Player {
                 this.base.agi += parseInt(stats[4]);
 
                 let rp = 5 // skill-racial potency
-                if (this.mode == "turtle") rp = 3;
+                if (this.isTurtleMode()) rp = 3;
                 this.base.skill_0 += raceid == "1" || raceid == "10" ? rp : 0;
                 this.base.skill_1 += raceid == "1" ? rp : 0;
                 this.base.skill_2 += raceid == "10" ? rp : 0;
                 this.base.skill_3 += raceid == "2" ? rp : 0;
 
-                if (this.mode == "turtle") {
+                if (this.isTurtleMode()) {
                     if (this.race == "Night Elf") {
                         this.base.haste *= 1.01;
                         this.base.castspeed *= 1.01;
@@ -856,7 +863,7 @@ class Player {
             this.oh.glanceChance = this.getGlanceChance(this.oh);
             this.oh.miss = this.getMissChance(this.oh);
             this.oh.dwmiss = this.getDWMissChance(this.oh);
-            if (this.mode == "turtle") {
+            if (this.isTurtleMode()) {
                 this.oh.dwmiss -= this.talents.offhit
             }
             this.oh.dodge = this.getDodgeChance(this.oh);
@@ -1035,7 +1042,7 @@ class Player {
         if (this.auras.spicy && this.auras.spicy.timer)
             mod *= (1 + this.auras.spicy.mult_stats.haste / 100);
         // Juju Flurry damage modifier only applies in non-turtle mode
-        if (this.auras.jujuflurry && this.auras.jujuflurry.timer && this.mode !== 'turtle')
+        if (this.auras.jujuflurry && this.auras.jujuflurry.timer && !this.isTurtleMode())
             mod *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
 
         this.mh.mindmg = this.mh.basemindmg / mod;
@@ -1109,7 +1116,7 @@ class Player {
     }
     getGlanceReduction(weapon) {
         let diff, high, low;
-        if (this.mode == "turtle") {
+        if (this.isTurtleMode()) {
             diff = this.target.defense - this.stats['skill_' + weapon.type];
             low = Math.max(Math.min(0.9 - 0.023 * diff, 0.9), 0.01);
             high = Math.max(Math.min(1.0 - 0.017 * diff, 1.0), 0.20);
@@ -1127,7 +1134,7 @@ class Player {
         let diff = this.target.defense - this.stats['skill_' + weapon.type];
 
         let miss;
-        if (this.mode == "turtle") {
+        if (this.isTurtleMode()) {
             miss = 5 + Math.max(diff * 0.2, 0);
             miss -= this.stats.hit;
         } else {
@@ -1140,7 +1147,7 @@ class Player {
         let diff = this.target.defense - this.stats['skill_' + weapon.type];
 
         let miss;
-        if (this.mode == "turtle") {
+        if (this.isTurtleMode()) {
             miss = 5 + Math.max(diff * 0.2, 0);
             miss = miss * 0.8 + 20;
             miss -= this.stats.hit;
@@ -1181,7 +1188,7 @@ class Player {
         if (!spell || spell instanceof HeroicStrike || spell instanceof Cleave) {
             if (result != RESULT.MISS && result != RESULT.DODGE && this.talents.umbridledwrath && rng10k() < this.talents.umbridledwrath * 100) {
                 this.rage += 1;
-                if (this.mode == 'turtle' && weapon.twohand) this.rage += 1;
+                if (this.isTurtleMode() && weapon.twohand) this.rage += 1;
                 /* start-log */ if (this.logging) this.log(`Unbridled Wrath rage ${Math.floor(oldRage)} -> ${Math.floor(this.rage)}`); /* end-log */
             }
         }
@@ -1223,7 +1230,7 @@ class Player {
         if (!spell || spell instanceof HeroicStrike || spell instanceof Cleave) {
             if (result != RESULT.MISS && result != RESULT.DODGE && this.talents.umbridledwrath && rng10k() < this.talents.umbridledwrath * 100) {
                 this.rage += 1;
-                if (this.mode == 'turtle' && weapon.twohand) this.rage += 1;
+                if (this.isTurtleMode() && weapon.twohand) this.rage += 1;
                 /* start-log */ if (this.logging) this.log(`Unbridled Wrath rage ${Math.floor(oldRage)} -> ${Math.floor(this.rage)}`); /* end-log */
             }
         }
@@ -1503,8 +1510,8 @@ class Player {
         // hs queued, mainhand, turtle = weapon.miss
         // hs queued, offhand, not turtle = weapon.miss
         // hs queued, mainhand, not turtle = weapon.miss
-        if (this.nextswinghs && this.mode == 'turtle' && !weapon.offhand) misschance = weapon.miss;
-        if (this.nextswinghs && this.mode !== 'turtle') misschance = weapon.miss;
+        if (this.nextswinghs && this.isTurtleMode() && !weapon.offhand) misschance = weapon.miss;
+        if (this.nextswinghs && !this.isTurtleMode()) misschance = weapon.miss;
         tmp += Math.max(misschance, 0) * 100;
         if (roll < tmp) return RESULT.MISS;
         tmp += weapon.dodge * 100;
