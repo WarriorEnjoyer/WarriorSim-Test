@@ -1602,7 +1602,7 @@ class Player {
         if (result == RESULT.CRIT) {
             // 100% + baseCritDamage * (1 + CritStrikeDamageBonus) * (1 + IncreasedCritDamage * (1 + 100%/baseCritDamage))
             let abilitycritbonus = (spell ? (this.talents.abilitiescrit || 0) + (this.base.abilitiescrit || 0) : 0);
-            let critmod = 1 + 1 * (1 + abilitycritbonus) * (1 + this.critdmgbonus * 2)
+            let critmod = 1 + 1 * (1 + abilitycritbonus) * (1 + this.critdmgbonus * 2);
             dmg *= critmod;
             this.proccrit(false, adjacent);
         }
