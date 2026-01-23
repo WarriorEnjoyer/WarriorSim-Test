@@ -1752,7 +1752,7 @@ class Player {
         }
     }
     dealdamage(dmg, result, weapon, spell, adjacent) {
-        if (this.mode !='turtle' ){
+        if (!this.isTurtleMode()){
             if (result != RESULT.MISS && result != RESULT.DODGE) {
                 if(spell == null || spell.school == SCHOOL.PHYSICAL)
                     dmg *= (1 - this.armorReduction);
@@ -1856,7 +1856,7 @@ class Player {
                 if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1);
                 if (weapon.proc1.physdmg) {
                     let dmg = this.physproc(weapon.proc1.physdmg);
-                    if (dmg > 0 && weapon.proc1.phantom && this.mode !='turtle') dmg += this.phantomproc(weapon)
+                    if (dmg > 0 && weapon.proc1.phantom && !this.isTurtleMode()) dmg += this.phantomproc(weapon)
                     procdmg += dmg
                 }
                 /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
