@@ -61,7 +61,8 @@ function updateGlobals(params) {
     // Then set from session data
     for (let tree in params.talents)
         for (let talent in params.talents[tree].t)
-            talents[tree].t[talent].c = params.talents[tree].t[talent];
+            if (talents[tree] && talents[tree].t[talent])
+                talents[tree].t[talent].c = params.talents[tree].t[talent];
 
     for (let j of buffs) j.active = false;
     for (let i of params.buffs)
