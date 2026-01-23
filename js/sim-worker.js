@@ -11,7 +11,11 @@ importScripts(
 
 onmessage = (event) => {
     const params = event.data;
-    if (params.globals.turtle) {
+    if (params.globals.turtle181) {
+        importScripts('./data/talents_turtle181.min.js');
+        importScripts('./data/spells_turtle181.min.js');
+        importScripts('./data/buffs_turtle181.min.js');
+    } else if (params.globals.turtle) {
         importScripts('./data/talents_turtle.min.js');
         importScripts('./data/spells_turtle.min.js');
         importScripts('./data/buffs_turtle.min.js');

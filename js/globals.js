@@ -47,7 +47,8 @@ function getGlobalsDelta() {
         gear: _gear,
         enchant: _enchant,
         runes: _runes,
-        turtle: window.location.href.indexOf("turtle.html") != -1,
+        turtle: window.location.href.indexOf("turtle") != -1 && window.location.href.indexOf("turtleclassic") == -1,
+        turtle181: window.location.href.indexOf("turtle181") != -1,
         sod: window.location.href.indexOf("classic.html") == -1
     }
 }
