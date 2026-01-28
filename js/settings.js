@@ -289,6 +289,18 @@ SIM.SETTINGS = {
             SIM.UI.updateSidebar();
         });
 
+        view.fight.on('change', 'select[name="downtimeenabled"]', function (e) {
+            e.stopPropagation();
+            let enabled = $(this).val() === 'Yes';
+            $('.downtime-setting').toggle(enabled);
+            SIM.UI.updateSession();
+            SIM.UI.updateSidebar();
+        });
+
+        // Initialize downtime settings visibility on page load
+        let downtimeEnabled = $('select[name="downtimeenabled"]').val() === 'Yes';
+        $('.downtime-setting').toggle(downtimeEnabled);
+
         view.fight.on('input', 'input[name="targetcustomarmor"]', function (e) {
             e.stopPropagation();
             let base = $('select[name="targetbasearmor"]').get(0);

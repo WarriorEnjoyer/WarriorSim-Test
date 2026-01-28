@@ -188,6 +188,12 @@ class Simulation {
             startrage: parseInt($('input[name="startrage"]').val()),
             iterations: parseInt($('input[name="simulations"]').val()),
             batching: parseInt($('select[name="batching"]').val()),
+            // Downtime simulation settings
+            downtimeEnabled: $('select[name="downtimeenabled"]').val() == "Yes",
+            downtimeIntervalMin: parseInt($('input[name="downtimeintervalmin"]').val()) || 15,
+            downtimeIntervalMax: parseInt($('input[name="downtimeintervalmax"]').val()) || 30,
+            downtimeDurationMin: parseFloat($('input[name="downtimedurationmin"]').val()) || 2,
+            downtimeDurationMax: parseFloat($('input[name="downtimedurationmax"]').val()) || 4,
         };
     }
     constructor(player, callback_finished, callback_update, config) {
@@ -199,6 +205,12 @@ class Simulation {
         this.startrage = config.startrage;
         this.iterations = config.iterations;
         batching = config.batching;
+        // Downtime settings
+        this.downtimeEnabled = config.downtimeEnabled || false;
+        this.downtimeIntervalMin = config.downtimeIntervalMin || 15;
+        this.downtimeIntervalMax = config.downtimeIntervalMax || 30;
+        this.downtimeDurationMin = config.downtimeDurationMin || 2;
+        this.downtimeDurationMax = config.downtimeDurationMax || 4;
         this.idmg = 0;
         this.totaldmg = 0;
         this.totalduration = 0;
@@ -256,6 +268,11 @@ class Simulation {
         let next = 0;
         let slamstep = 0;
         let stopstep = 0;
+
+        // Downtime simulation - periods where player cannot attack (movement/mechanics)
+        let downtimeEnd = 0;
+        let nextDowntime = this.downtimeEnabled ?
+            rng(this.downtimeIntervalMin * 1000, this.downtimeIntervalMax * 1000) : 999999999;
 
         // determine when to use on use items
         let itemdelay = 0;
@@ -321,11 +338,24 @@ class Simulation {
                 player.oh.timer = 20000;
             }
 
+            // Downtime window check - simulate movement/mechanics
+            let inDowntime = false;
+            if (this.downtimeEnabled) {
+                // Check if we should start a new downtime window
+                if (step >= nextDowntime && step >= downtimeEnd) {
+                    let duration = rng(this.downtimeDurationMin * 1000, this.downtimeDurationMax * 1000);
+                    downtimeEnd = step + duration;
+                    nextDowntime = downtimeEnd + rng(this.downtimeIntervalMin * 1000, this.downtimeIntervalMax * 1000);
+                    /* start-log */ if (player.logging) this.player.log(`Downtime started for ${(duration/1000).toFixed(1)}s (movement/mechanics)`); /* end-log */
+                }
+                inDowntime = step < downtimeEnd;
+            }
+
              // Don't do anything while casting slam
             if (!slamstep) {
 
-                // Attacks
-                if (player.mh.timer <= 0) {
+                // Attacks - skip if in downtime (simulates movement/out of range)
+                if (!inDowntime && player.mh.timer <= 0) {
                     this.idmg += player.attackmh(player.mh);
                     spellcheck = true;
 
@@ -334,7 +364,12 @@ class Simulation {
                     //     player.oh.timer = 200;
                     // }
                 }
-                if (player.oh && player.oh.timer <= 0) {
+                else if (inDowntime && player.mh.timer <= 0) {
+                    // Swing timer reached 0 but in downtime - reset timer (swing opportunity lost)
+                    player.mh.use();
+                    /* start-log */ if (player.logging) this.player.log(`MH swing lost to downtime`); /* end-log */
+                }
+                if (!inDowntime && player.oh && player.oh.timer <= 0) {
                     this.idmg += player.attackoh(player.oh);
                     spellcheck = true;
 
@@ -343,9 +378,14 @@ class Simulation {
                     //     player.mh.timer = 200;
                     // }
                 }
+                else if (inDowntime && player.oh && player.oh.timer <= 0) {
+                    // OH swing lost to downtime
+                    player.oh.use();
+                    /* start-log */ if (player.logging) this.player.log(`OH swing lost to downtime`); /* end-log */
+                }
 
-                // Spells
-                if (spellcheck && !player.spelldelay) {
+                // Spells - also skip during downtime (can't cast while moving/out of range)
+                if (spellcheck && !player.spelldelay && !inDowntime) {
 
                     // Use no GCD spells
                     if (player.auras.swarmguard && player.auras.swarmguard.canUse()) { player.spelldelay = 1; delayedspell = player.auras.swarmguard; }
@@ -423,8 +463,8 @@ class Simulation {
                     if (player.heroicdelay) spellcheck = false;
                 }
 
-                // Heroic Strike
-                if (spellcheck && !player.heroicdelay) {
+                // Heroic Strike - also skip during downtime
+                if (spellcheck && !player.heroicdelay && !inDowntime) {
                     if (!player.spells.execute || (step < this.executestep && (!player.auras.suddendeath || !player.auras.suddendeath.timer))) {
                         // prevent using spells while waiting for consumed by rage proc
                         if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer && player.rage < 60) { }

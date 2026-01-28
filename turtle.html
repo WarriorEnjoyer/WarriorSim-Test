@@ -265,6 +265,39 @@ TO EXPLORE:
             <input type="text" name="startrage" value="0" data-numberonly="true">
           </li>
           <li>
+            <label><a href="#" title="Simulate periodic downtime windows where the player cannot attack (movement, mechanics, target switching). This reduces haste value more than other stats, matching real raid conditions.">
+              Downtime Simulation
+            </a></label>
+            <select name="downtimeenabled">
+              <option value="No">No (Patchwerk)</option>
+              <option value="Yes">Yes (Realistic)</option>
+            </select>
+          </li>
+          <li class="downtime-setting">
+            <label><a href="#" title="Minimum seconds between downtime windows">
+              Downtime Interval (min)
+            </a></label>
+            <input type="text" name="downtimeintervalmin" value="15" data-numberonly="true">
+          </li>
+          <li class="downtime-setting">
+            <label><a href="#" title="Maximum seconds between downtime windows">
+              Downtime Interval (max)
+            </a></label>
+            <input type="text" name="downtimeintervalmax" value="30" data-numberonly="true">
+          </li>
+          <li class="downtime-setting">
+            <label><a href="#" title="Minimum duration of each downtime window in seconds">
+              Downtime Duration (min)
+            </a></label>
+            <input type="text" name="downtimedurationmin" value="2" data-numberonly="true">
+          </li>
+          <li class="downtime-setting">
+            <label><a href="#" title="Maximum duration of each downtime window in seconds">
+              Downtime Duration (max)
+            </a></label>
+            <input type="text" name="downtimedurationmax" value="4" data-numberonly="true">
+          </li>
+          <li>
             <label>Target Magic Resistance</label>
             <input type="text" name="targetresistance" value="24" data-numberonly="true">
           </li>
