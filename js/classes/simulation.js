@@ -481,6 +481,10 @@ class Simulation {
 
                     spellcheck = false;
                 }
+                else if (inDowntime) {
+                    // Reset spellcheck during downtime to prevent infinite loop
+                    spellcheck = false;
+                }
 
                 // Cast spells
                 if (player.spelldelay && delayedspell && (canSpellQueue || player.spelldelay > delayedspell.maxdelay)) {
