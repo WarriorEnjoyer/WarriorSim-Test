@@ -1025,6 +1025,8 @@ class Aura {
         if (spell.alwaysheads) this.alwaysheads = spell.alwaysheads;
         if (spell.item) this.item = spell.item;
         if (spell.noitemcd) this.noitemcd = spell.noitemcd;
+        if (spell.noreuse) this.noreuse = true;
+        if (spell.firsttrinket) this.firsttrinket = true;
         if (spell.maxrageactive) this.maxrage = parseInt(spell.maxrage);
         if (spell.priority) this.priority = parseInt(spell.priority);
         if (spell.expriority) this.expriority = parseInt(spell.expriority);
@@ -1971,7 +1973,7 @@ class Swarmguard extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return !this.timer && step >= this.usestep;
+        return (!this.noreuse || this.firstuse) && !this.timer && step >= this.usestep;
     }
     proc() {
         this.stacks = Math.min(this.stacks + 1, 6);
@@ -1983,6 +1985,7 @@ class Swarmguard extends Aura {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
             this.stacks = 0;
+            this.firstuse = false;
             this.usestep = this.starttimer + (this.cooldown *1000)
             this.player.updateArmorReduction();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
@@ -2014,6 +2017,7 @@ class Flask extends Aura {
         this.duration = 60;
         this.stats = { str: 50 };
         this.name = 'Diamond Flask';
+        this.cooldown = 300;
     }
     use(a, prepull = 0) {
         this.player.timer = 1500;
@@ -2025,7 +2029,17 @@ class Flask extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return this.firstuse && !this.timer && !this.player.timer && !this.player.itemtimer && step >= this.usestep;
+        return (!this.noreuse || this.firstuse) && !this.timer && !this.player.timer && !this.player.itemtimer && step >= this.usestep;
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.firstuse = false;
+            this.usestep = this.starttimer + (this.cooldown * 1000);
+            this.player.updateAuras();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
+        }
     }
 }
 
@@ -2045,12 +2059,13 @@ class Slayer extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return this.firstuse && !this.timer && !this.player.itemtimer && step >= this.usestep;
+        return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
+            this.firstuse = false;
             this.usestep = this.starttimer + (this.cooldown *1000)
             this.player.updateAP();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
@@ -2092,12 +2107,13 @@ class Spider extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return !this.timer && !this.player.itemtimer && step >= this.usestep;
+        return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
+            this.firstuse = false;
             this.usestep = this.starttimer + (this.cooldown * 1000);
             this.player.updateHaste();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
@@ -2120,12 +2136,13 @@ class Earthstrike extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return !this.timer && !this.player.itemtimer && step >= this.usestep;
+        return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
+            this.firstuse = false;
             this.usestep = this.starttimer + (this.cooldown *1000);
             this.player.updateAP();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
@@ -2151,7 +2168,7 @@ class Gabbar extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return !this.timer && !this.player.itemtimer && step >= this.usestep;
+        return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
     }
     step() {
         if ((step - this.starttimer) % 2000 == 0) {
@@ -2162,6 +2179,7 @@ class Gabbar extends Aura {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
+            this.firstuse = false;
             this.usestep = this.starttimer + (this.cooldown *1000);
             this.player.updateAP();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
@@ -2269,12 +2287,13 @@ class Zandalarian extends Aura {
         }
     }
     canUse() {
-        return !this.timer && !this.player.itemtimer && step >= this.usestep;
+        return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
+            this.firstuse = false;
             this.usestep = this.starttimer + (this.cooldown * 1000)
             this.player.updateBonusDmg();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
@@ -3525,12 +3544,13 @@ class MoltenEmberstone extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return !this.timer && !this.player.itemtimer && step >= this.usestep;
+        return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
+            this.firstuse = false;
             this.usestep = this.starttimer + (this.cooldown *1000);
             this.player.updateAP();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */

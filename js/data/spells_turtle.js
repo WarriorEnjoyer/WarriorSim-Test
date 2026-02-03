@@ -1418,6 +1418,8 @@ var spells = [
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
+    firsttrinket: false,
+    noreuse: false,
 },
 {
     id: 211423,
@@ -1443,6 +1445,8 @@ var spells = [
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
+    firsttrinket: false,
+    noreuse: false,
 },
 {
     id: 14554,
@@ -1530,6 +1534,8 @@ var spells = [
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
+    firsttrinket: false,
+    noreuse: false,
 },
 {
     id: 22954,
@@ -1542,6 +1548,8 @@ var spells = [
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
+    firsttrinket: false,
+    noreuse: false,
 },
 {
     id: 23570,
@@ -1554,6 +1562,8 @@ var spells = [
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
+    firsttrinket: false,
+    noreuse: false,
 },
 {
     id: 21180,
@@ -1566,6 +1576,8 @@ var spells = [
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
+    firsttrinket: false,
+    noreuse: false,
 },
 {
     id: 9449,
@@ -1726,6 +1738,8 @@ var spells = [
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
+    firsttrinket: false,
+    noreuse: false,
 },
 
 

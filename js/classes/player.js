@@ -733,7 +733,10 @@ class Player {
             if (spell.active || (spell.item && this.items.includes(spell.id) && (spell.timetoendactive || spell.timetostartactive))) {
                 if (!spell.aura && this.mh.type == WEAPONTYPE.FISHINGPOLE) continue;
                 if (spell.item && !this.items.includes(spell.id)) continue;
-                if (spell.aura) this.auras[spell.classname.toLowerCase()] = eval(`new ${spell.classname}(this, ${spell.id})`);
+                if (spell.aura) {
+                    this.auras[spell.classname.toLowerCase()] = eval(`new ${spell.classname}(this, ${spell.id})`);
+                    if (spell.firsttrinket) this.firsttrinketaura = this.auras[spell.classname.toLowerCase()];
+                }
                 else this.spells[spell.classname.toLowerCase()] = eval(`new ${spell.classname}(this, ${spell.id})`);
                 this.preporder.push(spell);
             }
@@ -1354,20 +1357,20 @@ class Player {
         if (this.auras.gyromaticacceleration && this.auras.gyromaticacceleration.firstuse && this.auras.gyromaticacceleration.timer) this.auras.gyromaticacceleration.step();
         if (this.auras.gneurological && this.auras.gneurological.firstuse && this.auras.gneurological.timer) this.auras.gneurological.step();
         if (this.auras.coinflip && this.auras.coinflip.timer) this.auras.coinflip.step();
-        if (this.auras.flask && this.auras.flask.firstuse && this.auras.flask.timer) this.auras.flask.step();
+        if (this.auras.flask && this.auras.flask.timer) this.auras.flask.step();
         if (this.auras.bloodfury && this.auras.bloodfury.timer) this.auras.bloodfury.step();
         if (this.auras.berserking && this.auras.berserking.firstuse && this.auras.berserking.timer) this.auras.berserking.step();
         if (this.auras.perception && this.auras.perception.firstuse && this.auras.perception.timer) this.auras.perception.step();
-        if (this.auras.slayer && this.auras.slayer.firstuse && this.auras.slayer.timer) this.auras.slayer.step();
-        if (this.auras.spider && this.auras.spider.firstuse && this.auras.spider.timer) this.auras.spider.step();
+        if (this.auras.slayer && this.auras.slayer.timer) this.auras.slayer.step();
+        if (this.auras.spider && this.auras.spider.timer) this.auras.spider.step();
         if (this.auras.hategrips && this.auras.hategrips.firstuse && this.auras.hategrips.timer) this.auras.hategrips.step();
         if (this.auras.worgenmark && this.auras.worgenmark.firstuse && this.auras.worgenmark.timer) this.auras.worgenmark.step();
-        if (this.auras.earthstrike && this.auras.earthstrike.firstuse && this.auras.earthstrike.timer) this.auras.earthstrike.step();
-        if (this.auras.moltenemberstone && this.auras.moltenemberstone.firstuse && this.auras.moltenemberstone.timer) this.auras.moltenemberstone.step();
+        if (this.auras.earthstrike && this.auras.earthstrike.timer) this.auras.earthstrike.step();
+        if (this.auras.moltenemberstone && this.auras.moltenemberstone.timer) this.auras.moltenemberstone.step();
         if (this.auras.roarguardian && this.auras.roarguardian.firstuse && this.auras.roarguardian.timer) this.auras.roarguardian.step();
         if (this.auras.pummeler && this.auras.pummeler.firstuse && this.auras.pummeler.timer) this.auras.pummeler.step();
-        if (this.auras.swarmguard && this.auras.swarmguard.firstuse && this.auras.swarmguard.timer) this.auras.swarmguard.step();
-        if (this.auras.zandalarian && this.auras.zandalarian.firstuse && this.auras.zandalarian.timer) this.auras.zandalarian.step();
+        if (this.auras.swarmguard && this.auras.swarmguard.timer) this.auras.swarmguard.step();
+        if (this.auras.zandalarian && this.auras.zandalarian.timer) this.auras.zandalarian.step();
         if (this.auras.relentlessstrength && this.auras.relentlessstrength.firstuse && this.auras.relentlessstrength.timer) this.auras.relentlessstrength.step();
         if (this.auras.rampage && this.auras.rampage.timer) this.auras.rampage.step();
         if (this.auras.wreckingcrew && this.auras.wreckingcrew.timer) this.auras.wreckingcrew.step();
@@ -1437,20 +1440,20 @@ class Player {
         if (this.auras.gyromaticacceleration && this.auras.gyromaticacceleration.firstuse && this.auras.gyromaticacceleration.timer) this.auras.gyromaticacceleration.end();
         if (this.auras.gneurological && this.auras.gneurological.firstuse && this.auras.gneurological.timer) this.auras.gneurological.end();
         if (this.auras.coinflip && this.auras.coinflip.timer) this.auras.coinflip.end();
-        if (this.auras.flask && this.auras.flask.firstuse && this.auras.flask.timer) this.auras.flask.end();
+        if (this.auras.flask && this.auras.flask.timer) this.auras.flask.end();
         if (this.auras.bloodfury && this.auras.bloodfury.timer) this.auras.bloodfury.end();
         if (this.auras.berserking && this.auras.berserking.firstuse && this.auras.berserking.timer) this.auras.berserking.end();
-        if (this.auras.slayer && this.auras.slayer.firstuse && this.auras.slayer.timer) this.auras.slayer.end();
-        if (this.auras.spider && this.auras.spider.firstuse && this.auras.spider.timer) this.auras.spider.end();
+        if (this.auras.slayer && this.auras.slayer.timer) this.auras.slayer.end();
+        if (this.auras.spider && this.auras.spider.timer) this.auras.spider.end();
         if (this.auras.hategrips && this.auras.hategrips.firstuse && this.auras.hategrips.timer) this.auras.hategrips.end();
         if (this.auras.worgenmark && this.auras.worgenmark.firstuse && this.auras.worgenmark.timer) this.auras.worgenmark.end();
-        if (this.auras.gabbar && this.auras.gabbar.firstuse && this.auras.gabbar.timer) this.auras.gabbar.end();
-        if (this.auras.earthstrike && this.auras.earthstrike.firstuse && this.auras.earthstrike.timer) this.auras.earthstrike.end();
-        if (this.auras.moltenemberstone && this.auras.moltenemberstone.firstuse && this.auras.moltenemberstone.timer) this.auras.moltenemberstone.end();
+        if (this.auras.gabbar && this.auras.gabbar.timer) this.auras.gabbar.end();
+        if (this.auras.earthstrike && this.auras.earthstrike.timer) this.auras.earthstrike.end();
+        if (this.auras.moltenemberstone && this.auras.moltenemberstone.timer) this.auras.moltenemberstone.end();
         if (this.auras.roarguardian && this.auras.roarguardian.firstuse && this.auras.roarguardian.timer) this.auras.roarguardian.end();
         if (this.auras.pummeler && this.auras.pummeler.firstuse && this.auras.pummeler.timer) this.auras.pummeler.end();
-        if (this.auras.swarmguard && this.auras.swarmguard.firstuse && this.auras.swarmguard.timer) this.auras.swarmguard.end();
-        if (this.auras.zandalarian && this.auras.zandalarian.firstuse && this.auras.zandalarian.timer) this.auras.zandalarian.end();
+        if (this.auras.swarmguard && this.auras.swarmguard.timer) this.auras.swarmguard.end();
+        if (this.auras.zandalarian && this.auras.zandalarian.timer) this.auras.zandalarian.end();
         if (this.auras.relentlessstrength && this.auras.relentlessstrength.firstuse && this.auras.relentlessstrength.timer) this.auras.relentlessstrength.end();
         if (this.auras.rampage && this.auras.rampage.timer) this.auras.rampage.end();
         if (this.auras.wreckingcrew && this.auras.wreckingcrew.timer) this.auras.wreckingcrew.end();

@@ -404,6 +404,7 @@ class Simulation {
                     else if (player.spells.bloodrage && player.spells.bloodrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.bloodrage; }
 
                     else if (player.auras.rampage && player.auras.rampage.canUse()) { player.spelldelay = 1; delayedspell = player.auras.rampage; }
+                    else if (player.firsttrinketaura && player.firsttrinketaura.canUse()) { player.spelldelay = 1; delayedspell = player.firsttrinketaura; }
                     else if (player.auras.cloudkeeper && player.auras.cloudkeeper.canUse()) { player.spelldelay = 1; delayedspell = player.auras.cloudkeeper; }
                     else if (player.auras.hategrips && player.auras.hategrips.canUse()) { player.spelldelay = 1; delayedspell = player.auras.hategrips; }
                     else if (player.auras.worgenmark && player.auras.worgenmark.canUse()) { player.spelldelay = 1; delayedspell = player.auras.worgenmark; }

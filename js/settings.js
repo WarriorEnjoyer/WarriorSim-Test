@@ -409,10 +409,18 @@ SIM.SETTINGS = {
 
             spell[$(this).data('id')] = active;
 
+            if (active && $(this).data('id') == 'firsttrinket') {
+                for (let s of spells) {
+                    if (s.id != id && s.firsttrinket !== undefined && s.firsttrinket) {
+                        s.firsttrinket = false;
+                    }
+                }
+            }
+
             if (e.originalEvent && e.originalEvent.isTrusted && ($(this).data('id') == 'timetoendactive' || $(this).data('id') == 'timetostartactive')) {
                 spell.active = active;
             }
-            
+
             SIM.UI.updateSession();
         });
 
@@ -642,6 +650,10 @@ SIM.SETTINGS = {
             ul.append(`<li data-id="timetostartactive" data-group="timeto" class="${spell.timetostartactive ? 'active' : ''}">Use <input type="text" name="timetostart" value="${spell.timetostart}" data-numberonly="true" /> seconds from the start of the fight</li>`);
         if (spell.timetoend !== undefined)
             ul.append(`<li data-id="timetoendactive" data-group="timeto" class="${spell.timetoendactive ? 'active' : ''}">Use <input type="text" name="timetoend" value="${spell.timetoend}" data-numberonly="true" /> seconds from the end of the fight</li>`);
+        if (spell.firsttrinket !== undefined)
+            ul.append(`<li data-id="firsttrinket" data-group="firsttrinket" class="${spell.firsttrinket ? 'active' : ''}">Use this trinket first</li>`);
+        if (spell.noreuse !== undefined)
+            ul.append(`<li data-id="noreuse" class="${spell.noreuse ? 'active' : ''}">Prevent reuse</li>`);
         if (spell.priorityap !== undefined)
             ul.append(`<li data-id="priorityapactive" class="${spell.priorityapactive ? 'active' : ''}">Don't use if Attack Power is higher than <input type="text" name="priorityap" value="${spell.priorityap}" data-numberonly="true" style="width: 25px" /></li>`);
         if (spell.procblock !== undefined)
