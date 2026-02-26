@@ -778,6 +778,7 @@ class Player {
     }
     reset(rage) {
         this.rage = rage;
+        this.rageFromAutos = 0;
         this.timer = 0;
         if (this.logging) this.logs = [];
         this.itemtimer = 0;
@@ -1189,6 +1190,7 @@ class Player {
     }
     addRage(dmg, result, weapon, spell) {
         let oldRage = this.rage;
+        let preAutoRage = this.rage;
         if (!spell || spell instanceof HeroicStrike || spell instanceof Cleave) {
             if (result != RESULT.MISS && result != RESULT.DODGE && this.talents.umbridledwrath && rng10k() < this.talents.umbridledwrath * 100) {
                 this.rage += 1;
@@ -1224,6 +1226,8 @@ class Player {
 
         if (this.rage > this.ragecap) this.rage = this.ragecap;
 
+        if (!spell) this.rageFromAutos += this.rage - preAutoRage;
+
         if (this.auras.consumedrage && oldRage < 60 && this.rage >= 60)
             this.auras.consumedrage.use();
     }
@@ -1231,6 +1235,7 @@ class Player {
     // Update these formulas if a better estimate is found
     addRagemh(dmg, result, weapon, spell) {
         let oldRage = this.rage;
+        let preAutoRage = this.rage;
         if (!spell || spell instanceof HeroicStrike || spell instanceof Cleave) {
             if (result != RESULT.MISS && result != RESULT.DODGE && this.talents.umbridledwrath && rng10k() < this.talents.umbridledwrath * 100) {
                 this.rage += 1;
@@ -1265,10 +1270,12 @@ class Player {
             }
         }
         if (this.rage > this.ragecap) this.rage = this.ragecap;
+        if (!spell) this.rageFromAutos += this.rage - preAutoRage;
     }
 
     addRageoh(dmg, result, weapon, spell) {
         let oldRage = this.rage;
+        let preAutoRage = this.rage;
         if (!spell) {
             if (result != RESULT.MISS && result != RESULT.DODGE && this.talents.umbridledwrath && rng10k() < this.talents.umbridledwrath * 100) {
                 this.rage += 1;
@@ -1285,6 +1292,7 @@ class Player {
             this.rage += ((((dmg / this.rageconversion) * 7.5) / 1.075) + ((this.oh.speed * 3.5) / 2.25));
         }
         if (this.rage > this.ragecap) this.rage = this.ragecap;
+        if (!spell) this.rageFromAutos += this.rage - preAutoRage;
     }
     steptimer(a) {
         if (this.timer <= a) {
@@ -1779,6 +1787,9 @@ class Player {
                 if(spell == null || spell.school == SCHOOL.PHYSICAL)
                     dmg *= (1 - this.armorReduction);
                 if (!adjacent) this.addRagemh(dmg, result, weapon, spell);
+                // Shieldrender charge consumption
+                if (this.auras.shieldrender && this.auras.shieldrender.timer && this.auras.shieldrender.maxstacks && (spell == null || spell.school == SCHOOL.PHYSICAL))
+                    this.auras.shieldrender.proc();
                 // Armor of the Dreadnaught 8-piece bonus - apply buff on crit
                 if (this.dreadnaughteightset && result == RESULT.CRIT) {
                     this.dreadnaughtbuff = 1;
@@ -1802,6 +1813,9 @@ class Player {
                 if(spell == null || spell.school == SCHOOL.PHYSICAL)
                     dmg *= (1 - this.armorReduction);
                 if (!adjacent) this.addRageoh(dmg, result, weapon, spell);
+                // Shieldrender charge consumption
+                if (this.auras.shieldrender && this.auras.shieldrender.timer && this.auras.shieldrender.maxstacks && (spell == null || spell.school == SCHOOL.PHYSICAL))
+                    this.auras.shieldrender.proc();
                 // Armor of the Dreadnaught 8-piece bonus - apply buff on crit
                 if (this.dreadnaughteightset && result == RESULT.CRIT) {
                     this.dreadnaughtbuff = 1;
@@ -2050,7 +2064,10 @@ class Player {
         roll = rng10k();
         let crit = this.crit + this.mh.crit;
         if (roll < (crit * 100)) dmg *= 1 + 1 * (1 + this.critdmgbonus * 2);
-        return dmg * this.stats.dmgmod * this.mh.modifier * (1-this.armorReduction);
+        let result = dmg * this.stats.dmgmod * this.mh.modifier * (1-this.armorReduction);
+        if (dmg > 0 && this.auras.shieldrender && this.auras.shieldrender.timer && this.auras.shieldrender.maxstacks)
+            this.auras.shieldrender.proc();
+        return result;
     }
     serializeStats() {
         return {

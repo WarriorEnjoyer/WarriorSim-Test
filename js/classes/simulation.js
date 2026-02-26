@@ -97,6 +97,7 @@ class SimulationWorkerParallel {
                 result.iterations += data.iterations;
                 result.totaldmg += data.totaldmg;
                 result.totalduration += data.totalduration;
+                result.totalRageFromAutos += data.totalRageFromAutos;
                 result.mindps = Math.min(result.mindps, data.mindps);
                 result.maxdps = Math.min(result.maxdps, data.maxdps);
                 result.sumdps += data.sumdps;
@@ -214,6 +215,7 @@ class Simulation {
         this.idmg = 0;
         this.totaldmg = 0;
         this.totalduration = 0;
+        this.totalRageFromAutos = 0;
         this.mindps = 99999;
         this.maxdps = 0;
         this.sumdps = 0;
@@ -784,6 +786,7 @@ class Simulation {
         }
         this.totaldmg += this.idmg;
         this.totalduration += this.duration;
+        this.totalRageFromAutos += player.rageFromAutos;
         let dps = this.idmg / this.duration;
         if (dps < this.mindps) this.mindps = dps;
         if (dps > this.maxdps) this.maxdps = dps;
@@ -808,6 +811,7 @@ class Simulation {
                 iterations: this.iterations,
                 totaldmg: this.totaldmg,
                 totalduration: this.totalduration,
+                totalRageFromAutos: this.totalRageFromAutos,
                 mindps: this.mindps,
                 maxdps: this.maxdps,
                 sumdps: this.sumdps,

@@ -388,7 +388,8 @@ SIM.UI = {
                 error.text((1.96 * Math.sqrt(varmean)).toFixed(2));
 
                 time.text((report.endtime - report.starttime) / 1000);
-                stats.html(report.mindps.toFixed(2) + ' min&nbsp;&nbsp;&nbsp;&nbsp;' + report.maxdps.toFixed(2) + ' max');
+                const ragePerSec = (report.totalRageFromAutos / report.totalduration).toFixed(2);
+                stats.html(report.mindps.toFixed(2) + ' min&nbsp;&nbsp;&nbsp;&nbsp;' + report.maxdps.toFixed(2) + ' max&nbsp;&nbsp;&nbsp;&nbsp;' + ragePerSec + ' auto rage/s');
                 btn.css('background', '');
                 if (rows) view.simulateRows(Array.from(rows));
                 else if (weights) view.simulateWeights(player, mean, varmean);

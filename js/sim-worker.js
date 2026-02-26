@@ -11,6 +11,7 @@ importScripts(
 onmessage = (event) => {
     const params = event.data;
     if (params.globals.turtle181) {
+        importScripts('./data/gear_turtle181.min.js');
         importScripts('./data/enchants_turtle181.min.js');
         importScripts('./data/talents_turtle181.min.js');
         importScripts('./data/spells_turtle181.min.js');

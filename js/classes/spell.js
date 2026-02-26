@@ -3508,20 +3508,42 @@ class ObsidianHaste extends Aura {
 class Shieldrender extends Aura {
     constructor(player, id) {
         super(player, id);
-        this.duration = 3;
-        this.chance = 700;
+        if (player.mode == "turtle181") {
+            this.duration = 10;
+            this.chance = 700;
+            this.maxstacks = 4;
+            this.stacks = 0;
+        } else {
+            this.duration = 3;
+            this.chance = 700;
+        }
     }
     use() {
         if (this.timer) this.uptime += (step - this.starttimer);
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
+        if (this.maxstacks) this.stacks = this.maxstacks;
         this.player.updateArmorReduction();
-        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied${this.maxstacks ? ` (${this.stacks} charges)` : ''}`); /* end-log */
+    }
+    proc() {
+        if (this.maxstacks && this.stacks > 0) {
+            this.stacks--;
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} charge consumed (${this.stacks} remaining)`); /* end-log */
+            if (this.stacks <= 0) {
+                this.uptime += (step - this.starttimer);
+                this.timer = 0;
+                this.firstuse = false;
+                this.player.updateArmorReduction();
+                /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed (charges expired)`); /* end-log */
+            }
+        }
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
+            this.stacks = 0;
             this.firstuse = false;
             this.player.updateArmorReduction();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
