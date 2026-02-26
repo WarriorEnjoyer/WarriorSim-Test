@@ -1224,9 +1224,9 @@ class Player {
         if (this.extrarage && result == RESULT.HIT) this.rage += this.extrarage;
         if (this.extracritrage && result == RESULT.CRIT) this.rage += this.extracritrage;
 
-        if (this.rage > this.ragecap) this.rage = this.ragecap;
-
         if (!spell) this.rageFromAutos += this.rage - preAutoRage;
+
+        if (this.rage > this.ragecap) this.rage = this.ragecap;
 
         if (this.auras.consumedrage && oldRage < 60 && this.rage >= 60)
             this.auras.consumedrage.use();
@@ -1269,8 +1269,8 @@ class Player {
                 this.rage += ((((dmg / this.rageconversion) * 7.5) / 1.075) + ((this.mh.speed * 7.5) / 2.25));
             }
         }
-        if (this.rage > this.ragecap) this.rage = this.ragecap;
         if (!spell) this.rageFromAutos += this.rage - preAutoRage;
+        if (this.rage > this.ragecap) this.rage = this.ragecap;
     }
 
     addRageoh(dmg, result, weapon, spell) {
@@ -1291,8 +1291,8 @@ class Player {
         else if (result == RESULT.CRIT) {
             this.rage += ((((dmg / this.rageconversion) * 7.5) / 1.075) + ((this.oh.speed * 3.5) / 2.25));
         }
-        if (this.rage > this.ragecap) this.rage = this.ragecap;
         if (!spell) this.rageFromAutos += this.rage - preAutoRage;
+        if (this.rage > this.ragecap) this.rage = this.ragecap;
     }
     steptimer(a) {
         if (this.timer <= a) {
