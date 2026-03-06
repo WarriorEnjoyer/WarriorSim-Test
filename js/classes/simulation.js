@@ -621,8 +621,8 @@ class Simulation {
                 next = 1000 - ((step - player.auras.bloodrage.starttimer) % 1000);
             if (player.auras.gabbar && player.auras.gabbar.timer && (2000 - ((step - player.auras.gabbar.starttimer) % 2000)) < next)
                 next = 2000 - ((step - player.auras.gabbar.starttimer) % 2000);
-            if (player.auras.rend && player.auras.rend.timer && (3000 - ((step - player.auras.rend.starttimer) % 3000)) < next)
-                next = 3000 - ((step - player.auras.rend.starttimer) % 3000);
+            if (player.auras.rend && player.auras.rend.timer && (player.auras.rend.tickinterval - ((step - player.auras.rend.starttimer) % player.auras.rend.tickinterval)) < next)
+                next = player.auras.rend.tickinterval - ((step - player.auras.rend.starttimer) % player.auras.rend.tickinterval);
             if (player.auras.deepwounds && player.auras.deepwounds.timer && (player.auras.deepwounds.nexttick - step) < next)
                 next = player.auras.deepwounds.nexttick - step;
             if (player.auras.potentvenoms && player.auras.potentvenoms.timer && (player.auras.potentvenoms.nexttick - step) < next)

@@ -63,6 +63,7 @@ class Player {
         this.spelldamage = 0;
         this.target = config.target;
         this.bleedmod = parseFloat(this.target.bleedreduction);
+        this.bleedtickmod = 1;
         this.spellqueueing = config.spellqueueing;
         this.target.misschance = this.getTargetSpellMiss();
         this.target.mitigation = this.getTargetSpellMitigation();
@@ -367,10 +368,10 @@ class Player {
                         this.base['moddmgdone'] += 2;
                     if (item.id == 234147)
                         this.base['moddmgdone'] += 4;
-                    
-                    
-                    
-                    
+
+                    if (item.id == 55095)
+                        this.bleedtickmod = 0.95;
+
                     if (item.id == 228122)
                         this.spells.themoltencore = new TheMoltenCore(this);
 

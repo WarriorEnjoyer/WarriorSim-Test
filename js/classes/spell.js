@@ -1187,6 +1187,7 @@ class DeepWounds extends Aura {
     constructor(player, id, adjacent) {
         super(player, id, 'Deep Wounds' + (adjacent ? ' ' + adjacent : ''));
         this.duration = 12;
+        this.tickinterval = Math.round(3000 * this.player.bleedtickmod);
         this.idmg = 0;
         this.totaldmg = 0;
         this.saveddmg = 0;
@@ -1219,7 +1220,7 @@ class DeepWounds extends Aura {
 
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} tick for ${dmg.toFixed(2)}`); /* end-log */
 
-            this.nexttick += 3000;
+            this.nexttick += this.tickinterval;
         }
 
         if (step >= this.timer) {
@@ -1237,11 +1238,11 @@ class DeepWounds extends Aura {
         this.ticksleft = 4;
         this.saveddmg += this.tickdmg(offhand);
         if (!this.nexttick) {
-            this.nexttick = step + 3000;
-            this.timer = step + this.duration * 1000;
+            this.nexttick = step + this.tickinterval;
+            this.timer = step + 4 * this.tickinterval;
         }
         else {
-            this.timer = this.nexttick - 3000 + this.duration * 1000;
+            this.timer = this.nexttick - this.tickinterval + 4 * this.tickinterval;
         }
         this.starttimer = step;
         this.player.updateDmgMod();
@@ -1253,6 +1254,7 @@ class OldDeepWounds extends Aura {
     constructor(player, id, adjacent) {
         super(player, id, 'Deep Wounds' + (adjacent ? ' ' + adjacent : ''));
         this.duration = 6;
+        this.tickinterval = Math.round(1500 * this.player.bleedtickmod);
         this.idmg = 0;
         this.totaldmg = 0;
     }
@@ -1267,7 +1269,7 @@ class OldDeepWounds extends Aura {
 
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} tick for ${(dmg / 4).toFixed(2)}`); /* end-log */
 
-            this.nexttick += 1500;
+            this.nexttick += this.tickinterval;
         }
 
         if (step >= this.timer) {
@@ -1278,8 +1280,8 @@ class OldDeepWounds extends Aura {
     }
     use() {
         if (this.timer) this.uptime += (step - this.starttimer);
-        this.nexttick = step + 1500;
-        this.timer = step + this.duration * 1000;
+        this.nexttick = step + this.tickinterval;
+        this.timer = step + 4 * this.tickinterval;
         this.starttimer = step;
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
@@ -2406,6 +2408,7 @@ class Rend extends Aura {
         this.canDodge = true;
         this.nocrit = true;
         this.dmgmod = 1 + this.player.talents.rendmod / 100;
+        this.tickinterval = Math.round(3000 * this.player.bleedtickmod);
         this.tfbstep = -6000;
         this.offensive = true;
     }
@@ -2416,7 +2419,7 @@ class Rend extends Aura {
 
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} tick for ${this.tickdmg.toFixed(2)}`); /* end-log */
 
-            this.nexttick += 3000;
+            this.nexttick += this.tickinterval;
             this.stacks--;
 
             if (!this.stacks) {
@@ -2448,8 +2451,8 @@ class Rend extends Aura {
         }
 
         if (this.timer) this.uptime += (step - this.starttimer);
-        this.nexttick = step + 3000;
-        this.timer = step + this.duration * 1000;
+        this.nexttick = step + this.tickinterval;
+        this.timer = step + this.value2 * this.tickinterval;
         this.player.timer = 1500;
         this.starttimer = step;
         this.stacks = this.value2;
@@ -2488,7 +2491,7 @@ class Rend extends Aura {
         this.player.updateDmgMod();
     }
     refresh() {
-        this.timer = this.nexttick - 3000 + this.duration * 1000;
+        this.timer = this.nexttick - this.tickinterval + this.value2 * this.tickinterval;
         this.stacks = this.value2;
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} refreshed`); /* end-log */
     }
