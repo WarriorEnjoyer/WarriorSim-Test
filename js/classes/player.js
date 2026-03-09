@@ -862,6 +862,9 @@ class Player {
         if (this.spells.themoltencore) {
             this.spells.themoltencore.idmg = 0;
         }
+        if (this.auras.dreamsherald) {
+            this.auras.dreamsherald.idmg = 0;
+        }
         this.initStances();
         this.update();
     }

@@ -627,6 +627,8 @@ class Simulation {
                 next = player.auras.deepwounds.nexttick - step;
             if (player.auras.potentvenoms && player.auras.potentvenoms.timer && (player.auras.potentvenoms.nexttick - step) < next)
                 next = player.auras.potentvenoms.nexttick - step;
+            if (player.auras.dreamsherald && player.auras.dreamsherald.timer && (player.auras.dreamsherald.nexttick - step) < next)
+                next = player.auras.dreamsherald.nexttick - step;
             if (player.adjacent) {
                 if (player.auras.deepwounds2 && player.auras.deepwounds2.timer && (player.auras.deepwounds2.nexttick - step) < next)
                     next = player.auras.deepwounds2.nexttick - step;
@@ -722,6 +724,7 @@ class Simulation {
             if (player.auras.rend && player.auras.rend.timer && !player.auras.rend.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.deepwounds && player.auras.deepwounds.timer && !player.auras.deepwounds.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.potentvenoms && player.auras.potentvenoms.timer && !player.auras.potentvenoms.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.dreamsherald && player.auras.dreamsherald.timer) player.auras.dreamsherald.step();
             if (player.auras.weaponbleedmh && player.auras.weaponbleedmh.timer && !player.auras.weaponbleedmh.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.weaponbleedoh && player.auras.weaponbleedoh.timer && !player.auras.weaponbleedoh.step() && !player.spelldelay) spellcheck = true;
             if (player.adjacent) {
