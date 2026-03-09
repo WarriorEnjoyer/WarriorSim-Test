@@ -1120,7 +1120,7 @@ SIM.UI = {
             _talents.push({ n: tree.n, t: arr });
         }
 
-        _rotation = spells;
+        _rotation = spells.map(_saveSpellUserProps);
 
         for (let type in gear) {
             _gear[type] = [];

@@ -1,3 +1,19 @@
+// Data-only spell properties that should never be saved to or restored from localStorage/profiles.
+// These always come fresh from the JS data files (e.g. spells_turtle.js).
+var SPELL_DATA_PROPS = ['name', 'classname', 'iconname', 'minlevel', 'maxlevel',
+    'value1', 'value2', 'value3', 'buff', 'aura', 'sod', 'rune', 'item', 'itemblock',
+    'noactiveoption', 'aq', 'cooldown', 'execute', 'bloodsurge', 'noitemcd', 'swingreset'];
+
+function _saveSpellUserProps(spell) {
+    var obj = { id: spell.id };
+    for (var prop in spell) {
+        if (SPELL_DATA_PROPS.indexOf(prop) === -1 && prop !== 'id') {
+            obj[prop] = spell[prop];
+        }
+    }
+    return obj;
+}
+
 function getGlobalsDelta() {
     const _gear = {};
     for (const type in gear) {
@@ -43,7 +59,7 @@ function getGlobalsDelta() {
         buffs: buffs
             .filter((buff) => buff.active)
             .map((buff) => buff.id),
-        rotation: spells,
+        rotation: spells.map(_saveSpellUserProps),
         gear: _gear,
         enchant: _enchant,
         runes: _runes,
@@ -74,7 +90,7 @@ function updateGlobals(params) {
         for (let j of spells)
             if (i.id == j.id)
                 for (let prop in i)
-                    if (prop != 'minlevel' && prop != 'maxlevel' && prop != 'iconname' && i[prop] !== undefined)
+                    if (SPELL_DATA_PROPS.indexOf(prop) === -1 && prop !== 'id' && i[prop] !== undefined)
                         j[prop] = i[prop];
 
     for (let type in gear)
