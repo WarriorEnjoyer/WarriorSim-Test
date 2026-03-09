@@ -13,7 +13,7 @@
     "gulp-uglify": "^3.0.2"
   },
   "scripts": {
-    "dist": "gulp sass && gulp js-build",
+    "dist": "gulp sass && gulp js-build && gulp cache-bust",
     "dev": "gulp",
     "start": "gulp"
   },

@@ -36,6 +36,19 @@ gulp.task("js-build", function () {
         .pipe(gulp.dest("dist/js"));
 });
 
+gulp.task("cache-bust", function (done) {
+    var timestamp = Date.now();
+    var htmlFiles = ['turtle.html', 'turtle181.html', 'turtleclassic.html'];
+    htmlFiles.forEach(function (file) {
+        if (!fs.existsSync(file)) return;
+        var html = fs.readFileSync(file, 'utf8');
+        // Remove old cache bust params, then add new ones to all local dist/ assets
+        html = html.replace(/(dist\/[^"']+\.(min\.js|css))(\?v=\d+)?/g, '$1?v=' + timestamp);
+        fs.writeFileSync(file, html);
+    });
+    done();
+});
+
 gulp.task("sass", function () {
     return gulp
         .src("scss/style.scss")
