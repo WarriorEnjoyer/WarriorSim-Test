@@ -3609,6 +3609,38 @@ use() {
     }
 }
 
+class DreamsHerald extends Aura {
+    constructor(player, id) {
+        super(player, id);
+        this.duration = 30;
+        this.interval = 1200;
+        this.tickdmg = 15;
+        this.idmg = 0;
+        this.totaldmg = 0;
+        this.name = "Dream's Herald";
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.nexttick = step + this.interval;
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    step() {
+        while (step >= this.nexttick) {
+            let dmg = this.tickdmg * this.player.target.mitigation * this.player.stats.spelldmgmod;
+            this.idmg += dmg;
+            this.totaldmg += dmg;
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} tick for ${dmg.toFixed(1)}`); /* end-log */
+            this.nexttick += this.interval;
+        }
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+        }
+    }
+}
+
 class UnrelentingStrikes extends Aura {
     constructor(player, id) {
         super(player, id);

@@ -784,6 +784,9 @@ class Simulation {
         if (player.spells.themoltencore) {
             this.idmg += player.spells.themoltencore.idmg;
         }
+        if (player.auras.dreamsherald) {
+            this.idmg += player.auras.dreamsherald.idmg;
+        }
         this.totaldmg += this.idmg;
         this.totalduration += this.duration;
         this.totalRageFromAutos += player.rageFromAutos;

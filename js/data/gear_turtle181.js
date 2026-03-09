@@ -9328,8 +9328,7 @@ var gear = {
       "id": 65008,
       "proc": {
         "ppm": 7,
-        "magic": true,
-        "dmg": 150
+        "spell": "DreamsHerald"
       }
     },
     {
@@ -11557,8 +11556,7 @@ var gear = {
       "id": 65008,
       "proc": {
         "ppm": 7,
-        "magic": true,
-        "dmg": 150
+        "spell": "DreamsHerald"
       }
     },
     {

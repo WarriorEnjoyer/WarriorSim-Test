@@ -6,7 +6,7 @@ var SIM = SIM || {}
 const PROC_DESCS = {
     Tempest: '15% haste 20s',
     Avenger: '+200 AP 10s',
-    Annihilator: '-200 armor 45s',
+    Annihilator: '-200 armor max:3 stacks 45s',
     Rivenspike: '-200 armor 30s',
     Felstriker: '+100% crit/hit 3s',
     Eskhandar: '30% haste 5s',
@@ -19,22 +19,30 @@ const PROC_DESCS = {
     Bonereaver: '-700 armor 10s',
     Destiny: '+200 str 10s',
     Untamed: '+300 str 8s',
+    DreamsHerald: '375 dmg over 30s (1.2s ticks)',
+};
+
+const ITEM_DESCS = {
+    55095: '5% faster bleed ticks',
+    21189: '+4 bonus dmg',
+    83267: '+8 bonus dmg vs Demons',
 };
 
 const ONUSE_DESCS = {
     20130: '+75 str 60s',
     21180: '+280 AP 20s',
-    23570: '+65 AP scaling 20s',
+    23570: '+65 AP every 2s for 20s',
     22954: '+20% haste 15s',
     23041: '+260 AP 20s',
-    21670: '-200 armor/stack 30s',
+    21670: '+200 arp/stack max:1200arp 30s',
     9449: '+50% haste 30s',
     61095: '+40 dmg decaying 20s',
     58211: '+200 AP 20s',
-    14638: '+100 haste 30s',
+    14638: '+100 ap 30s',
 };
 
 function getProcDesc(item) {
+    if (ITEM_DESCS[item.id]) return ITEM_DESCS[item.id];
     if (!item.proc && !ONUSE_DESCS[item.id]) return '';
     let parts = [];
     if (item.proc) {
