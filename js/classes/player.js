@@ -145,6 +145,9 @@ class Player {
             else if (testType == 6) {
                 this.base.arp += testItem;
             }
+            else if (testType == 9) {
+                this.testExtraAttack = testItem;
+            }
         }
         else {
             this.testItem = testItem;
@@ -334,6 +337,7 @@ class Player {
                     else if (item.proc && item.proc.chance) {
                         let proc = {}
                         proc.chance = item.proc.chance * 100;
+                        if (item.proc.extra) proc.extra = item.proc.extra;
                         if (item.proc.dmg) proc.magicdmg = item.proc.dmg;
                         if (item.proc.spell) {
                             this.auras[item.proc.spell.toLowerCase()] = eval('new ' + item.proc.spell + '(this)');
@@ -602,6 +606,7 @@ class Player {
                     if (bonus.stats.altmightthreeset181) this.altmightthreeset181 = true;
                     if (bonus.stats.altmightfiveset) this.altmightfiveset = true;
                     if (bonus.stats.altdreadnaughttwoset) this.altdreadnaughttwoset = true;
+                    if (bonus.stats.abilitiescrit) this.base.abilitiescrit += bonus.stats.abilitiescrit;
                     if (bonus.stats.brotherhoodthreeset) this.brotherhoodthreeset = true;
                     if (bonus.stats.overpowerrend) this.overpowerrend = bonus.stats.overpowerrend;
                     if (bonus.stats.heroicbonus) this.heroicbonus = bonus.stats.heroicbonus;
@@ -687,6 +692,7 @@ class Player {
                 this.base.strmod *= (1 + buff.strmod / 100) || 1;
                 this.base.dmgmod *= (1 + buff.dmgmod / 100) || 1;
                 this.base.spelldmgmod *= (1 + buff.spelldmgmod / 100) || 1;
+                this.base.apmod *= (1 + buff.apmod / 100) || 1;
                 this.base.haste *= (1 + buff.haste / 100) || 1;
                 this.base.castspeed *= (1 + buff.castspeed / 100) || 1;
                 this.base.moddmgdone += buff.moddmgdone || 0;
@@ -816,6 +822,10 @@ class Player {
         }
         if (this.trinketproc1 && this.trinketproc1.usestep) this.trinketproc1.usestep = 0;
         if (this.trinketproc2 && this.trinketproc2.usestep) this.trinketproc2.usestep = 0;
+        this.swordspecstep = 0;
+        this.wailingextrastep = 0;
+        this.hakkariextrastep = 0;
+        this.timewornstep = 0;
         if (this.auras.deepwounds) {
             this.auras.deepwounds.idmg = 0;
         }
@@ -1918,19 +1928,29 @@ class Player {
                     /* start-log */ if (this.logging) this.log(`Trinket 2 proc`); /* end-log */
                 }
             }
-            if (this.attackproc1 && rng10k() < this.attackproc1.chance) {
+            if (this.attackproc1 && !this.attackproc1.extra && rng10k() < this.attackproc1.chance) {
                 if (this.attackproc1.magicdmg) {
                     procdmg += this.attackproc1.chance == 10000 ? this.attackproc1.magicdmg : this.magicproc(this.attackproc1);
                     /* start-log */ if (this.logging) this.log(`Attack proc for ${procdmg}`); /* end-log */
                 }
                 if (this.attackproc1.spell) this.attackproc1.spell.use();
             }
-            if (this.attackproc2 && rng10k() < this.attackproc2.chance) {
+            if (this.attackproc1 && this.attackproc1.extra && !damageSoFar && rng10k() < this.attackproc1.chance) {
+                if (spell) this.batchedextras += this.attackproc1.extra;
+                else batchedextras = this.attackproc1.extra;
+                /* start-log */ if (this.logging) this.log(`Attack proc extra attack`); /* end-log */
+            }
+            if (this.attackproc2 && !this.attackproc2.extra && rng10k() < this.attackproc2.chance) {
                 if (this.attackproc2.magicdmg) {
                     procdmg += this.attackproc2.chance == 10000 ? this.attackproc2.magicdmg : this.magicproc(this.attackproc2);
                     /* start-log */ if (this.logging) this.log(`Attack proc for ${procdmg}`); /* end-log */
                 }
                 if (this.attackproc2.spell) this.attackproc2.spell.use();
+            }
+            if (this.attackproc2 && this.attackproc2.extra && !damageSoFar && rng10k() < this.attackproc2.chance) {
+                if (spell) this.batchedextras += this.attackproc2.extra;
+                else batchedextras = this.attackproc2.extra;
+                /* start-log */ if (this.logging) this.log(`Attack proc extra attack`); /* end-log */
             }
             // Sword spec shouldnt be able to proc itself
             if (this.talents.swordproc && weapon.type == WEAPONTYPE.SWORD && !damageSoFar && this.swordspecstep != step && rng10k() < this.talents.swordproc * 100) {
@@ -1959,6 +1979,12 @@ class Player {
                 if (spell) this.extraattacks++;
                 else extras++;
                 /* start-log */ if (this.logging) this.log(`Timeworn proc`); /* end-log */
+            }
+
+            if (this.testExtraAttack && !damageSoFar && rng10k() < (this.testExtraAttack * 100)) {
+                if (spell) this.batchedextras += 1;
+                else batchedextras = 1;
+                /* start-log */ if (this.logging) this.log(`Stat weight extra attack proc`); /* end-log */
             }
             // Obsidian Champion
             if (weapon.id == 233490 && rng10k() < weapon.proc1.chance && !(this.timer && this.timer < 1500)) {

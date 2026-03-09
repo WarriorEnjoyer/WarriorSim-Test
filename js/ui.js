@@ -3,6 +3,57 @@ const WEB_DB_URL = "https://database.turtlecraft.gg/?";
 
 var SIM = SIM || {}
 
+const PROC_DESCS = {
+    Tempest: '15% haste 20s',
+    Avenger: '+200 AP 10s',
+    Annihilator: '-200 armor 45s',
+    Rivenspike: '-200 armor 30s',
+    Felstriker: '+100% crit/hit 3s',
+    Eskhandar: '30% haste 5s',
+    Empyrean: '20% haste 10s',
+    Zeal: '+10 dmg 15s',
+    Modrag: '1 extra attack, +12 dmg 8s',
+    ForgottenOrder: '+50 str 15s',
+    ZandalariVigil: '+75 agi 10s',
+    Champion: '+120 str 30s',
+    Bonereaver: '-700 armor 10s',
+    Destiny: '+200 str 10s',
+    Untamed: '+300 str 8s',
+};
+
+const ONUSE_DESCS = {
+    20130: '+75 str 60s',
+    21180: '+280 AP 20s',
+    23570: '+65 AP scaling 20s',
+    22954: '+20% haste 15s',
+    23041: '+260 AP 20s',
+    21670: '-200 armor/stack 30s',
+    9449: '+50% haste 30s',
+    61095: '+40 dmg decaying 20s',
+    58211: '+200 AP 20s',
+    14638: '+100 haste 30s',
+};
+
+function getProcDesc(item) {
+    if (!item.proc && !ONUSE_DESCS[item.id]) return '';
+    let parts = [];
+    if (item.proc) {
+        if (item.proc.extra) parts.push(item.proc.extra + ' extra attack' + (item.proc.extra > 1 ? 's' : ''));
+        if (item.proc.spell && PROC_DESCS[item.proc.spell]) parts.push(PROC_DESCS[item.proc.spell]);
+        else if (item.proc.spell) parts.push(item.proc.spell);
+        if (item.proc.dmg) parts.push(item.proc.dmg + ' dmg');
+    }
+    if (ONUSE_DESCS[item.id]) parts.push(ONUSE_DESCS[item.id]);
+    return parts.join(', ');
+}
+
+function getProcChance(item) {
+    if (!item.proc) return '';
+    if (item.proc.ppm) return (item.speed * item.proc.ppm / 60 * 100).toFixed(1) + '%';
+    if (item.proc.chance) return item.proc.chance + '%';
+    return '';
+}
+
 SIM.UI = {
 
     init: function () {
@@ -453,6 +504,7 @@ SIM.UI = {
             updateStat("arp", await simulateWeight(6, 100));
             updateStat("mhskill", await simulateWeight(7, 1));
             updateStat("ohskill", await simulateWeight(8, 1));
+            updateStat("exattack", await simulateWeight(9, 1));
         }
 
         simulateAll().then(
@@ -1230,6 +1282,8 @@ SIM.UI = {
                                 <th>Skill</th>
                                 <th>Type</th>
                                 <th>PPM</th>
+                                <th>Proc</th>
+                                <th>Proc %</th>
                                 <th>DPS</th>
                             </tr>
                         </thead>
@@ -1333,6 +1387,8 @@ SIM.UI = {
                         <td>${item.skill || (item.skills && Object.values(item.skills)[0]) || ''}</td>
                         <td>${item.type || ''}</td>
                         <td class="ppm"><p contenteditable="true">${item.proc && item.proc.ppm || ''}</p></td>
+                        <td>${getProcDesc(item)}</td>
+                        <td>${getProcChance(item)}</td>
                         <td>${item.dps || ''}</td>
                     </tr>`;
         }
@@ -1412,13 +1468,15 @@ SIM.UI = {
                                 <th>Haste</th>
                                 <th>Skill</th>
                                 <th>Type</th>
+                                <th>Proc</th>
+                                <th>Proc %</th>
                                 <th>DPS</th>
                             </tr>
                         </thead>
                     <tbody>`;
 
         for (let item of gear[type]) {
-            
+
             if (!item.selected && (item.r > level || (mode == "sod" && item.q < 3 && item.i < (level - 7)) || (mode == "sod" && item.q == 3 && item.i < (level - 10)) || (mode == "sod" && item.q == 4 && item.i < (level - 15)))) {
                 continue;
             }
@@ -1498,6 +1556,8 @@ SIM.UI = {
                         <td>${item.haste || ''}</td>
                         <td>${item.skill || (item.skills && Object.values(item.skills)[0]) || ''}</td>
                         <td>${item.type || ''}</td>
+                        <td>${getProcDesc(item)}</td>
+                        <td>${getProcChance(item)}</td>
                         <td>${item.dps || ''}</td>
                     </tr>`;
         }
