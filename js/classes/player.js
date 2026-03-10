@@ -50,6 +50,7 @@ class Player {
         this.mainspelldmg = 1;
         this.extraattacks = 0;
         this.batchedextras = 0;
+        this.isExtraAttack = false;
         this.nextswinghs = false;
         this.nextswingcl = false;
         this.freeslam = false;
@@ -803,6 +804,7 @@ class Player {
             this.oh.timer = Math.round(this.oh.speed * 1000 / this.stats.haste / 2);
         this.extraattacks = 0;
         this.batchedextras = 0;
+        this.isExtraAttack = false;
         this.nextswinghs = false;
         this.nextswingcl = false;
         this.freeslam = false;
@@ -1581,6 +1583,8 @@ class Player {
         return RESULT.HIT;
     }
     attackmh(weapon, adjacent, damageSoFar) {
+        let isExtra = this.isExtraAttack;
+        this.isExtraAttack = false;
         this.stepauras();
 
         let spell = null;
@@ -1611,7 +1615,7 @@ class Player {
             this.spells.ragingblow.reduce(spell);
 
         let dmg = weapon.dmg(spell);
-        procdmg = this.procattack(spell, weapon, result, adjacent, damageSoFar);
+        procdmg = this.procattack(spell, weapon, result, adjacent, damageSoFar, isExtra);
 
         if (result == RESULT.DODGE) {
             this.dodgetimer = 5000;
@@ -1853,7 +1857,7 @@ class Player {
         if (this.auras.wreckingcrew) this.auras.wreckingcrew.use();
         if (this.overpowerrend && this.auras.rend && this.auras.rend.timer && spell instanceof Overpower) this.auras.rend.refresh();
     }
-    procattack(spell, weapon, result, adjacent, damageSoFar) {
+    procattack(spell, weapon, result, adjacent, damageSoFar, isExtra) {
         let procdmg = 0;
         let extras = 0;
         let batchedextras = 0;
@@ -1894,7 +1898,7 @@ class Player {
                 /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             // Extra attacks roll only once per multi target attack
-            if (weapon.proc1 && weapon.proc1.extra && !damageSoFar && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
+            if (weapon.proc1 && weapon.proc1.extra && !damageSoFar && !isExtra && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
                 // Multiple extras procs off a non spel will only grant extra attack(s) from one source
                 if (spell) this.extraattacks += weapon.proc1.extra;
                 else extras = weapon.proc1.extra;
@@ -1910,7 +1914,7 @@ class Player {
                 if (this.trinketproc1.spell) this.trinketproc1.spell.use();
                 /* start-log */ if (this.logging) this.log(`Trinket 1 proc`); /* end-log */
             }
-            if (this.trinketproc1 && this.trinketproc1.extra && !damageSoFar && rng10k() < this.trinketproc1.chance) {
+            if (this.trinketproc1 && this.trinketproc1.extra && !damageSoFar && !isExtra && rng10k() < this.trinketproc1.chance) {
                 if (!this.trinketproc1.cooldown || !this.trinketproc1.usestep || step > this.trinketproc1.usestep) {
                     if (this.trinketproc1.cooldown) this.trinketproc1.usestep = step + this.trinketproc1.cooldown;
                     if (spell) this.batchedextras += this.trinketproc1.extra;
@@ -1923,7 +1927,7 @@ class Player {
                 if (this.trinketproc2.spell) this.trinketproc2.spell.use();
                 /* start-log */ if (this.logging) this.log(`Trinket 2 proc`); /* end-log */
             }
-            if (this.trinketproc2 && this.trinketproc2.extra && !damageSoFar && rng10k() < this.trinketproc2.chance) {
+            if (this.trinketproc2 && this.trinketproc2.extra && !damageSoFar && !isExtra && rng10k() < this.trinketproc2.chance) {
                 if (!this.trinketproc2.cooldown || !this.trinketproc2.usestep || step > this.trinketproc2.usestep) {
                     if (this.trinketproc2.cooldown) this.trinketproc2.usestep = step + this.trinketproc2.cooldown;
                     if (spell) this.batchedextras += this.trinketproc2.extra;
@@ -1938,7 +1942,7 @@ class Player {
                 }
                 if (this.attackproc1.spell) this.attackproc1.spell.use();
             }
-            if (this.attackproc1 && this.attackproc1.extra && !damageSoFar && rng10k() < this.attackproc1.chance) {
+            if (this.attackproc1 && this.attackproc1.extra && !damageSoFar && !isExtra && rng10k() < this.attackproc1.chance) {
                 if (spell) this.batchedextras += this.attackproc1.extra;
                 else batchedextras = this.attackproc1.extra;
                 /* start-log */ if (this.logging) this.log(`Attack proc extra attack`); /* end-log */
@@ -1950,41 +1954,41 @@ class Player {
                 }
                 if (this.attackproc2.spell) this.attackproc2.spell.use();
             }
-            if (this.attackproc2 && this.attackproc2.extra && !damageSoFar && rng10k() < this.attackproc2.chance) {
+            if (this.attackproc2 && this.attackproc2.extra && !damageSoFar && !isExtra && rng10k() < this.attackproc2.chance) {
                 if (spell) this.batchedextras += this.attackproc2.extra;
                 else batchedextras = this.attackproc2.extra;
                 /* start-log */ if (this.logging) this.log(`Attack proc extra attack`); /* end-log */
             }
             // Sword spec shouldnt be able to proc itself
-            if (this.talents.swordproc && weapon.type == WEAPONTYPE.SWORD && !damageSoFar && this.swordspecstep != step && rng10k() < this.talents.swordproc * 100) {
+            if (this.talents.swordproc && weapon.type == WEAPONTYPE.SWORD && !damageSoFar && !isExtra && this.swordspecstep != step && rng10k() < this.talents.swordproc * 100) {
                 this.swordspecstep = step;
                 if (spell) this.extraattacks++;
                 else extras++;
                 /* start-log */ if (this.logging) this.log(`Sword talent proc`); /* end-log */
             }
             // Wailing set bonus extra
-            if (this.wailingextra && !damageSoFar && this.wailingextrastep != step && rng10k() < 300) {
+            if (this.wailingextra && !damageSoFar && !isExtra && this.wailingextrastep != step && rng10k() < 300) {
                 this.wailingextrastep = step;
                 if (spell) this.extraattacks++;
                 else extras++;
                 /* start-log */ if (this.logging) this.log(`Wailing set extra attack proc`); /* end-log */
             }
             // Hakkari set bonus extra
-            if (this.hakkariextra && !damageSoFar && this.hakkariextrastep != step && rng10k() < 200) {
+            if (this.hakkariextra && !damageSoFar && !isExtra && this.hakkariextrastep != step && rng10k() < 200) {
                 this.hakkariextrastep = step;
                 if (spell) this.extraattacks++;
                 else extras++;
                 /* start-log */ if (this.logging) this.log(`Hakkari set extra attack proc`); /* end-log */
             }
             // Timeworn extra
-            if (this.timeworn && !damageSoFar && this.timewornstep != step && rng10k() < this.timeworn * 100) {
+            if (this.timeworn && !damageSoFar && !isExtra && this.timewornstep != step && rng10k() < this.timeworn * 100) {
                 this.timewornstep = step;
                 if (spell) this.extraattacks++;
                 else extras++;
                 /* start-log */ if (this.logging) this.log(`Timeworn proc`); /* end-log */
             }
 
-            if (this.testExtraAttack && !damageSoFar && rng10k() < (this.testExtraAttack * 100)) {
+            if (this.testExtraAttack && !damageSoFar && !isExtra && rng10k() < (this.testExtraAttack * 100)) {
                 if (spell) this.batchedextras += 1;
                 else batchedextras = 1;
                 /* start-log */ if (this.logging) this.log(`Stat weight extra attack proc`); /* end-log */
@@ -2025,7 +2029,7 @@ class Player {
             if (!spell && this.auras.singleminded) {
                 this.auras.singleminded.use();
             }
-            if (weapon.windfury && !this.auras.windfury.timer && !damageSoFar && rng10k() < 2000) {
+            if (weapon.windfury && !this.auras.windfury.timer && !damageSoFar && !isExtra && rng10k() < 2000) {
                 if (!spell) extras = 0;
                 weapon.windfury.use();
             }

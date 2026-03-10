@@ -590,10 +590,12 @@ class Simulation {
                 player.nextswinghs = false;
                 player.mh.timer = 0;
                 player.extraattacks--;
+                player.isExtraAttack = true;
             }
             if (player.batchedextras > 0) {
                 player.mh.timer = batching - (step % batching);
                 player.batchedextras--;
+                player.isExtraAttack = true;
             }
 
             // Determine when next step should happen
