@@ -1394,6 +1394,7 @@ class Player {
         if (this.auras.worgenmark && this.auras.worgenmark.firstuse && this.auras.worgenmark.timer) this.auras.worgenmark.step();
         if (this.auras.earthstrike && this.auras.earthstrike.timer) this.auras.earthstrike.step();
         if (this.auras.moltenemberstone && this.auras.moltenemberstone.timer) this.auras.moltenemberstone.step();
+        if (this.auras.clawbefouler && this.auras.clawbefouler.timer) this.auras.clawbefouler.step();
         if (this.auras.roarguardian && this.auras.roarguardian.firstuse && this.auras.roarguardian.timer) this.auras.roarguardian.step();
         if (this.auras.pummeler && this.auras.pummeler.firstuse && this.auras.pummeler.timer) this.auras.pummeler.step();
         if (this.auras.swarmguard && this.auras.swarmguard.timer) this.auras.swarmguard.step();
