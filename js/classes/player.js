@@ -1508,6 +1508,7 @@ class Player {
         if (this.auras.obsidianstrength && this.auras.obsidianstrength.timer) this.auras.obsidianstrength.end();
         if (this.auras.shieldrender && this.auras.shieldrender.timer) this.auras.shieldrender.end();
         if (this.auras.unrelentingstrikes && this.auras.unrelentingstrikes.timer) this.auras.unrelentingstrikes.end();
+        if (this.auras.clawbefouler && this.auras.clawbefouler.timer) this.auras.clawbefouler.end();
 
         if (this.mh.windfury && this.mh.windfury.timer) this.mh.windfury.end();
         if (this.trinketproc1 && this.trinketproc1.spell && this.trinketproc1.spell.timer) this.trinketproc1.spell.end();

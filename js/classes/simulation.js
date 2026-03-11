@@ -641,6 +641,8 @@ class Simulation {
                 if (player.auras.potentvenoms2 && player.auras.potentvenoms2.timer && (player.auras.potentvenoms2.nexttick - step) < next)
                     next = player.auras.potentvenoms2.nexttick - step;
             }
+            if (player.auras.clawbefouler && player.auras.clawbefouler.timer && (player.auras.clawbefouler.nexttick - step) < next)
+                next = player.auras.clawbefouler.nexttick - step;
             if (player.auras.weaponbleedmh && player.auras.weaponbleedmh.timer && (player.auras.weaponbleedmh.interval - ((step - player.auras.weaponbleedmh.starttimer) % player.auras.weaponbleedmh.interval)) < next)
                 next = player.auras.weaponbleedmh.interval - ((step - player.auras.weaponbleedmh.starttimer) % player.auras.weaponbleedmh.interval);
             if (player.auras.weaponbleedoh && player.auras.weaponbleedoh.timer && (player.auras.weaponbleedoh.interval - ((step - player.auras.weaponbleedoh.starttimer) % player.auras.weaponbleedoh.interval)) < next)
@@ -726,6 +728,7 @@ class Simulation {
             if (player.auras.rend && player.auras.rend.timer && !player.auras.rend.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.deepwounds && player.auras.deepwounds.timer && !player.auras.deepwounds.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.potentvenoms && player.auras.potentvenoms.timer && !player.auras.potentvenoms.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.clawbefouler && player.auras.clawbefouler.timer) player.auras.clawbefouler.step();
             if (player.auras.dreamsherald && player.auras.dreamsherald.timer) player.auras.dreamsherald.step();
             if (player.auras.weaponbleedmh && player.auras.weaponbleedmh.timer && !player.auras.weaponbleedmh.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.weaponbleedoh && player.auras.weaponbleedoh.timer && !player.auras.weaponbleedoh.step() && !player.spelldelay) spellcheck = true;
