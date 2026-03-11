@@ -409,6 +409,7 @@ class Simulation {
                     else if (player.firsttrinketaura && player.firsttrinketaura.canUse()) { player.spelldelay = 1; delayedspell = player.firsttrinketaura; }
                     else if (player.auras.cloudkeeper && player.auras.cloudkeeper.canUse()) { player.spelldelay = 1; delayedspell = player.auras.cloudkeeper; }
                     else if (player.auras.hategrips && player.auras.hategrips.canUse()) { player.spelldelay = 1; delayedspell = player.auras.hategrips; }
+                    else if (player.auras.clawbefouler && player.auras.clawbefouler.canUse()) { player.spelldelay = 1; delayedspell = player.auras.clawbefouler; }
                     else if (player.auras.worgenmark && player.auras.worgenmark.canUse()) { player.spelldelay = 1; delayedspell = player.auras.worgenmark; }
                     else if (player.auras.voidmadness && player.auras.voidmadness.canUse()) { player.spelldelay = 1; delayedspell = player.auras.voidmadness; }
                     else if (player.auras.gyromaticacceleration && player.auras.gyromaticacceleration.canUse()) { player.spelldelay = 1; delayedspell = player.auras.gyromaticacceleration; }
