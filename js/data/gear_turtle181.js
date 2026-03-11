@@ -8239,6 +8239,14 @@ var gear = {
       "id": 61263
     },
     {
+      "name": "Claw of the Befouler (Used last 15 secs)",
+      "source": "Other",
+      "phase": "7",
+      "q": 4,
+      "i": 92,
+      "id": 900002
+    },
+    {
       "name": "Molten Emberstone (Used last 20 secs)",
       "source": "MC",
       "phase": "1",
@@ -8581,6 +8589,14 @@ var gear = {
       "q": 3,
       "i": 68,
       "id": 61263
+    },
+    {
+      "name": "Claw of the Befouler (Used last 15 secs)",
+      "source": "Other",
+      "phase": "7",
+      "q": 4,
+      "i": 92,
+      "id": 900002
     },
     {
       "name": "Molten Emberstone (Used last 20 secs)",
@@ -13136,6 +13152,22 @@ var gear = {
     },
   ],
   "twohand": [
+    {
+      "name": "Elementium Champion",
+      "mindmg": 190,
+      "maxdmg": 359,
+      "speed": 3.5,
+      "q": 4,
+      "i": 92,
+      "id": 900001,
+      "source": "Other",
+      "phase": 7,
+      "type": "Sword",
+      "proc": {
+        "ppm": 1,
+        "spell": "ElementiumChampion"
+      }
+    },
     {
       "name": "Shadowbringer",
       "mindmg": 170,

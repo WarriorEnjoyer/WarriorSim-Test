@@ -792,6 +792,9 @@ class Simulation {
         if (player.auras.dreamsherald) {
             this.idmg += player.auras.dreamsherald.idmg;
         }
+        if (player.auras.elementiumchampion) {
+            this.idmg += player.auras.elementiumchampion.idmg;
+        }
         this.totaldmg += this.idmg;
         this.totalduration += this.duration;
         this.totalRageFromAutos += player.rageFromAutos;

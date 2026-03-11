@@ -3665,3 +3665,79 @@ class UnrelentingStrikes extends Aura {
         }
     }
 }
+
+class ElementiumChampion extends Aura {
+    constructor(player) {
+        super(player);
+        this.duration = 30;
+        this.interval = 3000;
+        this.tickdmg = 50;
+        this.idmg = 0;
+        this.totaldmg = 0;
+        this.stats = { str: 150 };
+        this.name = 'Shadowflame';
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.nexttick = step + this.interval;
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateAuras();
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    step() {
+        while (step >= this.nexttick && this.timer) {
+            let dmg = this.tickdmg * this.player.target.mitigation * this.player.stats.spelldmgmod;
+            this.idmg += dmg;
+            this.totaldmg += dmg;
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} tick for ${dmg.toFixed(1)}`); /* end-log */
+            this.nexttick += this.interval;
+        }
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.player.updateAuras();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+}
+
+class ClawBefouler extends Aura {
+    constructor(player, id) {
+        super(player, id);
+        this.duration = 15;
+        this.interval = 5000;
+        this.stats = { str: 225 };
+        this.cooldown = 120;
+        this.name = 'Claw of the Befouler';
+    }
+    use(a, prepull = 0) {
+        this.player.itemtimer = this.duration * 1000 - prepull;
+        this.timer = step + this.duration * 1000 - prepull;
+        this.starttimer = step - prepull;
+        this.nexttick = step + this.interval - prepull;
+        this.player.updateAuras();
+        if (this.player.auras.enrage && this.player.talents.enrage)
+            this.player.auras.enrage.use();
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied (triggers enrage)`); /* end-log */
+    }
+    canUse() {
+        return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
+    }
+    step() {
+        while (step >= this.nexttick && this.timer) {
+            if (this.player.auras.enrage && this.player.talents.enrage)
+                this.player.auras.enrage.use();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} self-damage tick (triggers enrage)`); /* end-log */
+            this.nexttick += this.interval;
+        }
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.firstuse = false;
+            this.usestep = this.starttimer + (this.cooldown * 1000);
+            this.player.updateAuras();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+}

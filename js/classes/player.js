@@ -867,6 +867,9 @@ class Player {
         if (this.auras.dreamsherald) {
             this.auras.dreamsherald.idmg = 0;
         }
+        if (this.auras.elementiumchampion) {
+            this.auras.elementiumchampion.idmg = 0;
+        }
         this.initStances();
         this.update();
     }

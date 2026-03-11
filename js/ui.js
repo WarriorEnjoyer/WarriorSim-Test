@@ -20,6 +20,7 @@ const PROC_DESCS = {
     Destiny: '+200 str 10s',
     Untamed: '+300 str 8s',
     DreamsHerald: '375 dmg over 30s (1.2s ticks)',
+    ElementiumChampion: '+150 str, 500 shadow dmg over 30s (3s ticks)',
 };
 
 const ITEM_DESCS = {
@@ -39,6 +40,7 @@ const ONUSE_DESCS = {
     61095: '+40 dmg decaying 20s',
     58211: '+200 AP 20s',
     14638: '+100 ap 30s',
+    900002: '+225 str 15s',
 };
 
 function getProcDesc(item) {
