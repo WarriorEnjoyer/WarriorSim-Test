@@ -164,7 +164,7 @@ class Player {
                 this.hasteMultiplier = testItem; // 1.01 for test, 1.0 for baseline
             }
             else if (testType == 11) {
-                this.base.hit += testItem; // +20 for baseline, +21 for test
+                this.hitCapExtra = testItem; // 0 for baseline, 1 for test
             }
         }
         else {
@@ -896,6 +896,17 @@ class Player {
     }
     update() {
         this.updateAuras();
+        // For hit cap testing, override hit to exactly yellow cap + extra
+        if (this.hitCapExtra !== undefined) {
+            let diff = this.target.defense - this.stats['skill_' + this.mh.type];
+            let yellowCap;
+            if (this.isTurtleMode()) {
+                yellowCap = 5 + Math.max(diff * 0.2, 0);
+            } else {
+                yellowCap = 5 + (diff > 10 ? diff * 0.2 : diff * 0.1);
+            }
+            this.stats.hit = yellowCap + this.hitCapExtra;
+        }
         this.updateArmorReduction();
         this.mh.glanceChance = this.getGlanceChance(this.mh);
         this.mh.miss = this.getMissChance(this.mh);

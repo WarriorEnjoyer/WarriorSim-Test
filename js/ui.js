@@ -573,9 +573,9 @@ SIM.UI = {
 
     simulateHitCap: function(updateFn) {
         const view = this;
-        // Run baseline sim with +20 hit (past yellow cap), then test with +21 hit
-        return view.simulateStat(11, 20, updateFn).then(baseline => {
-            return view.simulateStat(11, 21, updateFn).then(test => {
+        // Run baseline sim at exactly yellow cap, then test with +1 hit past yellow cap
+        return view.simulateStat(11, 0, updateFn).then(baseline => {
+            return view.simulateStat(11, 1, updateFn).then(test => {
                 const weight = (test.mean - baseline.mean) / 1;
                 const error = 1.96 * Math.sqrt(baseline.varmean + test.varmean) / 1;
                 return {weight, error};
