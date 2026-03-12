@@ -2496,6 +2496,19 @@ var gear = {
       "id": 47272
     },
     {
+      "name": "Veteran's Plate Armor",
+      "str": 29,
+      "agi": 25,
+      "sta": 43,
+      "ac": 1027,
+      "crit": 1,
+      "hit": 1,
+      "phase": 7,
+      "q": 4,
+      "i": 96,
+      "id": 83304
+    },
+    {
       "name": "Tunic of Demonic Deception",
       "str": 22,
       "sta": 21,
@@ -3904,7 +3917,7 @@ var gear = {
       "id": 47265
     },
     {
-      "name": "Handwraps of Dead Winds", 
+      "name": "Handwraps of Dead Winds",
       "haste": 1,
       "str": 20,
       "sta": 17,
@@ -3915,6 +3928,19 @@ var gear = {
       "q": 4,
       "i": 92,
       "id": 55125
+    },
+    {
+      "name": "Veteran's Plate Gauntlets",
+      "str": 20,
+      "agi": 17,
+      "sta": 32,
+      "ac": 643,
+      "crit": 1,
+      "haste": 1,
+      "phase": 7,
+      "q": 4,
+      "i": 96,
+      "id": 83305
     },
     {
       "name": "Gloves of the Primordial Burrower",
