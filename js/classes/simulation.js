@@ -99,11 +99,11 @@ class SimulationWorkerParallel {
                 result.totalduration += data.totalduration;
                 result.totalRageFromAutos += data.totalRageFromAutos;
                 result.mindps = Math.min(result.mindps, data.mindps);
-                result.maxdps = Math.min(result.maxdps, data.maxdps);
+                result.maxdps = Math.max(result.maxdps, data.maxdps);
                 result.sumdps += data.sumdps;
                 result.sumdps2 += data.sumdps2;
                 result.starttime = Math.min(result.starttime, data.starttime);
-                result.endtime = Math.min(result.endtime, data.endtime);
+                result.endtime = Math.max(result.endtime, data.endtime);
                 if (result.spread && data.spread) {
                     for (let i in data.spread) {
                         result.spread[i] = (result.spread[i] || 0) + data.spread[i];
@@ -431,7 +431,10 @@ class Simulation {
                     else if (player.auras.bloodfury && player.auras.bloodfury.canUse()) { player.spelldelay = 1; delayedspell = player.auras.bloodfury; }
                     else if (player.auras.flask && player.auras.flask.canUse()) { player.spelldelay = 1; delayedspell = player.auras.flask; }
 
-                    // Use GCD spells
+                    // Use GCD spells - skip if player "misses" the GCD (play skill simulation)
+                    else if (player.gcdSkipChance > 0 && Math.random() < player.gcdSkipChance) {
+                        /* start-log */ if (player.logging) this.player.log(`GCD skipped (play skill)`); /* end-log */
+                    }
                     else if (player.spells.unstoppablemight && player.spells.unstoppablemight.canUse()) { player.spelldelay = 1; delayedspell = player.spells.unstoppablemight; }
                     else if (player.spells.stanceswitch.canUse()) { player.spelldelay = 1; delayedspell = player.spells.stanceswitch; }
                     else if (player.timer) { }

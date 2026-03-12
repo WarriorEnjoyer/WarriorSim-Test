@@ -24,6 +24,7 @@ var session = {
    "downtimeintervalmax": "30",
    "downtimedurationmin": "2",
    "downtimedurationmax": "4",
+   "playskill": "perfect",
    "reactionmin": "100",
    "reactionmax": "150",
    "bleedreduction": "1",

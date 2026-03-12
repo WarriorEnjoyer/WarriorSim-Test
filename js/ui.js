@@ -510,7 +510,9 @@ SIM.UI = {
             updateStat("ap", await simulateWeight(0, 40));
             updateStat("crit", await simulateWeight(1, 1));
             updateStat("hit", await simulateWeight(2, 1));
+            updateStat("hitcap", await view.simulateHitCap(updateFn));
             updateStat("haste", await simulateWeight(5, 1.01));
+            updateStat("basehaste", await view.simulateBaseHaste(updateFn));
             updateStat("arp", await simulateWeight(6, 100));
             updateStat("mhskill", await simulateWeight(7, 1));
             updateStat("ohskill", await simulateWeight(8, 1));
@@ -554,6 +556,30 @@ SIM.UI = {
                 (error) => reject(error),
             );
             sim.start(params);
+        });
+    },
+
+    simulateBaseHaste: function(updateFn) {
+        const view = this;
+        // Run baseline sim with stripped haste (1.0), then test sim with stripped haste (1.01)
+        return view.simulateStat(10, 1.0, updateFn).then(baseline => {
+            return view.simulateStat(10, 1.01, updateFn).then(test => {
+                const weight = (test.mean - baseline.mean) / 1;
+                const error = 1.96 * Math.sqrt(baseline.varmean + test.varmean) / 1;
+                return {weight, error};
+            });
+        });
+    },
+
+    simulateHitCap: function(updateFn) {
+        const view = this;
+        // Run baseline sim with +20 hit (past yellow cap), then test with +21 hit
+        return view.simulateStat(11, 20, updateFn).then(baseline => {
+            return view.simulateStat(11, 21, updateFn).then(test => {
+                const weight = (test.mean - baseline.mean) / 1;
+                const error = 1.96 * Math.sqrt(baseline.varmean + test.varmean) / 1;
+                return {weight, error};
+            });
         });
     },
 
@@ -985,7 +1011,14 @@ SIM.UI = {
         view.sidebar.find('#ap').text(player.stats.ap);
         view.sidebar.find('#skill').html(player.stats['skill_' + player.mh.type] + ' <small>MH</small>' + (player.oh ? space + player.stats['skill_' + player.oh.type] + ' <small>OH</small>' : ''));
         view.sidebar.find('#hit').html((player.stats.hit || 0) + '%');
-        view.sidebar.find('#miss').html(Math.max(player.mh.miss, 0).toFixed(2) + '% <small>' + (player.oh ? 'Abilities' : 'MH' ) + '</small>' + (player.oh ? space + Math.max(player.mh.dwmiss, 0).toFixed(2) + '% <small>Autos</small>' : ''));
+        view.sidebar.find('#yellowmiss').html(Math.max(player.mh.miss, 0).toFixed(2) + '%');
+        view.sidebar.find('#whitemissmh').html(Math.max(player.oh ? player.mh.dwmiss : player.mh.miss, 0).toFixed(2) + '%');
+        if (player.oh) {
+            view.sidebar.find('.whitemissoh-row').show();
+            view.sidebar.find('#whitemissoh').html(Math.max(player.oh.dwmiss, 0).toFixed(2) + '%');
+        } else {
+            view.sidebar.find('.whitemissoh-row').hide();
+        }
         view.sidebar.find('#dodge').html(player.mh.dodge.toFixed(2) + '% <small>MH</small>' + (player.oh ? space + player.oh.dodge.toFixed(2) + '% <small>OH</small>' : ''));
         let mhcrit = player.mh.effectivecrit;
         let ohcrit = (player.oh ? player.oh.effectivecrit : 0);
@@ -1108,6 +1141,7 @@ SIM.UI = {
         obj.filter_epic = view.main.find('#filter_epic').hasClass('active');
         obj.bleedreduction = view.fight.find('select[name="bleedreduction"]').val();
         obj.spellqueueing = view.fight.find('select[name="spellqueueing"]').val();
+        obj.playskill = view.fight.find('select[name="playskill"]').val();
         
 
         let _buffs = [], _rotation = [], _talents = [], _sources = [], _phases = [], _gear = {}, _enchant = {}, _runes = {}, _resistance = {};

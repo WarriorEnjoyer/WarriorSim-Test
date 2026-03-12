@@ -6,33 +6,33 @@
   <title>TWoW Warrior DPS Sim</title>
 
   <link rel="icon" type="image/x-icon" href="/WarriorSim-TurtleWoW/favicon.ico">
-  <link href="dist/css/theme.default.min.css?v=1773326710252" rel="stylesheet">
-  <link href="dist/css/style.css?v=1773326710252" rel="stylesheet">
+  <link href="dist/css/theme.default.min.css?v=1773343498550" rel="stylesheet">
+  <link href="dist/css/style.css?v=1773343498550" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="dist/js/libs/jquery-3.4.1.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/libs/jquery.tablesorter.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/libs/jquery.tablesorter.widgets.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/libs/Chart.min.js?v=1773326710252"></script>
+  <script type="text/javascript" src="dist/js/libs/jquery-3.4.1.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/libs/jquery.tablesorter.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/libs/jquery.tablesorter.widgets.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/libs/Chart.min.js?v=1773343498550"></script>
 
-  <script type="text/javascript" src="dist/js/classes/player.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/classes/simulation.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/classes/spell.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/classes/weapon.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/data/gear_turtle181.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/data/enchants_turtle181.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/data/levelstats.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/data/buffs_turtle181.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/data/spells_turtle181.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/data/talents_turtle181.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/data/session_turtle181.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/data/presets_turtle181.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/globals.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/settings.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/profiles.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/stats.min.js?v=1773326710252"></script>
-  <script type="text/javascript" src="dist/js/ui.min.js?v=1773326710252"></script>
+  <script type="text/javascript" src="dist/js/classes/player.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/classes/simulation.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/classes/spell.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/classes/weapon.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/data/gear_turtle181.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/data/enchants_turtle181.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/data/levelstats.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/data/buffs_turtle181.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/data/spells_turtle181.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/data/talents_turtle181.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/data/session_turtle181.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/data/presets_turtle181.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/globals.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/settings.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/profiles.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/stats.min.js?v=1773343498550"></script>
+  <script type="text/javascript" src="dist/js/ui.min.js?v=1773343498550"></script>
 
   <script>var whTooltips = { colorLinks: true, iconizeLinks: false, renameLinks: false, "hide": { "ilvl": false } };</script>
   <script src="https://wow.zamimg.com/widgets/power.js"></script>
@@ -115,8 +115,16 @@ TO EXPLORE:
           <span id="skill"></span>
         </li>
         <li>
-          <label>Miss Chance</label>
-          <span id="miss"></span>
+          <label>Yellow Miss</label>
+          <span id="yellowmiss"></span>
+        </li>
+        <li>
+          <label>White Miss MH</label>
+          <span id="whitemissmh"></span>
+        </li>
+        <li class="whitemissoh-row">
+          <label>White Miss OH</label>
+          <span id="whitemissoh"></span>
         </li>
         <li>
           <label>Crit Chance</label>
@@ -171,7 +179,9 @@ TO EXPLORE:
         <div id="weight-ap"><span class="stat-name">Attack Power:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
         <div id="weight-crit"><span class="stat-name">Crit Chance:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
         <div id="weight-hit"><span class="stat-name">Hit Chance:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
-        <div id="weight-haste"><span class="stat-name">Haste:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
+        <div id="weight-hitcap"><span class="stat-name">Hit (Past Yellow Cap):</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
+        <div id="weight-haste"><span class="stat-name">Haste (Current):</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
+        <div id="weight-basehaste"><span class="stat-name">Haste (Base 1%):</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
         <div id="weight-arp"><span class="stat-name">Armor Penetration:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
         <div id="weight-mhskill"><span class="stat-name">MH Skill:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
         <div id="weight-ohskill"><span class="stat-name">OH Skill:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
@@ -307,10 +317,21 @@ TO EXPLORE:
             </select>
           </li>
           <li>
+            <label><a href="#" title="Adjusts reaction time and GCD skip chance. Perfect: 100-150ms, 0% skip. Good: 200-300ms, 3% skip. Average: 300-500ms, 8% skip. Custom: set your own values.">
+              Play Skill
+            </a></label>
+            <select dir="rtl" name="playskill">
+              <option value="perfect">Perfect</option>
+              <option value="good">Good</option>
+              <option value="average">Average</option>
+              <option value="custom">Custom</option>
+            </select>
+          </li>
+          <li class="playskill-setting">
             <label>Reaction Time (min)</label>
             <input type="text" name="reactionmin" value="200" data-numberonly="true">
           </li>
-          <li>
+          <li class="playskill-setting">
             <label>Reaction Time (max)</label>
             <input type="text" name="reactionmax" value="300" data-numberonly="true">
           </li>

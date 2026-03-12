@@ -6,13 +6,22 @@ class Player {
     isTurtleMode() {
         return Player.isTurtleMode(this.mode);
     }
+    static getPlaySkillConfig(skill) {
+        if (skill === 'perfect') return { reactionmin: 100, reactionmax: 150, gcdSkipChance: 0 };
+        if (skill === 'good') return { reactionmin: 200, reactionmax: 300, gcdSkipChance: 0.03 };
+        if (skill === 'average') return { reactionmin: 300, reactionmax: 500, gcdSkipChance: 0.08 };
+        return null; // custom
+    }
     static getConfig(base) {
+        let playskill = $('select[name="playskill"]').val() || 'perfect';
+        let skillConfig = Player.getPlaySkillConfig(playskill);
         return {
             level: $('input[name="level"]').val(),
             race: $('select[name="race"]').val(),
             aqbooks: $('select[name="aqbooks"]').val() == "Yes",
-            reactionmin: parseInt($('input[name="reactionmin"]').val()),
-            reactionmax: parseInt($('input[name="reactionmax"]').val()),
+            reactionmin: skillConfig ? skillConfig.reactionmin : parseInt($('input[name="reactionmin"]').val()),
+            reactionmax: skillConfig ? skillConfig.reactionmax : parseInt($('input[name="reactionmax"]').val()),
+            gcdSkipChance: skillConfig ? skillConfig.gcdSkipChance : 0,
             adjacent: parseInt($('input[name="adjacent"]').val()),
             mode: globalThis.mode,
             spellqueueing: $('select[name="spellqueueing"]').val() == "Yes",
@@ -66,6 +75,7 @@ class Player {
         this.bleedmod = parseFloat(this.target.bleedreduction);
         this.bleedtickmod = 1;
         this.spellqueueing = config.spellqueueing;
+        this.gcdSkipChance = config.gcdSkipChance || 0;
         this.target.misschance = this.getTargetSpellMiss();
         this.target.mitigation = this.getTargetSpellMitigation();
         this.target.binaryresist = this.getTargetSpellBinaryResist();
@@ -149,6 +159,13 @@ class Player {
             else if (testType == 9) {
                 this.testExtraAttack = testItem;
             }
+            else if (testType == 10) {
+                this.stripBaseHaste = true;
+                this.hasteMultiplier = testItem; // 1.01 for test, 1.0 for baseline
+            }
+            else if (testType == 11) {
+                this.base.hit += testItem; // +20 for baseline, +21 for test
+            }
         }
         else {
             this.testItem = testItem;
@@ -176,6 +193,10 @@ class Player {
         this.addTempEnchants();
         this.preAddRunes();
         this.addBuffs();
+        if (this.stripBaseHaste) {
+            this.base.haste = this.hasteMultiplier;
+            this.base.castspeed = this.hasteMultiplier;
+        }
         this.addSpells(testItem);
         this.sortSpells();
         this.addRunes();

@@ -289,6 +289,24 @@ SIM.SETTINGS = {
             SIM.UI.updateSidebar();
         });
 
+        view.fight.on('change', 'select[name="playskill"]', function (e) {
+            e.stopPropagation();
+            let skill = $(this).val();
+            let isCustom = skill === 'custom';
+            $('.playskill-setting').toggle(isCustom);
+            if (!isCustom) {
+                let config = Player.getPlaySkillConfig(skill);
+                $('input[name="reactionmin"]').val(config.reactionmin);
+                $('input[name="reactionmax"]').val(config.reactionmax);
+            }
+            SIM.UI.updateSession();
+            SIM.UI.updateSidebar();
+        });
+
+        // Initialize play skill settings visibility on page load
+        let playskill = $('select[name="playskill"]').val() || 'perfect';
+        $('.playskill-setting').toggle(playskill === 'custom');
+
         view.fight.on('change', 'select[name="downtimeenabled"]', function (e) {
             e.stopPropagation();
             let enabled = $(this).val() === 'Yes';
