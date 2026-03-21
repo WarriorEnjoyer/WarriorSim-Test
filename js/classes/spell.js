@@ -3717,18 +3717,18 @@ class ClawBefouler extends Aura {
         this.starttimer = step - prepull;
         this.nexttick = step + this.interval - prepull;
         this.player.updateAuras();
-        if (this.player.auras.enrage && this.player.talents.enrage)
+        if (this.player.mode != "turtle181" && this.player.auras.enrage && this.player.talents.enrage)
             this.player.auras.enrage.use();
-        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied (triggers enrage)`); /* end-log */
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied${this.player.mode != "turtle181" ? ' (triggers enrage)' : ''}`); /* end-log */
     }
     canUse() {
         return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
     }
     step() {
         while (step >= this.nexttick && this.timer) {
-            if (this.player.auras.enrage && this.player.talents.enrage)
+            if (this.player.mode != "turtle181" && this.player.auras.enrage && this.player.talents.enrage)
                 this.player.auras.enrage.use();
-            /* start-log */ if (this.player.logging) this.player.log(`${this.name} self-damage tick (triggers enrage)`); /* end-log */
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} self-damage tick${this.player.mode != "turtle181" ? ' (triggers enrage)' : ''}`); /* end-log */
             this.nexttick += this.interval;
         }
         if (step >= this.timer) {
