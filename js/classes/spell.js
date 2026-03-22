@@ -3707,7 +3707,7 @@ class ClawBefouler extends Aura {
         super(player, id);
         this.duration = 15;
         this.interval = 5000;
-        this.stats = { str: 225 };
+        this.stats = { str: 175 };
         this.cooldown = 120;
         this.name = 'Claw of the Befouler';
     }
