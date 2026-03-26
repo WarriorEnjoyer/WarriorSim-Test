@@ -8322,7 +8322,7 @@ var gear = {
     },
     {
       "name": "Battle Standard of the Broodcommander",
-      "source": "ONY",
+      "source": "Onyxia",
       "resist": {
         "fire": 7,
         "shadow": 7
@@ -8700,7 +8700,7 @@ var gear = {
     },
     {
       "name": "Battle Standard of the Broodcommander",
-      "source": "ONY",
+      "source": "Onyxia",
       "resist": {
         "fire": 7,
         "shadow": 7
@@ -8720,7 +8720,7 @@ var gear = {
       "name": "Dragonhunter Javelin",
       "str": 9,
       "crit": 1,
-      "source": "ONY",
+      "source": "Onyxia",
       "phase": 7,
       "q": 4,
       "i": 66,
@@ -9193,7 +9193,7 @@ var gear = {
       "speed": 1.7,
       "skill": 5,
       "type": "Sword",
-      "source": "ONY",
+      "source": "Onyxia",
       "phase": 7,
       "q": 4,
       "i": 66,
@@ -11453,7 +11453,7 @@ var gear = {
       "speed": 1.7,
       "skill": 5,
       "type": "Sword",
-      "source": "ONY",
+      "source": "Onyxia",
       "phase": 7,
       "q": 4,
       "i": 66,
@@ -13312,7 +13312,7 @@ var gear = {
       "sta": 33,
       "haste": 1,
       "type": "Polearm",
-      "source": "ONY",
+      "source": "Onyxia",
       "phase": 7,
       "q": 4,
       "i": 66,
