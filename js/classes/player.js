@@ -124,6 +124,7 @@ class Player {
             },
             block: 0,
             defense: 0,
+            fortune: 0,
         };
         if (enchtype == 1) {
             this.testEnch = testItem;
@@ -233,6 +234,18 @@ class Player {
             this.auras.obsidianstrength = new ObsidianStrength(this);
             this.auras.obsidianhaste = new ObsidianHaste(this);
         } 
+
+        if (this.base.fortune) {
+            let fortuneMod = 1 + this.base.fortune / 100;
+            if (this.mh && this.mh.proc1) this.mh.proc1.chance = ~~(this.mh.proc1.chance * fortuneMod);
+            if (this.mh && this.mh.proc2) this.mh.proc2.chance = ~~(this.mh.proc2.chance * fortuneMod);
+            if (this.oh && this.oh.proc1) this.oh.proc1.chance = ~~(this.oh.proc1.chance * fortuneMod);
+            if (this.oh && this.oh.proc2) this.oh.proc2.chance = ~~(this.oh.proc2.chance * fortuneMod);
+            if (this.trinketproc1) this.trinketproc1.chance = ~~(this.trinketproc1.chance * fortuneMod);
+            if (this.trinketproc2) this.trinketproc2.chance = ~~(this.trinketproc2.chance * fortuneMod);
+            if (this.attackproc1) this.attackproc1.chance = ~~(this.attackproc1.chance * fortuneMod);
+            if (this.attackproc2) this.attackproc2.chance = ~~(this.attackproc2.chance * fortuneMod);
+        }
 
         this.update();
         if (this.oh)
@@ -350,7 +363,7 @@ class Player {
                         proc.extra = item.proc.extra;
                         proc.magicdmg = item.proc.dmg;
                         proc.cooldown = item.proc.cooldown;
-                        if (item.spell) {
+                        if (item.proc.spell) {
                             this.auras[item.proc.spell.toLowerCase()] = eval('new ' + item.proc.spell + '(this)');
                             proc.spell = this.auras[item.proc.spell.toLowerCase()];
                         }
@@ -1089,6 +1102,10 @@ class Player {
             this.stats.haste *= (1 + this.auras.crusaderzeal.mult_stats.haste / 100);
         if (this.auras.obsidianhaste && this.auras.obsidianhaste.timer)
             this.stats.haste *= (1 + this.auras.obsidianhaste.mult_stats.haste / 100);
+        if (this.auras.broodcommanderhaste && this.auras.broodcommanderhaste.timer) {
+            this.stats.haste *= (1 + this.auras.broodcommanderhaste.mult_stats.haste / 100);
+            this.stats.castspeed *= (1 + this.auras.broodcommanderhaste.mult_stats.haste / 100);
+        }
         if (this.auras.unrelentingstrikes && this.auras.unrelentingstrikes.timer)
             this.stats.haste *= (1 + this.auras.unrelentingstrikes.mult_stats.haste / 100);
     }

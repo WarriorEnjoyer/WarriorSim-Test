@@ -3299,6 +3299,20 @@ var gear = {
   ],
   "wrist": [
     {
+      "name": "Wingbone Vambraces",
+      "str": 19,
+      "crit": 1,
+      "ac": 375,
+      "resist": {
+        "fire": 10
+      },
+      "source": "BWL",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900005
+    },
+    {
       "name": "Bracers of the Demonic Hunt (vs Demons)",
       "ap": 14,
       "agi": 7,
@@ -3984,12 +3998,13 @@ var gear = {
       "name": "Dragonclaw Gauntlets",
       "source": "UpperKara",
       "str": 28,
-	    "sta": 18,
+      "agi": 10,
+      "sta": 18,
       "hit": 1,
       "haste": 1,
       "ac": 615,
       "resist": {
-        "fire": 15
+        "fire": 10
       },
       "phase": 7,
       "q": 4,
@@ -6255,6 +6270,21 @@ var gear = {
   ],
   "feet": [
     {
+      "name": "Taut Dragonhide Boots",
+      "agi": 14,
+      "sta": 15,
+      "haste": 1,
+      "ac": 154,
+      "skills": {
+        "11": 6
+      },
+      "source": "BWL",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900004
+    },
+    {
       "name": "Sabatons of Might",
       "str": 20,
       "sta": 14,
@@ -8280,6 +8310,32 @@ var gear = {
       "i": 66,
       "id": 58211
     },
+    {
+      "name": "Flask of Petrified Gold",
+      "source": "BWL",
+      "sta": 15,
+      "fortune": 25,
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900003
+    },
+    {
+      "name": "Battle Standard of the Broodcommander",
+      "source": "ONY",
+      "resist": {
+        "fire": 7,
+        "shadow": 7
+      },
+      "proc": {
+        "chance": 2,
+        "spell": "BroodcommanderHaste"
+      },
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900006
+    },
 
   ],
   "trinket2": [
@@ -8632,8 +8688,44 @@ var gear = {
       "i": 66,
       "id": 58211
     },
+    {
+      "name": "Flask of Petrified Gold",
+      "source": "BWL",
+      "sta": 15,
+      "fortune": 25,
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900003
+    },
+    {
+      "name": "Battle Standard of the Broodcommander",
+      "source": "ONY",
+      "resist": {
+        "fire": 7,
+        "shadow": 7
+      },
+      "proc": {
+        "chance": 2,
+        "spell": "BroodcommanderHaste"
+      },
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900006
+    },
   ],
   "ranged": [
+    {
+      "name": "Dragonhunter Javelin",
+      "str": 9,
+      "crit": 1,
+      "source": "ONY",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900008
+    },
     {
       "name": "Time Frozen Bow",
       "hit": 1,
@@ -9091,6 +9183,22 @@ var gear = {
     }
   ],
   "mainhand": [
+    {
+      "name": "Broodwarden's Bulwarkblade",
+      "agi": 10,
+      "sta": 10,
+      "defense": 6,
+      "mindmg": 68,
+      "maxdmg": 127,
+      "speed": 1.7,
+      "skill": 5,
+      "type": "Sword",
+      "source": "ONY",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900007
+    },
     {
       "name": "Hedgecutter",
       "str": 5,
@@ -11335,6 +11443,23 @@ var gear = {
   ],
   "offhand": [
     {
+      "name": "Broodwarden's Bulwarkblade",
+      "offhand": true,
+      "agi": 10,
+      "sta": 10,
+      "defense": 6,
+      "mindmg": 68,
+      "maxdmg": 127,
+      "speed": 1.7,
+      "skill": 5,
+      "type": "Sword",
+      "source": "ONY",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900007
+    },
+    {
       "name": "Fist of the Flamewaker",
       "offhand": true,
       "agi": 16,
@@ -13178,6 +13303,21 @@ var gear = {
     },
   ],
   "twohand": [
+    {
+      "name": "Yoxtez, Black Breath of the Dragonflight",
+      "mindmg": 228,
+      "maxdmg": 342,
+      "speed": 3.8,
+      "agi": 36,
+      "sta": 33,
+      "haste": 1,
+      "type": "Polearm",
+      "source": "ONY",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900009
+    },
     {
       "name": "Elementium Champion",
       "mindmg": 190,

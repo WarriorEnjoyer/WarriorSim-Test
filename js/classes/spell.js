@@ -3508,6 +3508,30 @@ class ObsidianHaste extends Aura {
     }
 }
 
+class BroodcommanderHaste extends Aura {
+    constructor(player, id) {
+        super(player, id);
+        this.duration = 15;
+        this.mult_stats = { haste: 3 };
+        this.name = 'Broodcommander Haste';
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateHaste();
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied. haste ${this.player.stats.haste}`); /* end-log */
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.player.updateHaste();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed. haste ${this.player.stats.haste}`); /* end-log */
+        }
+    }
+}
+
 class Shieldrender extends Aura {
     constructor(player, id) {
         super(player, id);
