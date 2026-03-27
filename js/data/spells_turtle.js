@@ -1741,8 +1741,20 @@ var spells = [
     firsttrinket: false,
     noreuse: false,
 },
-
-
+{
+    id: 900002,
+    name: 'Claw of the Befouler',
+    classname: 'ClawBefouler',
+    iconname: 'inv_misc_monsterclaw_03',
+    item: true,
+    aura: true,
+    timetoend: 15,
+    timetoendactive: false,
+    timetostart: 0,
+    timetostartactive: false,
+    firsttrinket: false,
+    noreuse: false,
+},
 
 
 ];

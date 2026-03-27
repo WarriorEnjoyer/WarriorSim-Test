@@ -656,9 +656,9 @@ var gear = {
     },
     {
       "name": "Helm of Endless Rage",
-      "str": 25,
-      "sta": 26,
-      "agi": 25,
+      "str": 28,
+      "sta": 28,
+      "agi": 27,
       "hit": 1,
       "ac": 679,
       "source": "BWL",
@@ -1061,6 +1061,7 @@ var gear = {
       "crit": 1,
       "sta": 17,
       "dodge": 1,
+      "arp": 30,
       "source": "Onyxia",
       "phase": 1,
       "q": 4,
@@ -1357,12 +1358,12 @@ var gear = {
     {
       "name": "Black Brood Pauldrons",
       "str": 14,
-      "agi": 17,
+      "agi": 19,
       "sta": 12,
       "type": "2H Sword",
       "skill": 7,
       "source": "BWL",
-      "ac": 357,
+      "ac": 362,
       "phase": 2,
       "id": 19373,
       "i": 75,
@@ -1725,11 +1726,11 @@ var gear = {
     },
     {
       "name": "Drake Talon Pauldrons",
-      "str": 20,
+      "str": 22,
       "sta": 17,
-      "agi": 20,
+      "agi": 22,
       "dodge": 1,
-      "ac": 634,
+      "ac": 642,
       "source": "BWL",
       "phase": 3,
       "q": 4,
@@ -2064,8 +2065,8 @@ var gear = {
     {
       "name": "Wing of the Time-Lord",
       "sta": 8,
-      "str": 11,
-      "agi": 11,
+      "str": 10,
+      "agi": 10,
       "haste": 1,
       "proc": {
         "chance": 1,
@@ -2129,8 +2130,8 @@ var gear = {
     {
       "name": "Cloak of Firemaw",
       "ap": 50,
-      "sta": 12,
-      "ac": 57,
+      "sta": 14,
+      "ac": 58,
       "source": "BWL",
       "phase": 3,
       "q": 4,
@@ -2493,6 +2494,19 @@ var gear = {
       "q": 4,
       "i": 96,
       "id": 47272
+    },
+    {
+      "name": "Veteran's Plate Armor",
+      "str": 29,
+      "agi": 25,
+      "sta": 43,
+      "ac": 1027,
+      "crit": 1,
+      "hit": 1,
+      "phase": 7,
+      "q": 4,
+      "i": 96,
+      "id": 83304
     },
     {
       "name": "Tunic of Demonic Deception",
@@ -3285,6 +3299,20 @@ var gear = {
   ],
   "wrist": [
     {
+      "name": "Wingbone Vambraces",
+      "str": 19,
+      "crit": 1,
+      "ac": 375,
+      "resist": {
+        "fire": 10
+      },
+      "source": "BWL",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900005
+    },
+    {
       "name": "Bracers of the Demonic Hunt (vs Demons)",
       "ap": 14,
       "agi": 7,
@@ -3903,7 +3931,7 @@ var gear = {
       "id": 47265
     },
     {
-      "name": "Handwraps of Dead Winds", 
+      "name": "Handwraps of Dead Winds",
       "haste": 1,
       "str": 20,
       "sta": 17,
@@ -3914,6 +3942,19 @@ var gear = {
       "q": 4,
       "i": 92,
       "id": 55125
+    },
+    {
+      "name": "Veteran's Plate Gauntlets",
+      "str": 20,
+      "agi": 17,
+      "sta": 32,
+      "ac": 643,
+      "crit": 1,
+      "haste": 1,
+      "phase": 7,
+      "q": 4,
+      "i": 96,
+      "id": 83305
     },
     {
       "name": "Gloves of the Primordial Burrower",
@@ -5434,7 +5475,7 @@ var gear = {
 	    "agi": 30,
       "ac": 506,
       "crit": 1,
-      "skill": 6,
+      "skill": 7,
       "type": "2H Axe",
       "phase": 7,
       "source": "UpperKara",
@@ -5602,10 +5643,10 @@ var gear = {
     {
       "name": "Emberweave Leggings",
       "source": "Flamegor",
-      "ac": 417,
+      "ac": 422,
       "sta": 22,
-      "agi": 17,
-      "int": 12,
+      "agi": 19,
+      "int": 15,
       "subsource": "fire",
       "resist": {
         "fire": 35
@@ -6047,9 +6088,9 @@ var gear = {
       "name": "Legguards of the Fallen Crusader",
       "str": 35,
       "sta": 18,
-      "agi": 20,
+      "agi": 24,
       "hit": 1,
-      "ac": 740,
+      "ac": 749,
       "source": "BWL",
       "phase": 3,
       "q": 4,
@@ -6228,6 +6269,21 @@ var gear = {
     }
   ],
   "feet": [
+    {
+      "name": "Taut Dragonhide Boots",
+      "agi": 14,
+      "sta": 15,
+      "haste": 1,
+      "ac": 154,
+      "skills": {
+        "11": 6
+      },
+      "source": "BWL",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900004
+    },
     {
       "name": "Sabatons of Might",
       "str": 20,
@@ -7219,8 +7275,8 @@ var gear = {
     },
     {
       "name": "Circle of Applied Force",
-      "str": 12,
-      "sta": 9,
+      "str": 15,
+      "sta": 12,
       "agi": 22,
       "source": "BWL",
       "phase": "3",
@@ -7707,8 +7763,8 @@ var gear = {
     },
     {
       "name": "Circle of Applied Force",
-      "str": 12,
-      "sta": 9,
+      "str": 15,
+      "sta": 12,
       "agi": 22,
       "source": "BWL",
       "phase": "3",
@@ -7915,7 +7971,7 @@ var gear = {
     },
     {
       "name": "Blood-etched Fetish",
-      "agi": 8,
+      "agi": 4,
       "source": "Dungeon",
       "haste": 1,
       "phase": "1",
@@ -8239,12 +8295,46 @@ var gear = {
       "id": 61263
     },
     {
+      "name": "Claw of the Befouler (Used last 15 secs)",
+      "source": "Other",
+      "phase": "7",
+      "q": 4,
+      "i": 92,
+      "id": 900002
+    },
+    {
       "name": "Molten Emberstone (Used last 20 secs)",
       "source": "MC",
       "phase": "1",
       "q": 4,
       "i": 66,
       "id": 58211
+    },
+    {
+      "name": "Flask of Petrified Gold",
+      "source": "BWL",
+      "sta": 15,
+      "fortune": 25,
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900003
+    },
+    {
+      "name": "Battle Standard of the Broodcommander",
+      "source": "Onyxia",
+      "resist": {
+        "fire": 7,
+        "shadow": 7
+      },
+      "proc": {
+        "chance": 2,
+        "spell": "BroodcommanderHaste"
+      },
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900006
     },
 
   ],
@@ -8259,7 +8349,7 @@ var gear = {
     },
         {
       "name": "Blood-etched Fetish",
-      "agi": 8,
+      "agi": 4,
       "source": "Dungeon",
       "haste": 1,
       "phase": "1",
@@ -8583,6 +8673,14 @@ var gear = {
       "id": 61263
     },
     {
+      "name": "Claw of the Befouler (Used last 15 secs)",
+      "source": "Other",
+      "phase": "7",
+      "q": 4,
+      "i": 92,
+      "id": 900002
+    },
+    {
       "name": "Molten Emberstone (Used last 20 secs)",
       "source": "MC",
       "phase": "1",
@@ -8590,8 +8688,44 @@ var gear = {
       "i": 66,
       "id": 58211
     },
+    {
+      "name": "Flask of Petrified Gold",
+      "source": "BWL",
+      "sta": 15,
+      "fortune": 25,
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900003
+    },
+    {
+      "name": "Battle Standard of the Broodcommander",
+      "source": "Onyxia",
+      "resist": {
+        "fire": 7,
+        "shadow": 7
+      },
+      "proc": {
+        "chance": 2,
+        "spell": "BroodcommanderHaste"
+      },
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900006
+    },
   ],
   "ranged": [
+    {
+      "name": "Dragonhunter Javelin",
+      "str": 9,
+      "crit": 1,
+      "source": "Onyxia",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900008
+    },
     {
       "name": "Time Frozen Bow",
       "hit": 1,
@@ -9049,6 +9183,22 @@ var gear = {
     }
   ],
   "mainhand": [
+    {
+      "name": "Broodwarden's Bulwarkblade",
+      "agi": 10,
+      "sta": 10,
+      "defense": 6,
+      "mindmg": 68,
+      "maxdmg": 127,
+      "speed": 1.7,
+      "skill": 5,
+      "type": "Sword",
+      "source": "Onyxia",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900007
+    },
     {
       "name": "Hedgecutter",
       "str": 5,
@@ -9761,6 +9911,7 @@ var gear = {
     {
       "name": "Crul'Shorukh, Edge of Chaos",
       "sta": 13,
+      "agi": 13,
       "ap": 36,
       "mindmg": 101,
       "maxdmg": 188,
@@ -9792,8 +9943,8 @@ var gear = {
     },
     {
       "name": "Deathbringer *Classic PPM",
-      "mindmg": 114,
-      "maxdmg": 213,
+      "mindmg": 117,
+      "maxdmg": 216,
       "speed": 2.9,
       "type": "Axe",
       "source": "Onyxia",
@@ -10078,8 +10229,8 @@ var gear = {
       "name": "Dragonfang Blade",
       "sta": 13,
       "agi": 13,
-      "mindmg": 69,
-      "maxdmg": 130,
+      "mindmg": 72,
+      "maxdmg": 135,
       "speed": 1.8,
       "skill": 5,
       "type": "Dagger",
@@ -10373,8 +10524,8 @@ var gear = {
       "crit": 1,
       "str": 13,
       "sta": 7,
-      "mindmg": 102,
-      "maxdmg": 191,
+      "mindmg": 105,
+      "maxdmg": 193,
       "speed": 2.6,
       "type": "Fist",
       "source": "BWL",
@@ -10661,8 +10812,8 @@ var gear = {
       "Mainhand": true,
       "str": 9,
       "sta": 13,
-      "mindmg": 99,
-      "maxdmg": 184,
+      "mindmg": 104,
+      "maxdmg": 188,
       "speed": 2.6,
       "skill": 5,
       "type": "Mace",
@@ -10885,8 +11036,8 @@ var gear = {
       "name": "Maladath, Runed Blade of the Black Flight",
       "parry": 1,
       "skill": 5,
-      "mindmg": 86,
-      "maxdmg": 162,
+      "mindmg": 88,
+      "maxdmg": 164,
       "speed": 2.2,
       "type": "Sword",
       "source": "BWL",
@@ -11125,8 +11276,8 @@ var gear = {
     },
     {
       "name": "Vis'kag the Bloodletter",
-      "mindmg": 100,
-      "maxdmg": 187,
+      "mindmg": 106,
+      "maxdmg": 193,
       "speed": 2.6,
       "type": "Sword",
       "source": "Onyxia",
@@ -11291,6 +11442,23 @@ var gear = {
     }
   ],
   "offhand": [
+    {
+      "name": "Broodwarden's Bulwarkblade",
+      "offhand": true,
+      "agi": 10,
+      "sta": 10,
+      "defense": 6,
+      "mindmg": 68,
+      "maxdmg": 127,
+      "speed": 1.7,
+      "skill": 5,
+      "type": "Sword",
+      "source": "Onyxia",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900007
+    },
     {
       "name": "Fist of the Flamewaker",
       "offhand": true,
@@ -11826,6 +11994,7 @@ var gear = {
     {
       "name": "Crul'Shorukh, Edge of Chaos",
       "sta": 13,
+      "agi": 13,
       "ap": 36,
       "mindmg": 101,
       "maxdmg": 188,
@@ -11839,8 +12008,8 @@ var gear = {
     },
     {
       "name": "Deathbringer *Classic PPM",
-      "mindmg": 114,
-      "maxdmg": 213,
+      "mindmg": 117,
+      "maxdmg": 216,
       "speed": 2.9,
       "type": "Axe",
       "source": "Onyxia",
@@ -12129,8 +12298,8 @@ var gear = {
       "name": "Dragonfang Blade",
       "sta": 13,
       "agi": 13,
-      "mindmg": 69,
-      "maxdmg": 130,
+      "mindmg": 72,
+      "maxdmg": 135,
       "speed": 1.8,
       "skill": 5,
       "type": "Dagger",
@@ -12796,8 +12965,8 @@ var gear = {
       "name": "Maladath, Runed Blade of the Black Flight",
       "parry": 1,
       "skill": 5,
-      "mindmg": 86,
-      "maxdmg": 162,
+      "mindmg": 88,
+      "maxdmg": 164,
       "speed": 2.2,
       "type": "Sword",
       "source": "BWL",
@@ -12996,8 +13165,8 @@ var gear = {
     },
     {
       "name": "Vis'kag the Bloodletter *Classic PPM",
-      "mindmg": 100,
-      "maxdmg": 187,
+      "mindmg": 106,
+      "maxdmg": 193,
       "speed": 2.6,
       "type": "Sword",
       "source": "Onyxia",
@@ -13134,6 +13303,37 @@ var gear = {
     },
   ],
   "twohand": [
+    {
+      "name": "Yoxtez, Black Breath of the Dragonflight",
+      "mindmg": 228,
+      "maxdmg": 342,
+      "speed": 3.8,
+      "agi": 36,
+      "sta": 33,
+      "haste": 1,
+      "type": "Polearm",
+      "source": "Onyxia",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900009
+    },
+    {
+      "name": "Elementium Champion",
+      "mindmg": 190,
+      "maxdmg": 359,
+      "speed": 3.5,
+      "q": 4,
+      "i": 92,
+      "id": 900001,
+      "source": "Other",
+      "phase": 7,
+      "type": "Sword",
+      "proc": {
+        "ppm": 1,
+        "spell": "ElementiumChampion"
+      }
+    },
     {
       "name": "Shadowbringer",
       "mindmg": 170,
@@ -14530,8 +14730,8 @@ var gear = {
       "name": "The Untamed Blade",
       "sta": 16,
       "agi": 22,
-      "mindmg": 192,
-      "maxdmg": 289,
+      "mindmg": 205,
+      "maxdmg": 302,
       "speed": 3.4,
       "id": 19334,
       "q": 4,
@@ -14590,15 +14790,16 @@ var gear = {
       "agi": 17,
       "sta": 22,
       "str": 31,
-      "mindmg": 199,
-      "maxdmg": 300,
+      "mindmg": 204,
+      "maxdmg": 304,
       "speed": 3.4,
       "id": 19357,
       "source": "BWL",
       "phase": 3,
       "q": 4,
       "i": 75,
-      "type": "Mace"
+      "type": "Mace",
+      "haste": 1
     },
     {
       "name": "Demonshear",

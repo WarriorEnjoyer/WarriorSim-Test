@@ -1,7 +1,6 @@
 class Player {
-    // Helper to check if running any Turtle WoW mode (1.18 or 1.18.1)
     static isTurtleMode(mode) {
-        return mode === 'turtle' || mode === 'turtle181';
+        return mode === 'turtle';
     }
     isTurtleMode() {
         return Player.isTurtleMode(this.mode);
@@ -1036,11 +1035,10 @@ class Player {
         this.stats.castspeed = this.base.castspeed;
         if (this.auras.flurry && this.auras.flurry.timer) {
             this.stats.haste *= (1 + this.auras.flurry.mult_stats.haste / 100);
-            // 1.18.1: Flurry Slam cast time fix (5 points = 1.92s instead of 1.75s)
-            if (this.mode == "turtle181") {
+            if (this.mode == "turtle") {
                 this.stats.castspeed *= (1 + this.auras.flurry.mult_stats.haste / 100);
             } else {
-                this.stats.castspeed /= (1 - this.auras.flurry.mult_stats.haste / 100); // 1.18 flurry bug for slam
+                this.stats.castspeed /= (1 - this.auras.flurry.mult_stats.haste / 100);
             }
         }
         if (this.auras.quicknesspotion && this.auras.quicknesspotion.timer) {

@@ -38,7 +38,7 @@ gulp.task("js-build", function () {
 
 gulp.task("cache-bust", function (done) {
     var timestamp = Date.now();
-    var htmlFiles = ['turtle.html', 'turtle181.html', 'turtleclassic.html'];
+    var htmlFiles = ['turtle.html', 'turtleclassic.html'];
     htmlFiles.forEach(function (file) {
         if (!fs.existsSync(file)) return;
         var html = fs.readFileSync(file, 'utf8');

@@ -221,7 +221,7 @@ class Execute extends Spell {
     }
     dmg() {
         let dmg;
-        if (this.player.mode == "turtle181") {
+        if (this.player.mode == "turtle") {
             // 1.18.1: Precision Cut increases damage per extra rage point spent
             dmg = this.value1 + (this.value2 * this.usedrage * this.dumpmod181);
         } else {
@@ -325,7 +325,7 @@ class Cleave extends Spell {
         super(player, id);
         this.cost = 20 - player.ragecostbonus;
         // 1.18.1: Ravager talent reduces Cleave rage cost
-        if (player.mode == "turtle181") this.cost -= (player.talents.cleavecost || 0);
+        if (player.mode == "turtle") this.cost -= (player.talents.cleavecost || 0);
         this.bonus = this.value1 * (1 + (this.player.talents.cleavebonus || 0) / 100);
         this.useonly = true;
         this.unqueuetimer = 300 + rng(this.player.reactionmin, this.player.reactionmax);
@@ -411,11 +411,6 @@ class Hamstring extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 10 - player.ragecostbonus;
-        if (this.player.mode == "turtle")
-            this.cooldown = 6;
-        // 1.18.1: Removed cooldown from Hamstring
-        if (this.player.mode == "turtle181")
-            this.cooldown = 0;
         if (player.items.includes(19577))
             this.cost -= 2;
         if (player.items.includes(16548) ||
@@ -445,7 +440,7 @@ class Hamstring extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return (this.player.mode == "turtle181" || !this.timer) && !this.player.timer && this.cost <= this.player.rage &&
+        return (this.player.mode == "turtle" || !this.timer) && !this.player.timer && this.cost <= this.player.rage &&
         (!this.minrage || this.player.rage >= this.minrage) &&
         (!this.maincd ||
             (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
@@ -815,7 +810,7 @@ class ShieldSlam extends Spell {
         // SS benefits from the buff it triggers, add it manually if its not up
         let ap = this.player.stats.ap + (this.player.auras.defendersresolve && !this.player.auras.defendersresolve.timer ? 4 * this.player.stats.defense : 0);
         // 1.18.1: Shield Slam AP scaling increased from 15% to 20%
-        let apScale = this.player.mode == "turtle181" ? 0.20 : 0.15;
+        let apScale = this.player.mode == "turtle" ? 0.20 : 0.15;
         dmg = rng(this.value1, this.value2) + (this.player.stats.block * 2) + ~~(ap * apScale);
         return dmg * this.player.stats.dmgmod * this.player.mainspelldmg;
     }
@@ -3535,7 +3530,7 @@ class BroodcommanderHaste extends Aura {
 class Shieldrender extends Aura {
     constructor(player, id) {
         super(player, id);
-        if (player.mode == "turtle181") {
+        if (player.mode == "turtle") {
             this.duration = 10;
             this.chance = 700;
             this.maxstacks = 4;
@@ -3741,18 +3736,18 @@ class ClawBefouler extends Aura {
         this.starttimer = step - prepull;
         this.nexttick = step + this.interval - prepull;
         this.player.updateAuras();
-        if (this.player.mode != "turtle181" && this.player.auras.enrage && this.player.talents.enrage)
+        if (this.player.mode != "turtle" && this.player.auras.enrage && this.player.talents.enrage)
             this.player.auras.enrage.use();
-        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied${this.player.mode != "turtle181" ? ' (triggers enrage)' : ''}`); /* end-log */
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied${this.player.mode != "turtle" ? ' (triggers enrage)' : ''}`); /* end-log */
     }
     canUse() {
         return (!this.noreuse || this.firstuse) && !this.timer && !this.player.itemtimer && step >= this.usestep;
     }
     step() {
         while (step >= this.nexttick && this.timer) {
-            if (this.player.mode != "turtle181" && this.player.auras.enrage && this.player.talents.enrage)
+            if (this.player.mode != "turtle" && this.player.auras.enrage && this.player.talents.enrage)
                 this.player.auras.enrage.use();
-            /* start-log */ if (this.player.logging) this.player.log(`${this.name} self-damage tick${this.player.mode != "turtle181" ? ' (triggers enrage)' : ''}`); /* end-log */
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} self-damage tick${this.player.mode != "turtle" ? ' (triggers enrage)' : ''}`); /* end-log */
             this.nexttick += this.interval;
         }
         if (step >= this.timer) {

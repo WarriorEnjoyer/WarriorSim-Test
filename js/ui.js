@@ -1456,7 +1456,7 @@ SIM.UI = {
         let dpsrow = view.tcontainer.find('table.gear th').length;
         view.tcontainer.find('table.gear').tablesorter({
             widthFixed: false,
-            sortList: editmode ?  [[dpsrow, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
+            sortList: editmode ?  [[dpsrow-1, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
             textSorter : {
                 18 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
@@ -1467,7 +1467,8 @@ SIM.UI = {
                 },
             },
             headers: {
-                18: { sorter: "text" }
+                18: { sorter: "text" },
+                [dpsrow-1]: { sorter: "digit" }
             }
         });
 
@@ -1626,7 +1627,7 @@ SIM.UI = {
         let dpsrow = view.tcontainer.find('table.gear th').length;
         view.tcontainer.find('table.gear').tablesorter({
             widthFixed: false,
-            sortList: editmode ? [[dpsrow, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
+            sortList: editmode ? [[dpsrow-1, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
             textSorter : {
                 14 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
@@ -1637,7 +1638,8 @@ SIM.UI = {
                 },
             },
             headers: {
-                14: { sorter: "text" }
+                14: { sorter: "text" },
+                [dpsrow-1]: { sorter: "digit" }
             }
         });
 
@@ -1701,6 +1703,7 @@ SIM.UI = {
         view.tcontainer.find('table.gear').tablesorter({
             widthFixed: false,
             sortList: editmode ? [[11, 1]] : [[10, 1]],
+            headers: editmode ? { 11: { sorter: "digit" } } : { 10: { sorter: "digit" } }
         });
     },
 
@@ -1779,10 +1782,8 @@ SIM.UI = {
         view.tcontainer.append(table);
         view.tcontainer.find('table.enchant').tablesorter({
             widthFixed: false,
-            sortList: editmode ? [[13, 1]] : [[12, 1]],
-            headers: {
-                12: { sorter: "text" }
-            }
+            sortList: editmode ? [[12, 1]] : [[11, 1]],
+            headers: editmode ? { 12: { sorter: "digit" } } : { 11: { sorter: "digit" } }
         });
 
         view.main.find('.js-enchant').show();

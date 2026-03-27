@@ -1241,7 +1241,7 @@ var sets = [
       name: 'Armor of Might',
       items: [47240,47241,47242,47243,47244,47245,47246,47247],
       bonus: [
-		 { count: 3, stats: { altmightthreeset: true } },
+		 { count: 3, stats: { altmightthreeset181: true } },
 		 { count: 5, stats: { altmightfiveset: true } },
 		 { count: 8, stats: { crit: 2 } }
       ]
@@ -1262,6 +1262,7 @@ var sets = [
       items: [47261,47262,47263,47264,47265,47266,47267,47268,47269],
       bonus: [
         { count: 2, stats: { altdreadnaughttwoset: true } },
+        { count: 4, stats: { abilitiescrit: 0.04 } },
         { count: 8, stats: { dreadnaughteightset: true } }
       ]
    },
