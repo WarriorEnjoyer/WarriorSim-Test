@@ -844,6 +844,19 @@ var gear = {
       "q": 3,
       "i": 65,
       "id": 20263
+    },
+    {
+      "name": "Ursa's Rampage",
+      "str": 21,
+      "sta": 28,
+      "ac": 857,
+      "crit": 2,
+      "defense": 10,
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900010
     }
   ],
   "neck": [
@@ -3295,6 +3308,19 @@ var gear = {
       "q": 3,
       "i": 65,
       "id": 19693
+    },
+    {
+      "name": "Bramblehide Breastplate",
+      "str": 16,
+      "agi": 14,
+      "sta": 25,
+      "ac": 310,
+      "crit": 2,
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900011
     }
   ],
   "wrist": [
@@ -6982,6 +7008,17 @@ var gear = {
       "q": 4,
       "i": 66,
       "id": 58215
+    },
+    {
+      "name": "Treads of the Pathfinder",
+      "agi": 25,
+      "ac": 154,
+      "crit": 1,
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900013
     }
   ],
   "finger1": [
@@ -11439,6 +11476,21 @@ var gear = {
       "q": 4,
       "i": 70,
       "id": 55041
+    },
+    {
+      "name": "Denrender, Hatchet of the Subterranean Hunter",
+      "sta": 11,
+      "crit": 1,
+      "skill": 4,
+      "mindmg": 81,
+      "maxdmg": 151,
+      "speed": 2.1,
+      "type": "Axe",
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900012
     }
   ],
   "offhand": [
@@ -13300,6 +13352,22 @@ var gear = {
         "ppm": 1,
         "extra": 2
       }
+    },
+    {
+      "name": "Denrender, Hatchet of the Subterranean Hunter",
+      "offhand": true,
+      "sta": 11,
+      "crit": 1,
+      "skill": 4,
+      "mindmg": 81,
+      "maxdmg": 151,
+      "speed": 2.1,
+      "type": "Axe",
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900012
     },
   ],
   "twohand": [

@@ -211,6 +211,7 @@ var session = {
       "upperkara",
       "emersanc",
       "lowerkara",
+      "timbermaw",
       "worldboss",
       "pvp",
       "other"
