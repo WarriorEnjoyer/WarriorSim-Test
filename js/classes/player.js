@@ -2111,7 +2111,7 @@ class Player {
             this.auras.flurry.proc();
         if (!spell && this.mh.windfury && this.mh.windfury.stacks)
             this.mh.windfury.proc();
-        if (this.extraattacks > 0 && this.auras.unrelentingstrikes && !this.auras.unrelentingstrikes.timer) { 
+        if (isExtra && this.auras.unrelentingstrikes) {
             this.auras.unrelentingstrikes.use();
         }
         return procdmg;
