@@ -857,6 +857,39 @@ var gear = {
       "q": 4,
       "i": 66,
       "id": 900010
+    },
+    {
+      "name": "Partisan's Plate Helm",
+      "str": 22,
+      "agi": 21,
+      "sta": 34,
+      "hit": 1,
+      "ac": 696,
+      "resist": {
+        "fire": 10
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 68,
+      "id": 900014
+    },
+    {
+      "name": "Veteran's Plate Helm",
+      "str": 24,
+      "agi": 24,
+      "sta": 43,
+      "hit": 1,
+      "crit": 1,
+      "ac": 834,
+      "resist": {
+        "fire": 15
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 73,
+      "id": 900015
     }
   ],
   "neck": [
@@ -1924,6 +1957,38 @@ var gear = {
       "q": 3,
       "i": 65,
       "id": 19695
+    },
+    {
+      "name": "Partisan's Plate Shoulderguards",
+      "str": 15,
+      "agi": 16,
+      "sta": 26,
+      "crit": 1,
+      "ac": 642,
+      "resist": {
+        "fire": 5
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 68,
+      "id": 900016
+    },
+    {
+      "name": "Veteran's Plate Shoulderguards",
+      "str": 20,
+      "agi": 21,
+      "sta": 33,
+      "crit": 1,
+      "ac": 642,
+      "resist": {
+        "fire": 10
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 73,
+      "id": 900017
     }
   ],
   "back": [
@@ -3321,6 +3386,40 @@ var gear = {
       "q": 4,
       "i": 66,
       "id": 900011
+    },
+    {
+      "name": "Partisan's Plate Armor",
+      "str": 20,
+      "agi": 19,
+      "sta": 35,
+      "crit": 1,
+      "hit": 1,
+      "ac": 857,
+      "resist": {
+        "frost": 10
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 68,
+      "id": 900018
+    },
+    {
+      "name": "Veteran's Plate Armor",
+      "str": 29,
+      "agi": 25,
+      "sta": 43,
+      "crit": 1,
+      "hit": 1,
+      "ac": 1027,
+      "resist": {
+        "frost": 15
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 73,
+      "id": 900019
     }
   ],
   "wrist": [
@@ -4722,7 +4821,37 @@ var gear = {
       "i": 66,
       "id": 58210
     },
-
+    {
+      "name": "Partisan's Plate Gauntlets",
+      "str": 14,
+      "agi": 13,
+      "sta": 26,
+      "crit": 1,
+      "hit": 1,
+      "ac": 535,
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 68,
+      "id": 900020
+    },
+    {
+      "name": "Veteran's Plate Gauntlets",
+      "str": 20,
+      "agi": 17,
+      "sta": 32,
+      "crit": 1,
+      "haste": 1,
+      "ac": 643,
+      "resist": {
+        "frost": 10
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 73,
+      "id": 900021
+    }
   ],
   "waist": [
     {
@@ -6292,6 +6421,39 @@ var gear = {
       "q": 4,
       "i": 88,
       "id": 55099
+    },
+    {
+      "name": "Partisan's Plate Legguards",
+      "str": 24,
+      "agi": 19,
+      "sta": 34,
+      "hit": 1,
+      "ac": 749,
+      "resist": {
+        "nature": 10
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 68,
+      "id": 900022
+    },
+    {
+      "name": "Veteran's Plate Legguards",
+      "str": 28,
+      "agi": 23,
+      "sta": 41,
+      "hit": 1,
+      "crit": 1,
+      "ac": 898,
+      "resist": {
+        "nature": 15
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 73,
+      "id": 900023
     }
   ],
   "feet": [
@@ -7019,6 +7181,37 @@ var gear = {
       "q": 4,
       "i": 66,
       "id": 900013
+    },
+    {
+      "name": "Partisan's Plate Boots",
+      "str": 17,
+      "agi": 16,
+      "sta": 27,
+      "ac": 589,
+      "resist": {
+        "nature": 5
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 68,
+      "id": 900024
+    },
+    {
+      "name": "Veteran's Plate Boots",
+      "str": 18,
+      "agi": 18,
+      "sta": 31,
+      "crit": 1,
+      "ac": 709,
+      "resist": {
+        "nature": 10
+      },
+      "source": "PVP",
+      "phase": 7,
+      "q": 4,
+      "i": 73,
+      "id": 900025
     }
   ],
   "finger1": [
