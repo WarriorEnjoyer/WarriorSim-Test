@@ -509,8 +509,7 @@ class Simulation {
                             if (player.freeslam) slamstep = step;
                             player.timer = 1500 - (player.talents.impslam || 0);
                             player.heroicdelay = 0;
-                            // Don't cancel HS on turtle if already queued
-                            // player.nextswinghs = false;
+                            player.nextswinghs = false;
                             next = 0;
                             /* start-log */ if (player.logging) this.player.log(`Casting Slam`); /* end-log */
                             continue;
