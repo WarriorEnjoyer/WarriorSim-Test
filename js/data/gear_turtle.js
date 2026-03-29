@@ -12338,7 +12338,7 @@ var gear = {
       "phase": 7,
       "q": 4,
       "i": 68,
-      "id": 13246
+      "id": 81004
     },
     {
       "name": "Argent Avenger (vs Undead) *Classic PPM",
@@ -15600,7 +15600,7 @@ var gear = {
       "phase": 7,
       "q": 4,
       "i": 92,
-      "id": 900002,
+      "id": 900048,
       "proc": {
         "ppm": 1,
         "spell": "ElementiumReaper"
