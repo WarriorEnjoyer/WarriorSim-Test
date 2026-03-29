@@ -596,6 +596,13 @@ var enchant = {
          "phase": 5
       },
       {
+         "id": 13889,
+         "spellid": true,
+         "name": "Agility",
+         "agi": 7,
+         "phase": 1
+      },
+      {
          "id": 13882,
          "spellid": true,
          "name": "Lesser Agility",

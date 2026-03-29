@@ -3721,6 +3721,26 @@ class ElementiumChampion extends Aura {
     }
 }
 
+class ElementiumReaper extends Aura {
+    constructor(player) {
+        super(player);
+        this.idmg = 0;
+        this.totaldmg = 0;
+        this.name = 'Elementium Reaper';
+    }
+    use() {
+        let dmg = rng(550, 749);
+        if (this.player.maxsteps && step >= this.player.maxsteps * 0.7) {
+            dmg = ~~(dmg * 1.25);
+        }
+        dmg = this.player.physproc(dmg);
+        this.idmg += dmg;
+        this.totaldmg += dmg;
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} proc for ${~~dmg}`); /* end-log */
+    }
+    step() {}
+}
+
 class ClawBefouler extends Aura {
     constructor(player, id) {
         super(player, id);

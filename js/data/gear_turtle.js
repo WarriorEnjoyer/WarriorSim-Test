@@ -15589,6 +15589,22 @@ var gear = {
       "i": 73,
       "id": 900040,
       "type": "Polearm"
+    },
+    {
+      "name": "Elementium Reaper",
+      "mindmg": 208,
+      "maxdmg": 387,
+      "speed": 3.8,
+      "type": "Axe",
+      "source": "Other",
+      "phase": 7,
+      "q": 4,
+      "i": 92,
+      "id": 900002,
+      "proc": {
+        "ppm": 1,
+        "spell": "ElementiumReaper"
+      }
     }
   ],
   "custom": [

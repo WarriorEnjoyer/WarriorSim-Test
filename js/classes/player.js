@@ -903,6 +903,9 @@ class Player {
         if (this.auras.elementiumchampion) {
             this.auras.elementiumchampion.idmg = 0;
         }
+        if (this.auras.elementiumreaper) {
+            this.auras.elementiumreaper.idmg = 0;
+        }
         this.initStances();
         this.update();
     }

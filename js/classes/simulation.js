@@ -263,6 +263,7 @@ class Simulation {
         this.maxsteps = rng(this.timesecsmin * 1000, this.timesecsmax * 1000);
         this.duration = this.maxsteps / 1000;
         this.executestep = this.maxsteps - parseInt(this.maxsteps * (this.executeperc / 100));
+        player.maxsteps = this.maxsteps;
         if (player.spells.execute) player.spells.execute.executestep = this.executestep;
         let delayedspell, delayedheroic;
         let spellcheck = false;
@@ -800,6 +801,9 @@ class Simulation {
         }
         if (player.auras.elementiumchampion) {
             this.idmg += player.auras.elementiumchampion.idmg;
+        }
+        if (player.auras.elementiumreaper) {
+            this.idmg += player.auras.elementiumreaper.idmg;
         }
         this.totaldmg += this.idmg;
         this.totalduration += this.duration;
