@@ -4814,7 +4814,7 @@ var gear = {
       "agi": 13,
       "sta": 26,
       "crit": 1,
-      "hit": 1,
+      "haste": 1,
       "ac": 535,
       "source": "PVP",
       "phase": 7,
