@@ -1169,6 +1169,8 @@ class Player {
             this.target.armor = Math.max(this.target.armor - this.auras.cleavearmor.armor, 0);
         if (this.auras.bonereaver && this.auras.bonereaver.timer)
             this.target.armor = Math.max(this.target.armor - (this.auras.bonereaver.stacks * this.auras.bonereaver.armor), 0);
+        if (this.auras.corrosion && this.auras.corrosion.timer)
+            this.target.armor = Math.max(this.target.armor - this.auras.corrosion.armor, 0);
         if (this.auras.swarmguard && this.auras.swarmguard.timer)
             this.target.armor = Math.max(this.target.armor - (this.auras.swarmguard.stacks * this.auras.swarmguard.armor), 0);
         if (this.auras.shieldrender && this.auras.shieldrender.timer)
@@ -1842,6 +1844,11 @@ class Player {
                 if(spell == null || spell.school == SCHOOL.PHYSICAL)
                     dmg *= (1 - this.armorReduction);
                 if (!adjacent) this.addRage(dmg, result, weapon, spell);
+                if (this.auras.corrosion && this.auras.corrosion.timer && dmg > 0 && (spell == null || spell.school == SCHOOL.PHYSICAL)) {
+                    let natdmg = dmg * 0.04 * this.target.mitigation;
+                    this.auras.corrosion.totaldmg += natdmg;
+                    dmg += natdmg;
+                }
                 return dmg;
             }
             else {
@@ -1868,6 +1875,11 @@ class Player {
                     this.dreadnaughtbuff = 1;
                     /* start-log */ if (this.logging) this.log(`Dreadnaught Rallying Cry applied`); /* end-log */
                 }
+                if (this.auras.corrosion && this.auras.corrosion.timer && dmg > 0 && (spell == null || spell.school == SCHOOL.PHYSICAL)) {
+                    let natdmg = dmg * 0.04 * this.target.mitigation;
+                    this.auras.corrosion.totaldmg += natdmg;
+                    dmg += natdmg;
+                }
                 return dmg;
             }
             else {
@@ -1893,6 +1905,11 @@ class Player {
                 if (this.dreadnaughteightset && result == RESULT.CRIT) {
                     this.dreadnaughtbuff = 1;
                     /* start-log */ if (this.logging) this.log(`Dreadnaught Rallying Cry applied`); /* end-log */
+                }
+                if (this.auras.corrosion && this.auras.corrosion.timer && dmg > 0 && (spell == null || spell.school == SCHOOL.PHYSICAL)) {
+                    let natdmg = dmg * 0.04 * this.target.mitigation;
+                    this.auras.corrosion.totaldmg += natdmg;
+                    dmg += natdmg;
                 }
                 return dmg;
             }

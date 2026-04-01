@@ -1344,5 +1344,33 @@ var buffs = [
       dmgmod: 2,
       spelldmgmod: 2,
    },
+   {
+      id: 900060,
+      name: "Unity of the Timbermaw (x1)",
+      iconname: "inv_misc_horn_01",
+      group: "timbermawunity",
+      ap: 12,
+   },
+   {
+      id: 900061,
+      name: "Unity of the Timbermaw (x2)",
+      iconname: "inv_misc_horn_01",
+      group: "timbermawunity",
+      ap: 24,
+   },
+   {
+      id: 900062,
+      name: "Unity of the Timbermaw (x3)",
+      iconname: "inv_misc_horn_01",
+      group: "timbermawunity",
+      ap: 36,
+   },
+   {
+      id: 900063,
+      name: "Unity of the Timbermaw (x4)",
+      iconname: "inv_misc_horn_01",
+      group: "timbermawunity",
+      ap: 48,
+   },
 
 ];

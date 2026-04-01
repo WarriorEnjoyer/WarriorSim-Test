@@ -852,11 +852,45 @@ var gear = {
       "ac": 857,
       "crit": 2,
       "defense": 10,
+      "ragemod": 1.03,
       "source": "Timbermaw",
       "phase": 7,
       "q": 4,
       "i": 66,
       "id": 900010
+    },
+    {
+      "name": "Eyes of the Sightless (vs Demons)",
+      "str": 19,
+      "agi": 23,
+      "sta": 19,
+      "ac": 196,
+      "crit": 2,
+      "ap": 30,
+      "resist": {
+        "shadow": 20
+      },
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900057
+    },
+    {
+      "name": "Eyes of the Sightless (vs non-Demon)",
+      "str": 19,
+      "agi": 23,
+      "sta": 19,
+      "ac": 196,
+      "crit": 2,
+      "resist": {
+        "shadow": 20
+      },
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900058
     },
     {
       "name": "Partisan's Plate Helm",
@@ -1297,6 +1331,18 @@ var gear = {
       "q": 4,
       "i": 88,
       "id": 55507
+    },
+    {
+      "name": "Pendant of Relentless Assault",
+      "str": 9,
+      "sta": 9,
+      "hit": 1,
+      "haste": 1,
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900050
     }
   ],
   "shoulder": [
@@ -2516,6 +2562,22 @@ var gear = {
       "i": 96,
       "id": 55515
     },
+    {
+      "name": "Digested Slayer's Pauldrons",
+      "str": 15,
+      "agi": 15,
+      "sta": 15,
+      "ac": 608,
+      "skills": {
+        "1": 5,
+        "21": 5,
+      },
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900052
+    }
   ],
   "chest": [
     {
@@ -4838,6 +4900,22 @@ var gear = {
       "q": 4,
       "i": 73,
       "id": 900021
+    },
+    {
+      "name": "Weaponmaster's Gauntlets",
+      "agi": 10,
+      "sta": 16,
+      "ac": 276,
+      "skills": {
+        "20": 3,
+        "4": 4,
+        "5": 3,
+      },
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900049
     }
   ],
   "waist": [
@@ -5550,6 +5628,18 @@ var gear = {
       "q": 3,
       "i": 68,
       "id": 22195
+    },
+    {
+      "name": "Sash of the Pathfinder",
+      "agi": 22,
+      "sta": 15,
+      "crit": 1,
+      "ac": 123,
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900055
     }
   ],
   "legs": [
@@ -11662,10 +11752,10 @@ var gear = {
       "sta": 11,
       "crit": 1,
       "skill": 4,
+      "type": "Axe",
       "mindmg": 81,
       "maxdmg": 151,
       "speed": 2.1,
-      "type": "Axe",
       "source": "Timbermaw",
       "phase": 7,
       "q": 4,
@@ -11851,6 +11941,21 @@ var gear = {
       "q": 4,
       "i": 73,
       "id": 900047
+    },
+    {
+      "name": "The Herald of Nightmares",
+      "agi": 10,
+      "haste": 1,
+      "parry": 1,
+      "mindmg": 57,
+      "maxdmg": 105,
+      "speed": 1.3,
+      "type": "Dagger",
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900056
     }
   ],
   "offhand": [
@@ -15604,6 +15709,60 @@ var gear = {
       "proc": {
         "ppm": 1,
         "spell": "ElementiumReaper"
+      }
+    },
+    {
+      "name": "Corrosion",
+      "mindmg": 214,
+      "maxdmg": 320,
+      "speed": 3.6,
+      "type": "Axe",
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900051,
+      "proc": {
+        "ppm": 1,
+        "spell": "Corrosion"
+      }
+    },
+    {
+      "name": "Psyan's New Greatsword",
+      "str": 15,
+      "sta": 15,
+      "mindmg": 207,
+      "maxdmg": 311,
+      "speed": 3.5,
+      "type": "Sword",
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900053,
+      "proc": {
+        "ppm": 1,
+        "magic": true,
+        "dmg": 375
+      }
+    },
+    {
+      "name": "Psyan's New Greatsword (vs Undead/Demon)",
+      "str": 15,
+      "sta": 15,
+      "mindmg": 207,
+      "maxdmg": 311,
+      "speed": 3.5,
+      "type": "Sword",
+      "source": "Timbermaw",
+      "phase": 7,
+      "q": 4,
+      "i": 66,
+      "id": 900054,
+      "proc": {
+        "ppm": 1,
+        "magic": true,
+        "dmg": 562
       }
     }
   ],
