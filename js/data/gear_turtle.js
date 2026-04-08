@@ -2,7 +2,7 @@ var gear = {
   "head": [
     {
       "name": "Crown of Might",
-      "str": 30,
+      "str": 3000,
       "agi": 14,
       "sta": 16,
       "ac": 608,
